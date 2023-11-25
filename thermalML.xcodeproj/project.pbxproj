@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		638719842B126CCB008C7F54 /* ThermalPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719832B126CCB008C7F54 /* ThermalPictureModel.swift */; };
+		638719862B127063008C7F54 /* ThermalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719852B127063008C7F54 /* ThermalView.swift */; };
+		638719882B127074008C7F54 /* ThermalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719872B127074008C7F54 /* ThermalViewModel.swift */; };
 		D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* thermalMLApp.swift */; };
 		D7DFC8C32B0B889500601989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C22B0B889500601989 /* ContentView.swift */; };
 		D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C42B0B889900601989 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		638719832B126CCB008C7F54 /* ThermalPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalPictureModel.swift; sourceTree = "<group>"; };
+		638719852B127063008C7F54 /* ThermalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalView.swift; sourceTree = "<group>"; };
+		638719872B127074008C7F54 /* ThermalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalViewModel.swift; sourceTree = "<group>"; };
 		D7DFC8BD2B0B889500601989 /* thermalML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thermalML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7DFC8C02B0B889500601989 /* thermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thermalMLApp.swift; sourceTree = "<group>"; };
 		D7DFC8C22B0B889500601989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				638719832B126CCB008C7F54 /* ThermalPictureModel.swift */,
+				638719852B127063008C7F54 /* ThermalView.swift */,
+				638719872B127074008C7F54 /* ThermalViewModel.swift */,
 			);
 			path = ThermalView;
 			sourceTree = "<group>";
@@ -178,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638719882B127074008C7F54 /* ThermalViewModel.swift in Sources */,
 				D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */,
 				D7DFC8C32B0B889500601989 /* ContentView.swift in Sources */,
+				638719862B127063008C7F54 /* ThermalView.swift in Sources */,
 				638719842B126CCB008C7F54 /* ThermalPictureModel.swift in Sources */,
 				D7DFC8CF2B0BB9F900601989 /* thermalclassification 1.mlmodel in Sources */,
 				D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */,
