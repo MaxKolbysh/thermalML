@@ -21,7 +21,7 @@
 		D7DFC8C22B0B889500601989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7DFC8C42B0B889900601989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "thermalclassification 1.mlmodel"; sourceTree = SOURCE_ROOT; };
+		D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "thermalclassification 1.mlmodel"; path = "thermalML/MLModels/thermalclassification 1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -36,6 +36,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6387197F2B1265D9008C7F54 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
+		638719802B1265F6008C7F54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		638719812B126613008C7F54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				638719822B12661F008C7F54 /* ThermalView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		638719822B12661F008C7F54 /* ThermalView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThermalView;
+			sourceTree = "<group>";
+		};
 		D7DFC8B42B0B889500601989 = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +86,11 @@
 		D7DFC8BF2B0B889500601989 /* thermalML */ = {
 			isa = PBXGroup;
 			children = (
+				638719812B126613008C7F54 /* Views */,
+				638719802B1265F6008C7F54 /* Extensions */,
+				6387197F2B1265D9008C7F54 /* MLModels */,
 				D7DFC8C02B0B889500601989 /* thermalMLApp.swift */,
 				D7DFC8C22B0B889500601989 /* ContentView.swift */,
-				D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */,
-				D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */,
 				D7DFC8C42B0B889900601989 /* Assets.xcassets */,
 				D7DFC8C62B0B889900601989 /* Preview Content */,
 			);
