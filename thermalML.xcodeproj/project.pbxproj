@@ -10,11 +10,10 @@
 		638719842B126CCB008C7F54 /* ThermalPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719832B126CCB008C7F54 /* ThermalPictureModel.swift */; };
 		638719862B127063008C7F54 /* ThermalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719852B127063008C7F54 /* ThermalView.swift */; };
 		638719882B127074008C7F54 /* ThermalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719872B127074008C7F54 /* ThermalViewModel.swift */; };
+		6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 638719892B127238008C7F54 /* thermalclassification 1.mlpackage */; };
 		D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* thermalMLApp.swift */; };
-		D7DFC8C32B0B889500601989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C22B0B889500601989 /* ContentView.swift */; };
 		D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C42B0B889900601989 /* Assets.xcassets */; };
 		D7DFC8C82B0B889900601989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */; };
-		D7DFC8CF2B0BB9F900601989 /* thermalclassification 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */; };
 		D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,12 +21,11 @@
 		638719832B126CCB008C7F54 /* ThermalPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalPictureModel.swift; sourceTree = "<group>"; };
 		638719852B127063008C7F54 /* ThermalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalView.swift; sourceTree = "<group>"; };
 		638719872B127074008C7F54 /* ThermalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalViewModel.swift; sourceTree = "<group>"; };
+		638719892B127238008C7F54 /* thermalclassification 1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "thermalclassification 1.mlpackage"; sourceTree = "<group>"; };
 		D7DFC8BD2B0B889500601989 /* thermalML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thermalML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7DFC8C02B0B889500601989 /* thermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thermalMLApp.swift; sourceTree = "<group>"; };
-		D7DFC8C22B0B889500601989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7DFC8C42B0B889900601989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "thermalclassification 1.mlmodel"; path = "thermalML/MLModels/thermalclassification 1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +43,7 @@
 		6387197F2B1265D9008C7F54 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */,
+				638719892B127238008C7F54 /* thermalclassification 1.mlpackage */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -99,7 +97,6 @@
 				638719802B1265F6008C7F54 /* Extensions */,
 				6387197F2B1265D9008C7F54 /* MLModels */,
 				D7DFC8C02B0B889500601989 /* thermalMLApp.swift */,
-				D7DFC8C22B0B889500601989 /* ContentView.swift */,
 				D7DFC8C42B0B889900601989 /* Assets.xcassets */,
 				D7DFC8C62B0B889900601989 /* Preview Content */,
 			);
@@ -186,10 +183,9 @@
 			files = (
 				638719882B127074008C7F54 /* ThermalViewModel.swift in Sources */,
 				D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */,
-				D7DFC8C32B0B889500601989 /* ContentView.swift in Sources */,
+				6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */,
 				638719862B127063008C7F54 /* ThermalView.swift in Sources */,
 				638719842B126CCB008C7F54 /* ThermalPictureModel.swift in Sources */,
-				D7DFC8CF2B0BB9F900601989 /* thermalclassification 1.mlmodel in Sources */,
 				D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +328,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,6 +358,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

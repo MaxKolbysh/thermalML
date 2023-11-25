@@ -11,7 +11,7 @@ import SwiftUI
 struct thermalMLApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ThermalView()
         }
     }
 }
