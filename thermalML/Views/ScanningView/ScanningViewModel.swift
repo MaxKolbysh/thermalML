@@ -9,18 +9,22 @@ import Foundation
 import CoreML
 import SwiftUI
 
-class ThermalViewModel: ObservableObject {
+class ScanningViewModel: ObservableObject {
+    unowned let router: Router<AppRoute>
+    
     @Published var detail: String = .init()
     @Published var recommendation: String = .init()
 
     private let mlModel: thermalclassification_1
-    private let imageModel = ThermalPictureModel()
+    private let imageModel = ScanningPictureModel()
 
     let renderQueue = DispatchQueue.init(label: "render")
 
     var classificationResults: [String: Double] = .init()
     
-    init() {
+    init(router: Router<AppRoute>) {
+        self.router = router
+        
         do {
             let configuration = MLModelConfiguration()
             configuration.computeUnits = .cpuOnly

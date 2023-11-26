@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ThermalPictureModel {
+class ScanningPictureModel {
     var image: UIImage?
     
     init(image: UIImage? = nil) {

@@ -9,13 +9,17 @@ import SwiftUI
 import CoreML
 import PhotosUI
 
-struct ThermalView: View {
-    @StateObject var viewModel = ThermalViewModel()
+struct ScanningView: View {
+    @StateObject var viewModel: ScanningViewModel
     
     @State private var classificationLabel: String = .init()
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
         
+    init(router: Router<AppRoute>) {
+        _viewModel = StateObject(wrappedValue: ScanningViewModel(router: router))
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -68,5 +72,5 @@ struct ThermalView: View {
 }
 
 #Preview {
-    ThermalView()
+    ScanningView(router: Router())
 }

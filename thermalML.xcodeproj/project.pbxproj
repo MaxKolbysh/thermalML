@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		638719842B126CCB008C7F54 /* ThermalPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719832B126CCB008C7F54 /* ThermalPictureModel.swift */; };
-		638719862B127063008C7F54 /* ThermalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719852B127063008C7F54 /* ThermalView.swift */; };
-		638719882B127074008C7F54 /* ThermalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719872B127074008C7F54 /* ThermalViewModel.swift */; };
+		638719842B126CCB008C7F54 /* ScanningPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719832B126CCB008C7F54 /* ScanningPictureModel.swift */; };
+		638719862B127063008C7F54 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719852B127063008C7F54 /* ScanningView.swift */; };
+		638719882B127074008C7F54 /* ScanningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719872B127074008C7F54 /* ScanningViewModel.swift */; };
 		6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 638719892B127238008C7F54 /* thermalclassification 1.mlpackage */; };
-		D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* thermalMLApp.swift */; };
+		6387198E2B127909008C7F54 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387198D2B127909008C7F54 /* AppRoute.swift */; };
+		638719902B12796B008C7F54 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387198F2B12796B008C7F54 /* Router.swift */; };
+		638719922B1279B6008C7F54 /* NavViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719912B1279B6008C7F54 /* NavViewBuilder.swift */; };
+		638719942B1279F9008C7F54 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719932B1279F9008C7F54 /* MainFlow.swift */; };
+		638719962B127A8A008C7F54 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719952B127A8A008C7F54 /* MainAppView.swift */; };
+		638719982B127B91008C7F54 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719972B127B91008C7F54 /* WelcomeView.swift */; };
+		6387199D2B128610008C7F54 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387199C2B128610008C7F54 /* WelcomeViewModel.swift */; };
+		63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */; };
+		63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */; };
+		63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */; };
+		D7DFC8C12B0B889500601989 /* ThermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */; };
 		D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C42B0B889900601989 /* Assets.xcassets */; };
 		D7DFC8C82B0B889900601989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */; };
 		D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		638719832B126CCB008C7F54 /* ThermalPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalPictureModel.swift; sourceTree = "<group>"; };
-		638719852B127063008C7F54 /* ThermalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalView.swift; sourceTree = "<group>"; };
-		638719872B127074008C7F54 /* ThermalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalViewModel.swift; sourceTree = "<group>"; };
+		638719832B126CCB008C7F54 /* ScanningPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningPictureModel.swift; sourceTree = "<group>"; };
+		638719852B127063008C7F54 /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
+		638719872B127074008C7F54 /* ScanningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewModel.swift; sourceTree = "<group>"; };
 		638719892B127238008C7F54 /* thermalclassification 1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "thermalclassification 1.mlpackage"; sourceTree = "<group>"; };
+		6387198D2B127909008C7F54 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		6387198F2B12796B008C7F54 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		638719912B1279B6008C7F54 /* NavViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewBuilder.swift; sourceTree = "<group>"; };
+		638719932B1279F9008C7F54 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
+		638719952B127A8A008C7F54 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		638719972B127B91008C7F54 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		6387199C2B128610008C7F54 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionView.swift; sourceTree = "<group>"; };
+		63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionViewModel.swift; sourceTree = "<group>"; };
+		63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetInfoView.swift; sourceTree = "<group>"; };
 		D7DFC8BD2B0B889500601989 /* thermalML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thermalML.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7DFC8C02B0B889500601989 /* thermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thermalMLApp.swift; sourceTree = "<group>"; };
+		D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalMLApp.swift; sourceTree = "<group>"; };
 		D7DFC8C42B0B889900601989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
@@ -59,19 +79,74 @@
 		638719812B126613008C7F54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				638719822B12661F008C7F54 /* ThermalView */,
+				63D7CBD82B13893C00BB54F3 /* BottomSheetInfoView */,
+				63D7CBD22B137D0800BB54F3 /* StartConnectionView */,
+				6387199B2B1285DE008C7F54 /* WelcomeView */,
+				638719822B12661F008C7F54 /* ScanningView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		638719822B12661F008C7F54 /* ThermalView */ = {
+		638719822B12661F008C7F54 /* ScanningView */ = {
 			isa = PBXGroup;
 			children = (
-				638719832B126CCB008C7F54 /* ThermalPictureModel.swift */,
-				638719852B127063008C7F54 /* ThermalView.swift */,
-				638719872B127074008C7F54 /* ThermalViewModel.swift */,
+				638719832B126CCB008C7F54 /* ScanningPictureModel.swift */,
+				638719852B127063008C7F54 /* ScanningView.swift */,
+				638719872B127074008C7F54 /* ScanningViewModel.swift */,
 			);
-			path = ThermalView;
+			path = ScanningView;
+			sourceTree = "<group>";
+		};
+		6387198B2B12789F008C7F54 /* NavigationStack */ = {
+			isa = PBXGroup;
+			children = (
+				6387198F2B12796B008C7F54 /* Router.swift */,
+				6387198D2B127909008C7F54 /* AppRoute.swift */,
+				6387198C2B1278CA008C7F54 /* NavigationView */,
+			);
+			path = NavigationStack;
+			sourceTree = "<group>";
+		};
+		6387198C2B1278CA008C7F54 /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				638719912B1279B6008C7F54 /* NavViewBuilder.swift */,
+				638719932B1279F9008C7F54 /* MainFlow.swift */,
+			);
+			path = NavigationView;
+			sourceTree = "<group>";
+		};
+		6387199B2B1285DE008C7F54 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				638719972B127B91008C7F54 /* WelcomeView.swift */,
+				6387199C2B128610008C7F54 /* WelcomeViewModel.swift */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
+		63D7CBD22B137D0800BB54F3 /* StartConnectionView */ = {
+			isa = PBXGroup;
+			children = (
+				63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */,
+				63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */,
+			);
+			path = StartConnectionView;
+			sourceTree = "<group>";
+		};
+		63D7CBD72B1388B700BB54F3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		63D7CBD82B13893C00BB54F3 /* BottomSheetInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */,
+			);
+			path = BottomSheetInfoView;
 			sourceTree = "<group>";
 		};
 		D7DFC8B42B0B889500601989 = {
@@ -93,10 +168,13 @@
 		D7DFC8BF2B0B889500601989 /* thermalML */ = {
 			isa = PBXGroup;
 			children = (
+				63D7CBD72B1388B700BB54F3 /* Managers */,
+				6387198B2B12789F008C7F54 /* NavigationStack */,
 				638719812B126613008C7F54 /* Views */,
 				638719802B1265F6008C7F54 /* Extensions */,
 				6387197F2B1265D9008C7F54 /* MLModels */,
-				D7DFC8C02B0B889500601989 /* thermalMLApp.swift */,
+				D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */,
+				638719952B127A8A008C7F54 /* MainAppView.swift */,
 				D7DFC8C42B0B889900601989 /* Assets.xcassets */,
 				D7DFC8C62B0B889900601989 /* Preview Content */,
 			);
@@ -181,12 +259,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				638719882B127074008C7F54 /* ThermalViewModel.swift in Sources */,
+				638719902B12796B008C7F54 /* Router.swift in Sources */,
+				638719882B127074008C7F54 /* ScanningViewModel.swift in Sources */,
+				6387199D2B128610008C7F54 /* WelcomeViewModel.swift in Sources */,
+				638719942B1279F9008C7F54 /* MainFlow.swift in Sources */,
 				D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */,
+				63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */,
+				63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */,
+				638719922B1279B6008C7F54 /* NavViewBuilder.swift in Sources */,
+				638719962B127A8A008C7F54 /* MainAppView.swift in Sources */,
+				63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */,
 				6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */,
-				638719862B127063008C7F54 /* ThermalView.swift in Sources */,
-				638719842B126CCB008C7F54 /* ThermalPictureModel.swift in Sources */,
-				D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */,
+				638719862B127063008C7F54 /* ScanningView.swift in Sources */,
+				638719982B127B91008C7F54 /* WelcomeView.swift in Sources */,
+				638719842B126CCB008C7F54 /* ScanningPictureModel.swift in Sources */,
+				6387198E2B127909008C7F54 /* AppRoute.swift in Sources */,
+				D7DFC8C12B0B889500601989 /* ThermalMLApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
