@@ -1,73 +1,79 @@
 //
-//  ThermalView.swift
+//  ScanningView.swift
 //  thermalML
 //
 //  Created by Ildar Khabibullin on 26.11.2023.
 //
 
+
 import SwiftUI
 import CoreML
 import PhotosUI
-
+    
 struct ScanningView: View {
     @StateObject var viewModel: ScanningViewModel
     
     @State private var classificationLabel: String = .init()
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
-        
+    
     init(router: Router<AppRoute>) {
         _viewModel = StateObject(wrappedValue: ScanningViewModel(router: router))
+        
+        
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            PhotosPicker(
-                        selection: $selectedItem,
-                        matching: .images,
-                        photoLibrary: .shared()) {
-                            Text("Select a photo")
-                        }.onChange(of: selectedItem) { newItem in
-                            if let newItem = newItem {
-                                Task {
-                                    selectedImageData = try? await newItem.loadTransferable(type: Data.self)
-                                    
-                                    if let imageData = selectedImageData,
-                                       let image = UIImage(data: imageData) {
-                                        viewModel.loadImage(image)
-                                    }
-                                }
-                            }
+        ZStack(alignment: .bottom) {
+            ScanningCameraView(thermalImage: $viewModel.thermalImage)
+                    .background(Color.orange)
+                Button(action: {
+                        //
+                }, label: {
+                    HStack {
+                        Image(systemName: "camera")
+                            .foregroundStyle(.black)
+                    }
+                    .frame(maxWidth: 50, maxHeight: 50)
+                    .background(Color(red: 0, green: 122/255, blue: 255/255, opacity: 1.0))
+                    .clipShape(Circle())
+                    .foregroundColor(.black)
+                })
+                .padding(.bottom, 30)
+
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        //
+                    }, label: {
+                        HStack {
+                            Image(systemName: "rectangle.and.text.magnifyingglass")
+                                .padding(.leading)
+                                .foregroundStyle(.black)
+                            Text("Classify")
+                                .foregroundColor(.black)
+                                .padding(.trailing)
                         }
-            Spacer()
-            
-            if let selectedImageData,
-               let uiImage = UIImage(data: selectedImageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 299  , height: 299)
-            }
-            
-            Button("Classify") {
-                viewModel.classifyImage()
-                viewModel.processClassificationResults()
-            }
-            .padding()
-            .foregroundColor(Color.white)
-            .background(Color.green)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            // The Text View that we will use to display the results of the classification
-            Text(viewModel.detail)
-                .padding()
-                .font(.body)
-            Text(viewModel.recommendation)
-                .padding()
-                .font(.body)
-            Spacer()
+                        .frame(maxWidth: 125, maxHeight: 50)
+                        .background(Color(red: 118/255, green: 118/255, blue: 128/255, opacity: 0.24))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .foregroundColor(.black)
+                    })
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 30)
         }
-        .padding()
+        .onAppear {
+            viewModel.connectEmulatorClicked()
+            
+        }
+        .navigationBarItems(trailing:
+                                Button(action: {
+            print("Gallery Button Tapped")
+        }) {
+            Image(systemName: "photo")
+        }
+        )
     }
 }
 

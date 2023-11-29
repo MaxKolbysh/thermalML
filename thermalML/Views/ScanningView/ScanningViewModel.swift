@@ -1,109 +1,76 @@
 //
-//  ThermalViewModel.swift
+//  ScanningViewModel.swift
 //  thermalML
 //
 //  Created by Ildar Khabibullin on 26.11.2023.
 //
 
-import Foundation
-import CoreML
 import SwiftUI
+import Combine
 
 class ScanningViewModel: ObservableObject {
     unowned let router: Router<AppRoute>
+    @State private var cameraManager = FLIRCameraManager()
     
-    @Published var detail: String = .init()
-    @Published var recommendation: String = .init()
+    @Published var centerSpotText: String = ""
+    @Published var distanceText: String = ""
+    @Published var distanceValue: Float = 0.0
+    @Published var thermalImage: UIImage?
+    @Published var scaleImage: UIImage?
+    @Published var currentImage: UIImage?
 
-    private let mlModel: thermalclassification_1
-    private let imageModel = ScanningPictureModel()
-
-    let renderQueue = DispatchQueue.init(label: "render")
-
-    var classificationResults: [String: Double] = .init()
     
+    private var cancellables = Set<AnyCancellable>()
+
     init(router: Router<AppRoute>) {
         self.router = router
         
-        do {
-            let configuration = MLModelConfiguration()
-            configuration.computeUnits = .cpuOnly
-            mlModel = try thermalclassification_1(configuration: configuration)
-            print("Model loaded successfully")
-        } catch {
-            print("Error loading model: \(error)")
-            fatalError("Unable to load the thermalclassification_1 model.")
-        }
-    }
-    
-    func loadImage(_ image: UIImage) {
-        imageModel.image = image
-    }
-    
-//    func onImageReceived() {
-//        renderQueue.async {
-//            do {
-//                try self.thermalStreamer?.update()
-//            } catch {
-//                NSLog("update error \(error)")
-//            }
-//            let image = self.thermalStreamer?.getImage()
-//            DispatchQueue.main.async {
-//                self.thermalPictureModel.image = image
-//            }
-//        }
-//    }
-    
-    func classifyImage() {
-        
-        guard let image = imageModel.image,
-            let resizedImage = image.resizeImageTo(size: CGSize(width: 299, height: 299)),
-              let buffer = resizedImage.convertToBuffer() else {
-            print("Failed to create pixel buffer from UIImage")
-            return
-        }
-        print("Buffer: \(buffer)")
-        
-        do {
-            let input = thermalclassification_1Input(image: buffer)
-            let output = try mlModel.prediction(input: input)
-            print("Classified image as: \(output.target)")
-            print("Prediction probabilities: \(output.targetProbability)")
-            classificationResults = output.targetProbability
-            let results = output.targetProbability.sorted { $0.1 > $1.1 }
-            detail = results.map { (key, value) in
-                return "\(key) = \(String(format: "%.2f", value * 100))%"
-            }.joined(separator: "\n")
-        } catch {
-            print("Error during classification: \(error)")
-        }
-    }
-    
-    func processClassificationResults() {
-        // Sort the results by probability
-        let sortedResults = classificationResults.sorted { $0.value > $1.value }
-        
-        guard let highestResult = sortedResults.first else {
-            recommendation = "Unable to identify the object."
-            return
-        }
+        cameraManager.$centerSpotText
+            .compactMap { $0 }
+            .assign(to: \.centerSpotText, on: self)
+            .store(in: &cancellables)
 
-        // Form a recommendation based on the most probable result
-        switch highestResult.key {
-        case "hot object":
-            recommendation = "Hot object detected. Insulation check recommended."
-        case "hot object hotfloor":
-            recommendation = "Signs of heat leakage on the floor and other objects detected."
-        case "cold object hotfloor":
-            recommendation = "Cold objects detected with heat leakage on the floor."
-        case "cold floor":
-            recommendation = "The floor is cold. Improved insulation may be needed."
-        case "hotfloor":
-            recommendation = "The floor is hot. Check the heating system or for heat leaks."
-        case "cold object hot object hotfloor":
-            recommendation = "A combination of cold and hot objects detected. Detailed analysis required."
-        default:
-            recommendation = "Object status is undefined."
-        }
+        cameraManager.$distanceText
+            .compactMap { $0 }
+            .assign(to: \.distanceText, on: self)
+            .store(in: &cancellables)
+        
+        cameraManager.$distanceValue
+            .compactMap { $0 }
+            .assign(to: \.distanceValue, on: self)
+            .store(in: &cancellables)
+        
+        cameraManager.$currentImage
+            .assign(to: \.currentImage, on: self)
+            .store(in: &cancellables)
+        
+        cameraManager.$thermalImage
+            .assign(to: \.thermalImage, on: self)
+            .store(in: &cancellables)
+
+        cameraManager.$thermalImage
+            .assign(to: \.thermalImage, on: self)
+            .store(in: &cancellables)
+        
+        cameraManager.$scaleImage
+            .assign(to: \.scaleImage, on: self)
+            .store(in: &cancellables)
+    }
+    
+    func connectDeviceClicked() {
+        cameraManager.connectDeviceClicked()
+    }
+    
+    func disconnectClicked() {
+        cameraManager.disconnectClicked()
+    }
+    
+    func connectEmulatorClicked() {
+        print("connectEmulatorClicked")
+        cameraManager.connectEmulatorClicked()
+    }
+    
+    func ironPaletteClicked() {
+        cameraManager.ironPaletteClicked()
     }
 }
