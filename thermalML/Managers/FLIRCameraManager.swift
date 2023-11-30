@@ -9,15 +9,14 @@ import ThermalSDK
 import Combine
 
 class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedDelegate, FLIRStreamDelegate {
+    
     @Published var centerSpotText: String = ""
     @Published var distanceText: String = ""
     @Published var distanceValue: Float = 0.0
     @Published var thermalImage: UIImage?
-    @Published var scaleImage: UIImage?
-    @Published var currentImage: UIImage?
     
-    var viewModel: ScanningViewModel?
-
+    @Published var isCameraConnected: Bool?
+    
     var discovery: FLIRDiscovery?
     var camera: FLIRCamera?
     var ironPalette: Bool = false
@@ -26,9 +25,21 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
     var stream: FLIRStream?
     
     let renderQueue = DispatchQueue(label: "render")
+
+    override init() {
+        super.init()
+        configureDiscovery()
+    }
+    
+    func configureDiscovery() {
+        print("configureDiscovery: \(configureDiscovery)")
+        discovery = FLIRDiscovery()
+        discovery?.delegate = self
+    }
     
     func requireCamera() {
         guard camera == nil else {
+            print("camera not found")
             return
         }
         let camera = FLIRCamera()
@@ -42,9 +53,16 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
     
     func disconnectClicked() {
         camera?.disconnect()
+        print("Camera disconnected: \(camera.debugDescription)")
+        discovery?.stop()
+    }
+    
+    func isConnected() {
+        isCameraConnected = camera?.isConnected()
     }
     
     func connectEmulatorClicked() {
+        print("connectEmulatorClicked in Manager")
         discovery?.start(.emulator)
     }
     
@@ -136,13 +154,17 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
             }
             let image = self.thermalStreamer?.getImage()
             DispatchQueue.main.async {
-//                self.imageView.image = image
-                if let image = self.thermalStreamer?.getImage() {
-                    self.viewModel?.thermalImage = image
-                }
+                print(image)
+// шкала
 //                if let scaleImage = self.thermalStreamer?.getScaleImage() {
-//                    self.scaleImageView.image = scaleImage.resizableImage(withCapInsets: .zero, resizingMode: .stretch)
+//                    let tImage = scaleImage.resizableImage(withCapInsets: .zero, resizingMode: .stretch)
+//                    print("1234: \(tImage.size)")
 //                }
+                self.thermalImage = image
+                print("thermalImage: \(self.thermalImage)")
+                self.ironPalette = true
+                
+                
                 self.thermalStreamer?.withThermalImage { image in
                     if image.palette?.name == image.paletteManager?.iron.name {
                         if !self.ironPalette {

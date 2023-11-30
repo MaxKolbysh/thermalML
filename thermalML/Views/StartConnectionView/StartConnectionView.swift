@@ -10,7 +10,10 @@ import SwiftUI
 struct StartConnectionView: View {
     @StateObject var viewModel: StartConnectionViewModel
     @State private var isSheetPresented = false
-
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var isAlertPresented = false
+    
     init(router: Router<AppRoute>) {
         _viewModel = StateObject(wrappedValue: StartConnectionViewModel(router: router))
     }
@@ -29,7 +32,9 @@ struct StartConnectionView: View {
             Spacer()
 
             Button(action: {
-                viewModel.goToScanningView()
+                alertTitle = "Create connection"
+                alertMessage = "Confirm device connection?"
+                isAlertPresented.toggle()
             }, label: {
                 HStack {
                     Image(systemName: "link")
@@ -68,6 +73,19 @@ struct StartConnectionView: View {
                 Image(systemName: "photo")
             }
         )
+        .alert(isPresented: $isAlertPresented) {
+            Alert(
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                primaryButton: .default(Text("Cancel")) {
+                    isAlertPresented = false
+                },
+                secondaryButton: .default(Text("Join")) {
+                    isAlertPresented = false
+                    viewModel.goToScanningView()
+                }
+            )
+        }
     }
 }
 
