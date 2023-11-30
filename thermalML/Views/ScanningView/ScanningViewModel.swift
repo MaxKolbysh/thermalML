@@ -22,30 +22,6 @@ class ScanningViewModel: ObservableObject {
 
     init(router: Router<AppRoute>) {
         self.router = router
-
-//        cameraManager.$centerSpotText
-//            .compactMap { $0 }
-//            .assign(to: \.centerSpotText, on: self)
-//            .store(in: &cancellables)
-//
-//        cameraManager.$distanceText
-//            .compactMap { $0 }
-//            .assign(to: \.distanceText, on: self)
-//            .store(in: &cancellables)
-//        
-//        cameraManager.$distanceValue
-//            .compactMap { $0 }
-//            .assign(to: \.distanceValue, on: self)
-//            .store(in: &cancellables)
-//        
-//        cameraManager.$thermalImage
-//            .assign(to: \.thermalImage, on: self)
-//            .store(in: &cancellables)
-//        
-//        cameraManager.$isCameraConnected
-//            .compactMap { $0 }
-//            .assign(to: \.isCameraConnected, on: self)
-//            .store(in: &cancellables)
         
         cameraManager.$centerSpotText
             .compactMap { $0 }

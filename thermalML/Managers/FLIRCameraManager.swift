@@ -31,6 +31,12 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
         configureDiscovery()
     }
     
+    deinit {
+        camera?.disconnect()
+        discovery?.stop()
+        print("FLIRCameraManager is being deinitialized")
+    }
+    
     func configureDiscovery() {
         print("configureDiscovery: \(configureDiscovery)")
         discovery = FLIRDiscovery()
@@ -54,6 +60,7 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
     func disconnectClicked() {
         camera?.disconnect()
         print("Camera disconnected: \(camera.debugDescription)")
+//        stream?.stop()
         discovery?.stop()
     }
     
@@ -86,7 +93,8 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
                 guard !camera!.isConnected() else {
                     return
                 }
-                DispatchQueue.global().async {
+                DispatchQueue.global().async { [weak self] in
+                    guard let self = self else { return }
                     do {
                         try self.camera?.connect(cameraIdentity)
                         let streams = self.camera?.getStreams()
@@ -146,14 +154,16 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
     }
     
     func onImageReceived() {
-        renderQueue.async {
+        renderQueue.async { [weak self] in
+            guard let self = self else { return }
             do {
                 try self.thermalStreamer?.update()
             } catch {
                 NSLog("update error \(error)")
             }
             let image = self.thermalStreamer?.getImage()
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 print(image)
 // шкала
 //                if let scaleImage = self.thermalStreamer?.getScaleImage() {
@@ -165,7 +175,8 @@ class FLIRCameraManager: NSObject, FLIRDiscoveryEventDelegate, FLIRDataReceivedD
                 self.ironPalette = true
                 
                 
-                self.thermalStreamer?.withThermalImage { image in
+                self.thermalStreamer?.withThermalImage { [weak self] image in
+                    guard let self = self else { return }
                     if image.palette?.name == image.paletteManager?.iron.name {
                         if !self.ironPalette {
                             image.palette = image.paletteManager?.gray
