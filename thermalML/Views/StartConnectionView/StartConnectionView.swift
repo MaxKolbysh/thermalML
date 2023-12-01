@@ -49,6 +49,12 @@ struct StartConnectionView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .foregroundColor(.white)
             })
+            Button(action: {
+                viewModel.goToScanningView()
+            }, label: {
+                Text("Start emulator")
+                    .foregroundColor(Color(red: 0, green: 122/255, blue: 255/255, opacity: 1.0))
+            })
             Spacer()
             Button(action: {
                 isSheetPresented.toggle()

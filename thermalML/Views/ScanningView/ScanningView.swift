@@ -79,9 +79,9 @@ struct ScanningView: View {
             viewModel.isConnected()
             print("isCameraConnected: \($isCameraConnected)")
         }
-//        .onDisappear {
-//            viewModel.disconnectClicked()
-//        }
+        .onDisappear {
+            viewModel.disconnectClicked()
+        }
         .navigationBarItems(
             trailing:
                 Button(

@@ -58,6 +58,11 @@ class ScanningViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    deinit {
+        cameraManager.disconnectClicked()
+        cancellables.forEach { $0.cancel() }
+    }
+    
     func connectDeviceClicked() {
         cameraManager.connectDeviceClicked()
     }
