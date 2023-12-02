@@ -102,15 +102,6 @@ class ScanningViewModel: ObservableObject {
         cameraManager.connectEmulatorClicked()
     }
     
-//    func onCameraConnected() {
-//        print("onCameraConnected \(cameraManager.isCameraConnected)")
-//        
-//        if isCameraConnected ?? true {
-//            print("!!!!isCameraConnected: \(isCameraConnected)")
-//            self.isActivityIndicatorShowed = false
-//        }
-//    }
-    
     func isConnected() {
         cameraManager.isConnected()
     }

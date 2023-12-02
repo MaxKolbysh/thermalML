@@ -13,7 +13,7 @@ import PhotosUI
 struct ScanningView: View {
     @StateObject private var viewModel: ScanningViewModel
     
-    @State private var alertMessage = ""
+    @State private var errorMessage = ""
     @State private var isAlertPresented = false
 
     @State private var classificationLabel: String = .init()
@@ -110,10 +110,15 @@ struct ScanningView: View {
                     Image(systemName: "photo")
                 }
         )
+        .onChange(of: viewModel.showAlert) { showAlert in
+            if showAlert {
+                viewModel.isActivityIndicatorShowed = false
+            }
+        }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text("Error"),
-                message: Text(alertMessage),
+                message: Text(viewModel.errorMessage ?? ""),
                 dismissButton: .default(Text("OK")) {
                     isAlertPresented = false
                     viewModel.router.pop()

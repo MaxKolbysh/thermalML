@@ -28,6 +28,8 @@ class FLIRCameraManager: NSObject {
     
     let renderQueue = DispatchQueue(label: "render")
     
+    var connectionTimeoutTimer: Timer?
+    
     override init() {
         super.init()
         print("Initializing FLIRCameraManager")
@@ -50,6 +52,9 @@ class FLIRCameraManager: NSObject {
     func requireCamera() {
         guard camera == nil else {
             print("camera not found")
+            if let error = error {
+                handleError(error)
+            }
             return
         }
         let camera = FLIRCamera()
@@ -59,14 +64,23 @@ class FLIRCameraManager: NSObject {
     
     func connectDeviceClicked() {
         discovery?.start([.lightning, .flirOneWireless])
+        
+        connectionTimeoutTimer?.invalidate() // Отменяем предыдущий таймер, если он существует
+        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+            self?.handleConnectionTimeout()
+        }
     }
     
     func disconnectClicked() {
         camera?.disconnect()
         discovery?.stop()
         stream?.stop()
+        
         self.thermalStreamer = nil
         self.stream = nil
+        
+        connectionTimeoutTimer?.invalidate()
+        connectionTimeoutTimer = nil
         print("Camera disconnected: \(camera.debugDescription)")
     }
     
@@ -82,10 +96,26 @@ class FLIRCameraManager: NSObject {
     func ironPaletteClicked() {
         ironPalette = !ironPalette
     }
+    
+    private func handleConnectionTimeout() {
+        if camera == nil || !(camera?.isConnected() ?? false) {
+            // Камера не подключена, обрабатываем ошибку
+            let error = NSError(domain: "FLIRCameraManager",
+                                code: 0,
+                                userInfo: [NSLocalizedDescriptionKey: "Connection timeout: Camera not found"])
+            handleError(error)
+            // Попытка повторного подключения, если требуется
+            // connectDeviceClicked()
+        }
+    }
+
 }
 
 extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
     func cameraDiscovered(_ discoveredCamera: FLIRDiscoveredCamera) {
+        connectionTimeoutTimer?.invalidate()
+        connectionTimeoutTimer = nil
+        
         print("Camera discovered: \(discoveredCamera.identity)")
 
         let cameraIdentity = discoveredCamera.identity
@@ -95,11 +125,17 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                 
                 guard let camera = camera else { 
                     NSLog("Camera is nil")
+                    if let error = error {
+                        handleError(error)
+                    }
                     return
                 }
 
                 guard !camera.isConnected() else {
-                    print("====Camera is not connected")
+                    NSLog("Camera is not connected")
+                    if let error = error {
+                        handleError(error)
+                    }
                     return
                 }
                                 
@@ -111,7 +147,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                         try camera.connect(cameraIdentity)
                     } catch {
                         print("Error connecting to camera: \(error)")
-                        self.error = error
+                        handleError(error)
                         return
                     }
                     
@@ -119,7 +155,9 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     let streams = self.camera?.getStreams()
                     guard let stream = streams?.first else {
                         NSLog("No streams found on camera!")
-                        self.error = error
+                        if let error = error {
+                            handleError(error)
+                        }
                         return
                     }
                     self.stream = stream
@@ -137,8 +175,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     do {
                         try stream.start()
                     } catch {
-                        NSLog("stream.start error \(error)")
-                        self.error = error
+                        handleError(error)
                     }
                     
                 }
@@ -155,23 +192,18 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
     }
     
     func discoveryError(_ error: String, netServiceError nsnetserviceserror: Int32, on iface: FLIRCommunicationInterface) {
-        print("Discovery error: \(error), NetServiceError: \(nsnetserviceserror), Interface: \(iface)")
-
-        NSLog("\(#function)")
-        self.error = error as? any Error
+        let customError = NSError(domain: "", code: Int(nsnetserviceserror), userInfo: [NSLocalizedDescriptionKey : error])
+        handleError(customError)
     }
     
     func discoveryFinished(_ iface: FLIRCommunicationInterface) {
-        print("Discovery finished on interface: \(iface)")
-
-        NSLog("\(#function)")
+        let lostError = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Discovery finished on interface: \(iface)"])
+        handleError(lostError)
     }
     
     func cameraLost(_ cameraIdentity: FLIRIdentity) {
-        print("Camera lost: \(cameraIdentity)")
-
-        NSLog("\(#function)")
-        self.error = error
+        let lostError = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Camera lost: \(cameraIdentity)"])
+        handleError(lostError)
     }
 }
 
@@ -183,12 +215,9 @@ extension FLIRCameraManager: FLIRDataReceivedDelegate {
             guard let self = self else { return }
             self.thermalStreamer = nil
             self.stream = nil
-            self.error = error
-                //            let alert = UIAlertController(title: "Disconnected",
-                //                                          message: "Flir One disconnected",
-                //                                          preferredStyle: .alert)
-                //            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                //            self.present(alert, animated: true, completion: nil)
+            if let error = error {
+                handleError(error)
+            }
         }
     }
     
@@ -197,8 +226,7 @@ extension FLIRCameraManager: FLIRDataReceivedDelegate {
 extension FLIRCameraManager: FLIRStreamDelegate {
     
     func onError(_ error: Error) {
-        NSLog("\(#function) \(error)")
-        self.error = error
+        handleError(error)
     }
     
     func onImageReceived() {
@@ -219,7 +247,9 @@ extension FLIRCameraManager: FLIRStreamDelegate {
                 self.ironPalette = true
                 
                 self.thermalStreamer?.withThermalImage { [weak self] image in
+                    
                     guard let self = self else { return }
+                    
                     if image.palette?.name == image.paletteManager?.iron.name {
                         if !self.ironPalette {
                             image.palette = image.paletteManager?.gray
