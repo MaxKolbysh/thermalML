@@ -22,7 +22,7 @@ class ScanningViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var showAlert = false
     
-    @Published var isConnecting: Bool = false
+    @Published var isActivityIndicatorShowed: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
 
@@ -67,10 +67,12 @@ class ScanningViewModel: ObservableObject {
         
         cameraManager.$isCameraConnected
             .compactMap { $0 }
-            .sink { [weak self] value in
-                self?.isCameraConnected = value
+            .sink { [weak self] isConnected in
+                self?.isActivityIndicatorShowed = !isConnected
+                print("isActivityIndicatorShowed ===== \(self?.isActivityIndicatorShowed)")
             }
             .store(in: &cancellables)
+        
         cameraManager.$error
                 .compactMap { $0 }
                 .sink { [weak self] error in
@@ -78,8 +80,6 @@ class ScanningViewModel: ObservableObject {
                     self?.showAlert = true
                 }
                 .store(in: &cancellables)
-        
-        onCameraConnected()
     }
     
     deinit {
@@ -88,13 +88,13 @@ class ScanningViewModel: ObservableObject {
     }
     
     func connectDeviceClicked() {
-        isConnecting = true
+        isActivityIndicatorShowed = true
         cameraManager.connectDeviceClicked()
     }
     
     func disconnectClicked() {
         cameraManager.disconnectClicked()
-        isConnecting = false
+        isActivityIndicatorShowed = false
     }
     
     func connectEmulatorClicked() {
@@ -102,12 +102,14 @@ class ScanningViewModel: ObservableObject {
         cameraManager.connectEmulatorClicked()
     }
     
-    func onCameraConnected() {
-        print("onCameraConnected")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.isConnecting = false
-        }
-    }
+//    func onCameraConnected() {
+//        print("onCameraConnected \(cameraManager.isCameraConnected)")
+//        
+//        if isCameraConnected ?? true {
+//            print("!!!!isCameraConnected: \(isCameraConnected)")
+//            self.isActivityIndicatorShowed = false
+//        }
+//    }
     
     func isConnected() {
         cameraManager.isConnected()

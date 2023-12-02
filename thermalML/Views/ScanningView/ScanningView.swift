@@ -36,12 +36,13 @@ struct ScanningView: View {
             ScanningCameraView(thermalImage: $viewModel.thermalImage)
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             
-            if viewModel.isConnecting {
+            if viewModel.isActivityIndicatorShowed {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     .scaleEffect(3, anchor: .center)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
+            
             Button(action: {
                 if let image = viewModel.thermalImage {
                     viewModel.saveImageToFile(image: image, fileName: "thermalImage.jpg")
@@ -87,16 +88,16 @@ struct ScanningView: View {
         .onAppear {
             if isEmulatorLoading {
                 print("Emulator clicked")
-                print("isConnecting... \(viewModel.isConnecting)")
-                viewModel.isConnecting = true
+                print("isConnecting... \(viewModel.isActivityIndicatorShowed)")
+//                viewModel.isActivityIndicatorShowed = true
                 viewModel.connectEmulatorClicked()
                 viewModel.isConnected()
-                
                 print("isCameraConnected: \($isCameraConnected)")
             } else {
                 print("Camera clicked")
-                viewModel.isConnecting = true
+                viewModel.isActivityIndicatorShowed = true
                 viewModel.connectDeviceClicked()
+//                viewModel.onCameraConnected()
             }
         }
         .navigationBarItems(

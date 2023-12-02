@@ -99,10 +99,10 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                 }
 
                 guard !camera.isConnected() else {
-                    print("====Camera is connected")
+                    print("====Camera is not connected")
                     return
                 }
-                
+                                
                 DispatchQueue.global().async { [weak self] in
                     
                     guard let self = self else { return }
@@ -114,6 +114,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                         self.error = error
                         return
                     }
+                    
                     
                     let streams = self.camera?.getStreams()
                     guard let stream = streams?.first else {
@@ -127,12 +128,19 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     thermalStreamer.autoScale = true
                     thermalStreamer.renderScale = true
                     stream.delegate = self
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.isCameraConnected = true
+                    }
+                    
                     do {
                         try stream.start()
                     } catch {
                         NSLog("stream.start error \(error)")
                         self.error = error
                     }
+                    
                 }
             case .generic:
                 print(".generic")
@@ -242,6 +250,16 @@ extension FLIRCameraManager: FLIRStreamDelegate {
                     }
                 }
             }
+        }
+    }
+}
+
+extension FLIRCameraManager {
+    func handleError(_ error: Error) {
+        NSLog("Error occurred: \(error.localizedDescription)")
+
+        DispatchQueue.main.async { [weak self] in
+            self?.error = error
         }
     }
 }
