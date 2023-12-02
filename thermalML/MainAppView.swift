@@ -15,7 +15,6 @@ struct MainAppView: View {
         NavigationStack(path: $router.paths) {
             navViewBuilder.createWelcomeView()
                 .navigationDestination(for: AppRoute.self, destination: buildViews)
-
         }
     }
 
@@ -24,7 +23,7 @@ struct MainAppView: View {
         switch view {
         case .welcome: navViewBuilder.createWelcomeView()
         case .startConnection: navViewBuilder.createStartConnectionView()
-        case .scanning: navViewBuilder.createScanningView()
+        case .scanning(let isEmulatorLoading): navViewBuilder.createScanningView(isEmulatorLoading: isEmulatorLoading)
         }
     }
 }

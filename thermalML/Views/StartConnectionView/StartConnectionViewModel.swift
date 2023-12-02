@@ -14,7 +14,7 @@ class StartConnectionViewModel: ObservableObject {
         self.router = router
     }
     
-    func goToScanningView() {
-        router.push(.scanning)
+    func goToScanningView(isEmulatorLoading: Bool) {
+        router.push(.scanning(isEmulatorLoading: isEmulatorLoading))
     }
 }

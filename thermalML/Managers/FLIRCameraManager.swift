@@ -17,6 +17,8 @@ class FLIRCameraManager: NSObject {
     
     @Published var isCameraConnected: Bool?
     
+    @Published var error: Error?
+    
     var discovery: FLIRDiscovery?
     var camera: FLIRCamera?
     var ironPalette: Bool = false
@@ -28,6 +30,7 @@ class FLIRCameraManager: NSObject {
     
     override init() {
         super.init()
+        print("Initializing FLIRCameraManager")
         configureDiscovery()
     }
     
@@ -38,9 +41,10 @@ class FLIRCameraManager: NSObject {
     }
     
     func configureDiscovery() {
-        print("configureDiscovery: \(configureDiscovery)")
+        print("Configuring discovery")
         discovery = FLIRDiscovery()
         discovery?.delegate = self
+        print("Discovery configured")
     }
     
     func requireCamera() {
@@ -71,79 +75,95 @@ class FLIRCameraManager: NSObject {
     }
     
     func connectEmulatorClicked() {
-        print("connectEmulatorClicked in Manager")
-        discovery?.start(.emulator)
+        print("connectEmulatorClicked in Manager - Starting discovery for emulator")
+        discovery?.start(.emulator, cameraType: .flirOne)
     }
     
     func ironPaletteClicked() {
         ironPalette = !ironPalette
     }
 }
-//
-//    func distanceSliderValueChanged() {
-//        if let remoteControl = self.camera?.getRemoteControl(),
-//           let fusionController = remoteControl.getFusionController() {
-//            let newDistance = distanceSlider.value
-//            try? fusionController.setFusionDistance(Double(newDistance))
-//        }
-//    }
 
 extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
     func cameraDiscovered(_ discoveredCamera: FLIRDiscoveredCamera) {
+        print("Camera discovered: \(discoveredCamera.identity)")
+
         let cameraIdentity = discoveredCamera.identity
         switch cameraIdentity.cameraType() {
             case .flirOne, .flirOneEdge, .flirOneEdgePro:
                 requireCamera()
-                guard !camera!.isConnected() else {
+                
+                guard let camera = camera else { 
+                    NSLog("Camera is nil")
                     return
                 }
+
+                guard !camera.isConnected() else {
+                    print("====Camera is connected")
+                    return
+                }
+                
                 DispatchQueue.global().async { [weak self] in
+                    
                     guard let self = self else { return }
+                    
                     do {
-                        guard let camera = camera else { return }
-                        
-                        try self.camera?.connect(cameraIdentity)
-                        let streams = self.camera?.getStreams()
-                        guard let stream = streams?.first else {
-                            NSLog("No streams found on camera!")
-                            return
-                        }
-                        self.stream = stream
-                        let thermalStreamer = FLIRThermalStreamer(stream: stream)
-                        self.thermalStreamer = thermalStreamer
-                        thermalStreamer.autoScale = true
-                        thermalStreamer.renderScale = true
-                        stream.delegate = self
-                        do {
-                            try stream.start()
-                        } catch {
-                            NSLog("stream.start error \(error)")
-                        }
+                        try camera.connect(cameraIdentity)
                     } catch {
-                        NSLog("Camera connect error \(error)")
+                        print("Error connecting to camera: \(error)")
+                        self.error = error
+                        return
+                    }
+                    
+                    let streams = self.camera?.getStreams()
+                    guard let stream = streams?.first else {
+                        NSLog("No streams found on camera!")
+                        self.error = error
+                        return
+                    }
+                    self.stream = stream
+                    let thermalStreamer = FLIRThermalStreamer(stream: stream)
+                    self.thermalStreamer = thermalStreamer
+                    thermalStreamer.autoScale = true
+                    thermalStreamer.renderScale = true
+                    stream.delegate = self
+                    do {
+                        try stream.start()
+                    } catch {
+                        NSLog("stream.start error \(error)")
+                        self.error = error
                     }
                 }
             case .generic:
-                print("generic")
+                print(".generic")
             case .earhart:
                 print("earhart")
             case .unknown:
                 print("unknown")
             @unknown default:
-                fatalError("unknown cameraType")
+                print("unknown cameraType")
+                self.error = error
         }
     }
     
     func discoveryError(_ error: String, netServiceError nsnetserviceserror: Int32, on iface: FLIRCommunicationInterface) {
+        print("Discovery error: \(error), NetServiceError: \(nsnetserviceserror), Interface: \(iface)")
+
         NSLog("\(#function)")
+        self.error = error as? any Error
     }
     
     func discoveryFinished(_ iface: FLIRCommunicationInterface) {
+        print("Discovery finished on interface: \(iface)")
+
         NSLog("\(#function)")
     }
     
     func cameraLost(_ cameraIdentity: FLIRIdentity) {
+        print("Camera lost: \(cameraIdentity)")
+
         NSLog("\(#function)")
+        self.error = error
     }
 }
 
@@ -155,7 +175,7 @@ extension FLIRCameraManager: FLIRDataReceivedDelegate {
             guard let self = self else { return }
             self.thermalStreamer = nil
             self.stream = nil
-            print("onDisconnected ====")
+            self.error = error
                 //            let alert = UIAlertController(title: "Disconnected",
                 //                                          message: "Flir One disconnected",
                 //                                          preferredStyle: .alert)
@@ -170,6 +190,7 @@ extension FLIRCameraManager: FLIRStreamDelegate {
     
     func onError(_ error: Error) {
         NSLog("\(#function) \(error)")
+        self.error = error
     }
     
     func onImageReceived() {
@@ -179,20 +200,15 @@ extension FLIRCameraManager: FLIRStreamDelegate {
                 try self.thermalStreamer?.update()
             } catch {
                 NSLog("update error \(error)")
+                self.error = error
             }
             let image = self.thermalStreamer?.getImage()
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 print(image)
-                    // шкала
-                    //                if let scaleImage = self.thermalStreamer?.getScaleImage() {
-                    //                    let tImage = scaleImage.resizableImage(withCapInsets: .zero, resizingMode: .stretch)
-                    //                    print("1234: \(tImage.size)")
-                    //                }
                 self.thermalImage = image
                 print("thermalImage: \(self.thermalImage)")
                 self.ironPalette = true
-                
                 
                 self.thermalStreamer?.withThermalImage { [weak self] image in
                     guard let self = self else { return }

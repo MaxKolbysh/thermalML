@@ -14,7 +14,7 @@ protocol MainFlow {
     
     func createWelcomeView() -> Welcome
     func createStartConnectionView() -> StartConnection
-    func createScanningView() -> Scanning
+    func createScanningView(isEmulatorLoading: Bool) -> Scanning
 }
 
 extension NavViewBuilder: MainFlow {
@@ -24,7 +24,7 @@ extension NavViewBuilder: MainFlow {
     func createStartConnectionView() -> some View {
         StartConnectionView(router: router)
     }
-    func createScanningView() -> some View {
-        ScanningView(router: router)
+    func createScanningView(isEmulatorLoading: Bool) -> some View {
+        ScanningView(router: router, isEmulatorLoading: isEmulatorLoading)
     }
 }

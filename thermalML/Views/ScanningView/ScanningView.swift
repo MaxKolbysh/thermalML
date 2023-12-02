@@ -21,11 +21,12 @@ struct ScanningView: View {
     @State private var selectedImageData: Data? = nil
     
     @State private var isCameraConnected: Bool? = false
-    
+    private var isEmulatorLoading: Bool
     private var isClassifyButtonDisable = true
     
-    init(router: Router<AppRoute>) {
+    init(router: Router<AppRoute>, isEmulatorLoading: Bool) {
         _viewModel = StateObject(wrappedValue: ScanningViewModel(router: router))
+        self.isEmulatorLoading = isEmulatorLoading
     }
     
     var body: some View {
@@ -34,6 +35,13 @@ struct ScanningView: View {
                 .background(Color.clear)
             ScanningCameraView(thermalImage: $viewModel.thermalImage)
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            
+            if viewModel.isConnecting {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .scaleEffect(3, anchor: .center)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            }
             Button(action: {
                 if let image = viewModel.thermalImage {
                     viewModel.saveImageToFile(image: image, fileName: "thermalImage.jpg")
@@ -69,18 +77,27 @@ struct ScanningView: View {
                     .foregroundColor(.black)
                 })
                 .disabled(isClassifyButtonDisable)
+                
             }
             .padding(.horizontal)
             .padding(.bottom, 100)
+
         }
         .edgesIgnoringSafeArea(.all)
         .onAppear {
-            viewModel.connectEmulatorClicked()
-            viewModel.isConnected()
-            print("isCameraConnected: \($isCameraConnected)")
-        }
-        .onDisappear {
-            viewModel.disconnectClicked()
+            if isEmulatorLoading {
+                print("Emulator clicked")
+                print("isConnecting... \(viewModel.isConnecting)")
+                viewModel.isConnecting = true
+                viewModel.connectEmulatorClicked()
+                viewModel.isConnected()
+                
+                print("isCameraConnected: \($isCameraConnected)")
+            } else {
+                print("Camera clicked")
+                viewModel.isConnecting = true
+                viewModel.connectDeviceClicked()
+            }
         }
         .navigationBarItems(
             trailing:
@@ -92,18 +109,19 @@ struct ScanningView: View {
                     Image(systemName: "photo")
                 }
         )
-        .alert(isPresented: $isAlertPresented) {
+        .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text("Error"),
                 message: Text(alertMessage),
                 dismissButton: .default(Text("OK")) {
                     isAlertPresented = false
+                    viewModel.router.pop()
                 }
             )
         }
     }
 }
 
-#Preview {
-    ScanningView(router: Router())
-}
+//#Preview {
+//    ScanningView(router: Router())
+//}

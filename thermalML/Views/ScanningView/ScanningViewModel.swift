@@ -17,9 +17,24 @@ class ScanningViewModel: ObservableObject {
     @Published var distanceValue: Float = 0.0
     @Published var thermalImage: UIImage?
     @Published var isCameraConnected: Bool?
+    @Published var isEmulatorLoading: Bool?
 
+    @Published var errorMessage: String?
+    @Published var showAlert = false
+    
+    @Published var isConnecting: Bool = false
+    
     private var cancellables = Set<AnyCancellable>()
 
+    var error: Error? {
+        didSet {
+            if let error = error {
+                errorMessage = error.localizedDescription
+                showAlert = true
+            }
+        }
+    }
+    
     init(router: Router<AppRoute>) {
         self.router = router
         
@@ -56,6 +71,15 @@ class ScanningViewModel: ObservableObject {
                 self?.isCameraConnected = value
             }
             .store(in: &cancellables)
+        cameraManager.$error
+                .compactMap { $0 }
+                .sink { [weak self] error in
+                    self?.errorMessage = error.localizedDescription
+                    self?.showAlert = true
+                }
+                .store(in: &cancellables)
+        
+        onCameraConnected()
     }
     
     deinit {
@@ -64,16 +88,25 @@ class ScanningViewModel: ObservableObject {
     }
     
     func connectDeviceClicked() {
+        isConnecting = true
         cameraManager.connectDeviceClicked()
     }
     
     func disconnectClicked() {
         cameraManager.disconnectClicked()
+        isConnecting = false
     }
     
     func connectEmulatorClicked() {
         print("connectEmulatorClicked")
         cameraManager.connectEmulatorClicked()
+    }
+    
+    func onCameraConnected() {
+        print("onCameraConnected")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.isConnecting = false
+        }
     }
     
     func isConnected() {

@@ -13,6 +13,7 @@ struct StartConnectionView: View {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @State private var isAlertPresented = false
+    private var isEmulatorLoading: Bool = false
     
     init(router: Router<AppRoute>) {
         _viewModel = StateObject(wrappedValue: StartConnectionViewModel(router: router))
@@ -50,7 +51,7 @@ struct StartConnectionView: View {
                 .foregroundColor(.white)
             })
             Button(action: {
-                viewModel.goToScanningView()
+                viewModel.goToScanningView(isEmulatorLoading: true)
             }, label: {
                 Text("Start emulator")
                     .foregroundColor(Color(red: 0, green: 122/255, blue: 255/255, opacity: 1.0))
@@ -88,7 +89,7 @@ struct StartConnectionView: View {
                 },
                 secondaryButton: .default(Text("Join")) {
                     isAlertPresented = false
-                    viewModel.goToScanningView()
+                    viewModel.goToScanningView(isEmulatorLoading: false)
                 }
             )
         }

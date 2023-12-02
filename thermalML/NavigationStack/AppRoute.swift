@@ -11,7 +11,7 @@ import SwiftUI
 enum AppRoute {
     case welcome
     case startConnection
-    case scanning
+    case scanning(isEmulatorLoading: Bool)
 }
 
 extension AppRoute: Hashable, Equatable {
