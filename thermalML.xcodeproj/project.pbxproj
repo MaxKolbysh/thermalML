@@ -21,30 +21,30 @@
 		63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */; };
 		63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */; };
 		63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */; };
-		63D7CBE72B13956600BB54F3 /* liblive666.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */; };
-		63D7CBE82B13956600BB54F3 /* liblive666.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBE92B13956600BB54F3 /* MeterLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDE2B13956600BB54F3 /* MeterLink.framework */; };
-		63D7CBEA2B13956600BB54F3 /* MeterLink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDE2B13956600BB54F3 /* MeterLink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBEB2B13956600BB54F3 /* libavdevice.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; };
-		63D7CBEC2B13956600BB54F3 /* libavdevice.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBED2B13956600BB54F3 /* ThermalSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */; };
-		63D7CBEE2B13956600BB54F3 /* ThermalSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBEF2B13956600BB54F3 /* libswscale.5.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */; };
-		63D7CBF02B13956600BB54F3 /* libswscale.5.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBF12B13956600BB54F3 /* libavutil.56.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */; };
-		63D7CBF22B13956600BB54F3 /* libavutil.56.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBF32B13956600BB54F3 /* libavformat.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */; };
-		63D7CBF42B13956600BB54F3 /* libavformat.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBF52B13956600BB54F3 /* libavfilter.7.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */; };
-		63D7CBF62B13956600BB54F3 /* libavfilter.7.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBF72B13956600BB54F3 /* libavcodec.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; };
-		63D7CBF82B13956600BB54F3 /* libavcodec.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63D7CBF92B13956600BB54F3 /* libswresample.3.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */; };
-		63D7CBFA2B13956600BB54F3 /* libswresample.3.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63D7CBFE2B13992B00BB54F3 /* FLIRCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBFD2B13992B00BB54F3 /* FLIRCameraManager.swift */; };
 		63D7CC002B139D1200BB54F3 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */; };
 		63D7CC022B139D5200BB54F3 /* ScanningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */; };
 		63D7CC042B139F3200BB54F3 /* ScanningCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */; };
+		997F174B2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; };
+		997F174C2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F174D2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; };
+		997F174E2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F174F2B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */; };
+		997F17502B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17512B1F70D1009A3D28 /* libavformat.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */; };
+		997F17522B1F70D1009A3D28 /* libavformat.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17532B1F70D1009A3D28 /* libavutil.56.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */; };
+		997F17542B1F70D1009A3D28 /* libavutil.56.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17552B1F70D1009A3D28 /* liblive666.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */; };
+		997F17562B1F70D1009A3D28 /* liblive666.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17572B1F70D1009A3D28 /* libswresample.3.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */; };
+		997F17582B1F70D1009A3D28 /* libswresample.3.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17592B1F70D1009A3D28 /* libswscale.5.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */; };
+		997F175A2B1F70D1009A3D28 /* libswscale.5.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F175B2B1F70D1009A3D28 /* MeterLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDE2B13956600BB54F3 /* MeterLink.framework */; };
+		997F175C2B1F70D1009A3D28 /* MeterLink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDE2B13956600BB54F3 /* MeterLink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F175D2B1F70D1009A3D28 /* ThermalSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */; };
+		997F175E2B1F70D1009A3D28 /* ThermalSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7DFC8C12B0B889500601989 /* ThermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */; };
 		D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C42B0B889900601989 /* Assets.xcassets */; };
 		D7DFC8C82B0B889900601989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */; };
@@ -52,22 +52,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		63D7CBFB2B13956600BB54F3 /* Embed Frameworks */ = {
+		997F175F2B1F70D1009A3D28 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				63D7CBFA2B13956600BB54F3 /* libswresample.3.dylib.framework in Embed Frameworks */,
-				63D7CBF82B13956600BB54F3 /* libavcodec.58.dylib.framework in Embed Frameworks */,
-				63D7CBEA2B13956600BB54F3 /* MeterLink.framework in Embed Frameworks */,
-				63D7CBF02B13956600BB54F3 /* libswscale.5.dylib.framework in Embed Frameworks */,
-				63D7CBE82B13956600BB54F3 /* liblive666.dylib.framework in Embed Frameworks */,
-				63D7CBF22B13956600BB54F3 /* libavutil.56.dylib.framework in Embed Frameworks */,
-				63D7CBF62B13956600BB54F3 /* libavfilter.7.dylib.framework in Embed Frameworks */,
-				63D7CBF42B13956600BB54F3 /* libavformat.58.dylib.framework in Embed Frameworks */,
-				63D7CBEC2B13956600BB54F3 /* libavdevice.58.dylib.framework in Embed Frameworks */,
-				63D7CBEE2B13956600BB54F3 /* ThermalSDK.framework in Embed Frameworks */,
+				997F174C2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Embed Frameworks */,
+				997F174E2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Embed Frameworks */,
+				997F17522B1F70D1009A3D28 /* libavformat.58.dylib.framework in Embed Frameworks */,
+				997F17502B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Embed Frameworks */,
+				997F17542B1F70D1009A3D28 /* libavutil.56.dylib.framework in Embed Frameworks */,
+				997F17562B1F70D1009A3D28 /* liblive666.dylib.framework in Embed Frameworks */,
+				997F175A2B1F70D1009A3D28 /* libswscale.5.dylib.framework in Embed Frameworks */,
+				997F175E2B1F70D1009A3D28 /* ThermalSDK.framework in Embed Frameworks */,
+				997F175C2B1F70D1009A3D28 /* MeterLink.framework in Embed Frameworks */,
+				997F17582B1F70D1009A3D28 /* libswresample.3.dylib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +105,8 @@
 		63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
 		63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewModel.swift; sourceTree = "<group>"; };
 		63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningCameraView.swift; sourceTree = "<group>"; };
+		997F174A2B1F70C4009A3D28 /* thermal ML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "thermal ML"; path = ..; sourceTree = "<group>"; };
+		99B5F0162B1F69AE00FF8377 /* thermalML.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = thermalML.entitlements; sourceTree = "<group>"; };
 		D7DFC8BD2B0B889500601989 /* thermalML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thermalML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalMLApp.swift; sourceTree = "<group>"; };
 		D7DFC8C42B0B889900601989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,16 +119,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63D7CBF92B13956600BB54F3 /* libswresample.3.dylib.framework in Frameworks */,
-				63D7CBF72B13956600BB54F3 /* libavcodec.58.dylib.framework in Frameworks */,
-				63D7CBE92B13956600BB54F3 /* MeterLink.framework in Frameworks */,
-				63D7CBEF2B13956600BB54F3 /* libswscale.5.dylib.framework in Frameworks */,
-				63D7CBE72B13956600BB54F3 /* liblive666.dylib.framework in Frameworks */,
-				63D7CBF12B13956600BB54F3 /* libavutil.56.dylib.framework in Frameworks */,
-				63D7CBF52B13956600BB54F3 /* libavfilter.7.dylib.framework in Frameworks */,
-				63D7CBF32B13956600BB54F3 /* libavformat.58.dylib.framework in Frameworks */,
-				63D7CBEB2B13956600BB54F3 /* libavdevice.58.dylib.framework in Frameworks */,
-				63D7CBED2B13956600BB54F3 /* ThermalSDK.framework in Frameworks */,
+				997F174B2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Frameworks */,
+				997F174D2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Frameworks */,
+				997F17512B1F70D1009A3D28 /* libavformat.58.dylib.framework in Frameworks */,
+				997F174F2B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Frameworks */,
+				997F17532B1F70D1009A3D28 /* libavutil.56.dylib.framework in Frameworks */,
+				997F17552B1F70D1009A3D28 /* liblive666.dylib.framework in Frameworks */,
+				997F17592B1F70D1009A3D28 /* libswscale.5.dylib.framework in Frameworks */,
+				997F175D2B1F70D1009A3D28 /* ThermalSDK.framework in Frameworks */,
+				997F175B2B1F70D1009A3D28 /* MeterLink.framework in Frameworks */,
+				997F17572B1F70D1009A3D28 /* libswresample.3.dylib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +232,7 @@
 		63D7CBDC2B13956600BB54F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				997F174A2B1F70C4009A3D28 /* thermal ML */,
 				63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */,
 				63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */,
 				63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */,
@@ -264,6 +267,7 @@
 		D7DFC8BF2B0B889500601989 /* thermalML */ = {
 			isa = PBXGroup;
 			children = (
+				99B5F0162B1F69AE00FF8377 /* thermalML.entitlements */,
 				63D7CBFC2B13987600BB54F3 /* Info.plist */,
 				63D7CBD72B1388B700BB54F3 /* Managers */,
 				6387198B2B12789F008C7F54 /* NavigationStack */,
@@ -296,7 +300,7 @@
 				D7DFC8B92B0B889500601989 /* Sources */,
 				D7DFC8BA2B0B889500601989 /* Frameworks */,
 				D7DFC8BB2B0B889500601989 /* Resources */,
-				63D7CBFB2B13956600BB54F3 /* Embed Frameworks */,
+				997F175F2B1F70D1009A3D28 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -507,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = thermalML/thermalML.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
@@ -533,7 +538,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.thermalML;
+				PRODUCT_BUNDLE_IDENTIFIER = wt.thermalML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -546,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = thermalML/thermalML.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
@@ -572,7 +578,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.thermalML;
+				PRODUCT_BUNDLE_IDENTIFIER = wt.thermalML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
