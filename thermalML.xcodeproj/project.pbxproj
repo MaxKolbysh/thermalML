@@ -18,6 +18,10 @@
 		638719962B127A8A008C7F54 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719952B127A8A008C7F54 /* MainAppView.swift */; };
 		638719982B127B91008C7F54 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719972B127B91008C7F54 /* WelcomeView.swift */; };
 		6387199D2B128610008C7F54 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387199C2B128610008C7F54 /* WelcomeViewModel.swift */; };
+		639DA3872B2A2B5600C265F2 /* Photos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3852B2A2B5600C265F2 /* Photos.xcdatamodeld */; };
+		639DA38A2B2A2B7B00C265F2 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3892B2A2B7B00C265F2 /* FileManager.swift */; };
+		639DA38C2B2A2BC400C265F2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA38B2B2A2BC400C265F2 /* DataManager.swift */; };
+		639DA38E2B2A4F4D00C265F2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA38D2B2A4F4D00C265F2 /* PersistenceController.swift */; };
 		63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */; };
 		63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */; };
 		63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */; };
@@ -86,6 +90,10 @@
 		638719952B127A8A008C7F54 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		638719972B127B91008C7F54 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		6387199C2B128610008C7F54 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		639DA3862B2A2B5600C265F2 /* Photos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photos.xcdatamodel; sourceTree = "<group>"; };
+		639DA3892B2A2B7B00C265F2 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		639DA38B2B2A2BC400C265F2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		639DA38D2B2A4F4D00C265F2 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionView.swift; sourceTree = "<group>"; };
 		63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionViewModel.swift; sourceTree = "<group>"; };
 		63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetInfoView.swift; sourceTree = "<group>"; };
@@ -203,6 +211,14 @@
 			path = WelcomeView;
 			sourceTree = "<group>";
 		};
+		639DA3882B2A2B5E00C265F2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3852B2A2B5600C265F2 /* Photos.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		63D7CBD22B137D0800BB54F3 /* StartConnectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +233,9 @@
 			children = (
 				63D7CBDB2B13939400BB54F3 /* FLIROneCameraSwift.entitlements */,
 				63D7CBFD2B13992B00BB54F3 /* FLIRCameraManager.swift */,
+				639DA3892B2A2B7B00C265F2 /* FileManager.swift */,
+				639DA38B2B2A2BC400C265F2 /* DataManager.swift */,
+				639DA38D2B2A4F4D00C265F2 /* PersistenceController.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -267,6 +286,7 @@
 		D7DFC8BF2B0B889500601989 /* thermalML */ = {
 			isa = PBXGroup;
 			children = (
+				639DA3882B2A2B5E00C265F2 /* Data */,
 				99B5F0162B1F69AE00FF8377 /* thermalML.entitlements */,
 				63D7CBFC2B13987600BB54F3 /* Info.plist */,
 				63D7CBD72B1388B700BB54F3 /* Managers */,
@@ -366,13 +386,17 @@
 				638719882B127074008C7F54 /* ScanningViewModel1.swift in Sources */,
 				6387199D2B128610008C7F54 /* WelcomeViewModel.swift in Sources */,
 				638719942B1279F9008C7F54 /* MainFlow.swift in Sources */,
+				639DA38C2B2A2BC400C265F2 /* DataManager.swift in Sources */,
 				D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */,
 				63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */,
+				639DA38A2B2A2B7B00C265F2 /* FileManager.swift in Sources */,
 				63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */,
 				63D7CC022B139D5200BB54F3 /* ScanningViewModel.swift in Sources */,
 				638719922B1279B6008C7F54 /* NavViewBuilder.swift in Sources */,
 				638719962B127A8A008C7F54 /* MainAppView.swift in Sources */,
 				63D7CC002B139D1200BB54F3 /* ScanningView.swift in Sources */,
+				639DA3872B2A2B5600C265F2 /* Photos.xcdatamodeld in Sources */,
+				639DA38E2B2A4F4D00C265F2 /* PersistenceController.swift in Sources */,
 				63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */,
 				63D7CBFE2B13992B00BB54F3 /* FLIRCameraManager.swift in Sources */,
 				6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */,
@@ -515,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
-				DEVELOPMENT_TEAM = FXJ4W3YC8P;
+				DEVELOPMENT_TEAM = RW8DRR2459;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -555,7 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
-				DEVELOPMENT_TEAM = FXJ4W3YC8P;
+				DEVELOPMENT_TEAM = RW8DRR2459;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -608,6 +632,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		639DA3852B2A2B5600C265F2 /* Photos.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				639DA3862B2A2B5600C265F2 /* Photos.xcdatamodel */,
+			);
+			currentVersion = 639DA3862B2A2B5600C265F2 /* Photos.xcdatamodel */;
+			path = Photos.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D7DFC8B52B0B889500601989 /* Project object */;
 }
