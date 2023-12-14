@@ -45,7 +45,8 @@ struct ScanningView: View {
             
             Button(action: {
                 if let image = viewModel.thermalImage {
-                    viewModel.saveImageToFile(image: image, fileName: "thermalImage.jpg")
+//                    viewModel.saveImageToFile(image: image, fileName: "thermalImage.jpg")
+                    viewModel.savePhoto(image: image)
                 }
             }, label: {
                 HStack {

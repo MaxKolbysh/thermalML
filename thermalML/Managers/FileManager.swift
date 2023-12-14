@@ -38,7 +38,7 @@ class PhotoFileManager {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: date)
         let directoryURL = photosRootDirectory.appendingPathComponent(dateString)
-        
+        print("===============================directory: \(directoryURL)")
         if !FileManager.default.fileExists(atPath: directoryURL.path) {
             do {
                 try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)

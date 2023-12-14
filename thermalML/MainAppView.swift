@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainAppView: View {
+    @Environment(\.managedObjectContext) private var managedObjectContext
     @StateObject var router: Router<AppRoute>
     let navViewBuilder: NavViewBuilder
 

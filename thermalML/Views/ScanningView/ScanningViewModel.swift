@@ -11,7 +11,8 @@ import Combine
 class ScanningViewModel: ObservableObject {
     unowned let router: Router<AppRoute>
     var cameraManager = FLIRCameraManager()
-
+    let filemanager = PhotoFileManager.shared
+    
     @Published var centerSpotText: String = ""
     @Published var distanceText: String = ""
     @Published var distanceValue: Float = 0.0
@@ -110,28 +111,14 @@ class ScanningViewModel: ObservableObject {
         cameraManager.ironPaletteClicked()
     }
     
-    func saveImageToFile(image: UIImage, fileName: String) {
-        // Получение данных изображения в формате JPEG
+    func savePhoto(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 1) else {
             print("Не удалось получить данные изображения")
             return
         }
-
-        // Получение пути к директории Documents
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("Не удалось найти директорию Documents")
-            return
-        }
-
-        // Определение пути к файлу
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-
-        do {
-            // Запись данных в файл
-            try imageData.write(to: fileURL)
-            print("Изображение сохранено в \(fileURL)")
-        } catch {
-            print("Ошибка при сохранении изображения: \(error)")
-        }
+        // тут нужно вызывать метод сохранения двух фотографий с помощью метода камеры в двух вариантах: thermal and original
+        let nameAndPath = filemanager.savePhoto(imageData)
+        print("nameAndPath: \(nameAndPath)")
     }
+    
 }
