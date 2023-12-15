@@ -13,7 +13,7 @@ struct ThermalMLApp: App {
 
     var body: some Scene {
         let router: Router<AppRoute> = .init()
-        let builder: NavViewBuilder = .init(router: router)
+        let builder = NavViewBuilder(router: router, managedObjectContext: persistenceController.container.viewContext)
 
         WindowGroup {
             MainAppView(router: router, navViewBuilder: builder)

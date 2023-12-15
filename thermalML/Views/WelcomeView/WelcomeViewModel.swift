@@ -18,4 +18,9 @@ class WelcomeViewModel: ObservableObject {
     func goToStartConnectionView() {
         router.push(.startConnection)
     }
+    
+    func goToStartPhotoGalleryView() {
+        router.push(.photoGallery)
+
+    }
 }

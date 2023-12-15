@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import CoreData
 
 final class NavViewBuilder {
     unowned let router: Router<AppRoute>
-
-    init(router: Router<AppRoute>) {
+    let managedObjectContext: NSManagedObjectContext
+    
+    init(router: Router<AppRoute>, managedObjectContext: NSManagedObjectContext) {
         self.router = router
+        self.managedObjectContext = managedObjectContext
     }
 }

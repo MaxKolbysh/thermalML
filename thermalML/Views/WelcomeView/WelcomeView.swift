@@ -41,7 +41,7 @@ struct WelcomeView: View {
                 .foregroundColor(.white)
             })
             Button(action: {
-                viewModel.goToStartConnectionView()
+                viewModel.goToStartPhotoGalleryView()
             }, label: {
                 HStack {
                     Image(systemName: "magnifyingglass")

@@ -6,8 +6,8 @@
         <attribute name="emission" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="imageName" optional="YES" attributeType="Transformable"/>
         <attribute name="imagePath" optional="YES" attributeType="String"/>
-        <attribute name="location" optional="YES" attributeType="Transformable"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable"/>
+        <attribute name="location" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
         <attribute name="temperatureHigh" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="temperatureLow" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="temperatureOutside" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>

@@ -12,6 +12,7 @@ enum AppRoute {
     case welcome
     case startConnection
     case scanning(isEmulatorLoading: Bool)
+    case photoGallery
 }
 
 extension AppRoute: Hashable, Equatable {
@@ -20,6 +21,7 @@ extension AppRoute: Hashable, Equatable {
         case (.welcome, .welcome): return true
         case (.startConnection, .startConnection): return true
         case (.scanning, .scanning): return true
+        case (.photoGallery, .photoGallery): return true
         default: return false
         }
     }

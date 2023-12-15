@@ -25,6 +25,7 @@ struct MainAppView: View {
         case .welcome: navViewBuilder.createWelcomeView()
         case .startConnection: navViewBuilder.createStartConnectionView()
         case .scanning(let isEmulatorLoading): navViewBuilder.createScanningView(isEmulatorLoading: isEmulatorLoading)
+        case .photoGallery: navViewBuilder.createPhotoGalleryView()
         }
     }
 }

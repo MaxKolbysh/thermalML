@@ -9,7 +9,7 @@ import Foundation
 
 class PhotoFileManager {
     static let shared = PhotoFileManager()
-    
+
     private init() {
         createPhotosRootDirectory()
     }

@@ -18,31 +18,33 @@ class DataManager {
     func addImageInfo(
         imageName: [String],
         imagePath: String,
-        description: String,
-        tags: [String],
-        temperatureLow: Float,
-        temperatureHigh: Float,
-        temperatureOutside: Float,
-        temperatureUnit: String,
-        emission: Float,
-        comment: String,
-        location: CLLocation,
-        predictionResults: [NSManagedObject]
+        description: String? = nil,
+        tags: [String]? = nil,
+        temperatureLow: Float? = nil,
+        temperatureHigh: Float? = nil,
+        temperatureOutside: Float? = nil,
+        temperatureUnit: String? = nil,
+        emission: Float? = nil,
+        comment: String? = nil,
+        location: CLLocation? = nil,
+        predictionResults: [NSManagedObject]? = nil
     ) {
         let newImageInfo = PhotoInfo(context: context)
         newImageInfo.imageName = imageName as NSObject
         newImageInfo.imagePath = imagePath
+        // Optional data
         newImageInfo.decriptionText = description
-        newImageInfo.tags = tags as NSObject
-        newImageInfo.temperatureLow = temperatureLow
-        newImageInfo.temperatureHigh = temperatureHigh
-        newImageInfo.temperatureOutside = temperatureOutside
-        newImageInfo.temperatureUnit = temperatureUnit
-        newImageInfo.emission = emission
-        newImageInfo.comment = comment
+        newImageInfo.tags = tags as NSObject?
+        newImageInfo.temperatureLow = temperatureLow ?? 0.0
+        newImageInfo.temperatureHigh = temperatureHigh ?? 0.0
+        newImageInfo.temperatureOutside = temperatureOutside ?? 0.0
+        newImageInfo.temperatureUnit = temperatureUnit ?? "C"
+        newImageInfo.emission = emission ?? 0.0
+        newImageInfo.comment = comment ?? ""
         newImageInfo.location = location
-        newImageInfo.addToPredictionResults(NSSet(array: predictionResults))
-        
+        if let predictionResults = predictionResults {
+            newImageInfo.addToPredictionResults(NSSet(array: predictionResults))
+        }
         do {
             try context.save()
         } catch {

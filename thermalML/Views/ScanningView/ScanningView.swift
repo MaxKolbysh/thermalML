@@ -9,8 +9,11 @@
 import SwiftUI
 import CoreML
 import PhotosUI
+import CoreData
     
 struct ScanningView: View {
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    
     @StateObject private var viewModel: ScanningViewModel
     
     @State private var errorMessage = ""
@@ -24,8 +27,8 @@ struct ScanningView: View {
     private var isEmulatorLoading: Bool
     private var isClassifyButtonDisable = true
     
-    init(router: Router<AppRoute>, isEmulatorLoading: Bool) {
-        _viewModel = StateObject(wrappedValue: ScanningViewModel(router: router))
+    init(router: Router<AppRoute>, isEmulatorLoading: Bool, managedObjectContext: NSManagedObjectContext) {
+        _viewModel = StateObject(wrappedValue: ScanningViewModel(router: router, managedObjectContext: managedObjectContext))
         self.isEmulatorLoading = isEmulatorLoading
     }
     
@@ -46,7 +49,7 @@ struct ScanningView: View {
             Button(action: {
                 if let image = viewModel.thermalImage {
 //                    viewModel.saveImageToFile(image: image, fileName: "thermalImage.jpg")
-                    viewModel.savePhoto(image: image)
+                    viewModel.savePhotos(originalImage: image, thermalImage: image)
                 }
             }, label: {
                 HStack {
