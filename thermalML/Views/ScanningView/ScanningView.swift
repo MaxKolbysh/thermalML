@@ -26,7 +26,7 @@ struct ScanningView: View {
     @State private var isCameraConnected: Bool? = false
     
     private var isEmulatorLoading: Bool
-    private var isClassifyButtonDisable = true
+    @State var isClassifyButtonDisable = true
     
     init(
         router: Router<AppRoute>,
@@ -63,38 +63,37 @@ struct ScanningView: View {
                 if let image = viewModel.thermalImage {
                     viewModel.savePhotos(thermalImage: image, originalImage: image)
                 }
+                if isClassifyButtonDisable {
+                    isClassifyButtonDisable = false
+                }
             }, label: {
                 HStack {
                     Image(systemName: "camera")
-                        .foregroundStyle(.black)
                 }
                 .frame(maxWidth: 50, maxHeight: 50)
                 .background(Color(red: 0, green: 122/255, blue: 255/255, opacity: 1.0))
                 .clipShape(Circle())
-                .foregroundColor(.black)
             })
             .padding(.bottom, 100)
             
             HStack {
                 Spacer()
                 Button(action: {
-                    //
+                    
                 }, label: {
                     HStack {
                         Image(systemName: "rectangle.and.text.magnifyingglass")
                             .padding(.leading)
-                            .foregroundStyle(.black)
                         Text("Classify")
-                            .foregroundColor(.black)
                             .padding(.trailing)
                     }
                     .frame(maxWidth: 125, maxHeight: 50)
-                    .background(Color(red: 118/255, green: 118/255, blue: 128/255, opacity: 0.24))
+                    .background(Color.gray)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .foregroundColor(.black)
                 })
                 .disabled(isClassifyButtonDisable)
-                
+                .opacity(0.6)
             }
             .padding(.horizontal)
             .padding(.bottom, 100)

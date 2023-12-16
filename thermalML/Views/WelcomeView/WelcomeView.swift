@@ -50,13 +50,11 @@ struct WelcomeView: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding(.leading)
-                        .foregroundStyle(.black)
                     Text("Saved Scans")
-                        .foregroundColor(.black)
                         .padding(.trailing)
                 }
                 .frame(maxWidth: 161, maxHeight: 50)
-                .background(Color(red: 118/255, green: 118/255, blue: 128/255, opacity: 0.24))
+                .background(Color.gray)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .foregroundColor(.black)
             })
@@ -67,9 +65,7 @@ struct WelcomeView: View {
                 HStack {
                     Image(systemName: "info.circle")
                         .padding(.leading)
-                        .foregroundStyle(.black)
                 }
-                .foregroundColor(.black)
             })
             .padding(.bottom, 100)
         }

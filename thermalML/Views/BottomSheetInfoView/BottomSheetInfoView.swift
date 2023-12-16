@@ -28,11 +28,10 @@ struct BottomSheetView: View {
             .padding(.horizontal, 30)
             
             VStack(alignment: .leading) {
-                
                 Text("This app utilizes the FLIR ONE® Edge Pro  thermal camera to provide you with enhanced features and functionalities. To fully experience the app's capabilities, please ensure you have a FLIR ONE thermal camera connected to your device.")
                 
                 Text(" FLIR ONE® Edge Pro")
-                    .foregroundStyle(Color(red: 0/255, green: 109/255, blue: 210/255))
+                    .foregroundStyle(Color.blue)
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.leading)
             }
@@ -44,12 +43,6 @@ struct BottomSheetView: View {
                 .padding(.horizontal, 30)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
         .cornerRadius(15)
     }
-}
-
-#Preview {
-
-    BottomSheetView(isPresented: .constant(true))
 }

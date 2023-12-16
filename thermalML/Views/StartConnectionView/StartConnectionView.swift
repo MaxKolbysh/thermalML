@@ -56,6 +56,7 @@ struct StartConnectionView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .foregroundColor(.white)
             })
+            .padding(.bottom, 12)
             Button(action: {
                 viewModel.goToScanningView(isEmulatorLoading: true)
             }, label: {
@@ -69,9 +70,7 @@ struct StartConnectionView: View {
                 HStack {
                     Image(systemName: "info.circle")
                         .padding(.leading)
-                        .foregroundStyle(.black)
                 }
-                .foregroundColor(.black)
             })
             .padding(.bottom, 100)
         }

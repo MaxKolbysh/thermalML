@@ -282,6 +282,34 @@ extension FLIRCameraManager: FLIRStreamDelegate {
             }
         }
     }
+    
+//    func captureBothImages() -> Future<(thermalImage: UIImage?, visualImage: UIImage?), Error> {
+//        return Future { [weak self] promise in
+//            self?.renderQueue.async {
+//                guard let self = self else {
+//                    promise(.failure(NSError(domain: "FLIRCameraManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "Self is nil"])))
+//                    return
+//                }
+//
+//                do {
+//                    // Захват тепловизионного изображения
+//                    try self.thermalStreamer?.update()
+//                    self.thermalStreamer?.getImage().getFusion().setFusionMode(.IR_MODE)
+//                    let thermalImage = self.thermalStreamer?.getImage()
+//
+//                    // Захват обычного визуального изображения
+//                    try self.thermalStreamer?.update()
+//                    self.thermalStreamer?.getImage().getFusion().setFusionMode(.VISUAL_MODE)
+//                    let visualImage = self.thermalStreamer?.getImage()
+//
+//                    promise(.success((thermalImage, visualImage)))
+//                } catch {
+//                    promise(.failure(error))
+//                }
+//            }
+//        }
+//    }
+    
 }
 
 extension FLIRCameraManager {

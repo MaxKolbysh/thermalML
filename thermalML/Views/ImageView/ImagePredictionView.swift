@@ -55,7 +55,6 @@ struct ImagePredictionView: View {
                 VStack {
                     Spacer()
                     Text(photoInfo?.imageThermalName ?? "")
-                        .foregroundStyle(Color.red)
                 }
             }
             Button(action: {

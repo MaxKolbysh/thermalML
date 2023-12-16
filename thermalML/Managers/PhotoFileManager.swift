@@ -113,7 +113,6 @@ class PhotoFileManager {
             print("Error deleting photo: \(error)")
         }
     }
-    
     // MARK: - Generate name of file
     private func generateUniqueFileName(isOriginal: Bool) -> String {
         let dateFormatter = DateFormatter()
