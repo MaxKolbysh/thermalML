@@ -27,7 +27,6 @@ class FLIRCameraManager: NSObject {
     var stream: FLIRStream?
     
     let renderQueue = DispatchQueue(label: "render")
-    
     var connectionTimeoutTimer: Timer?
     
     override init() {
@@ -150,7 +149,6 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                         handleError(error)
                         return
                     }
-                    
                     
                     let streams = self.camera?.getStreams()
                     guard let stream = streams?.first else {
@@ -292,12 +290,12 @@ extension FLIRCameraManager: FLIRStreamDelegate {
 //                }
 //
 //                do {
-//                    // Захват тепловизионного изображения
+//                    // Переключение на тепловизионный режим и захват изображения
 //                    try self.thermalStreamer?.update()
-//                    self.thermalStreamer?.getImage().getFusion().setFusionMode(.IR_MODE)
+//                    self.thermalStreamer?.getImage().getFusion().setFusionMode
 //                    let thermalImage = self.thermalStreamer?.getImage()
 //
-//                    // Захват обычного визуального изображения
+//                    // Переключение на визуальный режим и захват изображения
 //                    try self.thermalStreamer?.update()
 //                    self.thermalStreamer?.getImage().getFusion().setFusionMode(.VISUAL_MODE)
 //                    let visualImage = self.thermalStreamer?.getImage()
@@ -309,6 +307,7 @@ extension FLIRCameraManager: FLIRStreamDelegate {
 //            }
 //        }
 //    }
+
     
 }
 
