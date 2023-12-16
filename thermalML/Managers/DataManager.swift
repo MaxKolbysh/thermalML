@@ -16,8 +16,7 @@ class DataManager {
     }
     
     func addImageInfo(
-        imageName: [String],
-        imagePath: String,
+        imageNameAndPath: [String],
         description: String? = nil,
         tags: [String]? = nil,
         temperatureLow: Float? = nil,
@@ -30,8 +29,7 @@ class DataManager {
         predictionResults: [NSManagedObject]? = nil
     ) {
         let newImageInfo = PhotoInfo(context: context)
-        newImageInfo.imageName = imageName as NSObject
-        newImageInfo.imagePath = imagePath
+        newImageInfo.imageNameAndPath = imageNameAndPath as NSObject
         // Optional data
         newImageInfo.decriptionText = description
         newImageInfo.tags = tags as NSObject?
@@ -47,6 +45,7 @@ class DataManager {
         }
         do {
             try context.save()
+            print("Информация об изображении сохранена")
         } catch {
             print("Ошибка при сохранении: \(error)")
         }
@@ -66,7 +65,9 @@ class DataManager {
     func getAllImages() -> [PhotoInfo] {
         let request: NSFetchRequest<PhotoInfo> = PhotoInfo.fetchRequest()
         do {
-            return try context.fetch(request)
+            let results = try context.fetch(request)
+            print("Получено изображений из Core Data: \(results.count)")
+            return results
         } catch {
             print("Ошибка при выполнении запроса: \(error)")
             return []

@@ -24,11 +24,21 @@ struct ScanningView: View {
     @State private var selectedImageData: Data? = nil
     
     @State private var isCameraConnected: Bool? = false
+    
     private var isEmulatorLoading: Bool
     private var isClassifyButtonDisable = true
     
-    init(router: Router<AppRoute>, isEmulatorLoading: Bool, managedObjectContext: NSManagedObjectContext) {
-        _viewModel = StateObject(wrappedValue: ScanningViewModel(router: router, managedObjectContext: managedObjectContext))
+    init(
+        router: Router<AppRoute>,
+        isEmulatorLoading: Bool,
+        managedObjectContext: NSManagedObjectContext
+    ) {
+        _viewModel = StateObject(
+            wrappedValue: ScanningViewModel(
+                router: router,
+                managedObjectContext: managedObjectContext
+            )
+        )
         self.isEmulatorLoading = isEmulatorLoading
     }
     
@@ -37,7 +47,10 @@ struct ScanningView: View {
             Rectangle()
                 .background(Color.clear)
             ScanningCameraView(thermalImage: $viewModel.thermalImage)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .frame(
+                    width: UIScreen.main.bounds.width,
+                    height: UIScreen.main.bounds.height
+                )
             
             if viewModel.isActivityIndicatorShowed {
                 ProgressView()
@@ -48,7 +61,6 @@ struct ScanningView: View {
             
             Button(action: {
                 if let image = viewModel.thermalImage {
-//                    viewModel.saveImageToFile(image: image, fileName: "thermalImage.jpg")
                     viewModel.savePhotos(originalImage: image, thermalImage: image)
                 }
             }, label: {
@@ -66,7 +78,7 @@ struct ScanningView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                        //
+                    //
                 }, label: {
                     HStack {
                         Image(systemName: "rectangle.and.text.magnifyingglass")
@@ -93,7 +105,6 @@ struct ScanningView: View {
             if isEmulatorLoading {
                 print("Emulator clicked")
                 print("isConnecting... \(viewModel.isActivityIndicatorShowed)")
-//                viewModel.isActivityIndicatorShowed = true
                 viewModel.connectEmulatorClicked()
                 viewModel.isConnected()
                 print("isCameraConnected: \($isCameraConnected)")
@@ -101,7 +112,6 @@ struct ScanningView: View {
                 print("Camera clicked")
                 viewModel.isActivityIndicatorShowed = true
                 viewModel.connectDeviceClicked()
-//                viewModel.onCameraConnected()
             }
         }
         .navigationBarItems(

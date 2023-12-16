@@ -126,13 +126,31 @@ class ScanningViewModel: ObservableObject {
 
         if let originalPhotoInfo = fileManager.savePhoto(originalImageData),
            let thermalPhotoInfo = fileManager.savePhoto(thermalImageData) {
-
-            let fileNames = [originalPhotoInfo.fileName, thermalPhotoInfo.fileName]
-            let commonPath = originalPhotoInfo.relativePath
-
+            
+            let imageNameAndPath = [originalPhotoInfo, thermalPhotoInfo]
+            
             dataManager.addImageInfo(
-                imageName: fileNames,
-                imagePath: commonPath
+                imageNameAndPath: imageNameAndPath
+            )
+        }
+    }
+    
+    func saveSimulatorPhotos(originalImage: UIImage, thermalImage: UIImage) {
+        guard let originalImageData = originalImage.jpegData(compressionQuality: 1),
+              let thermalImageData = thermalImage.jpegData(compressionQuality: 1) else {
+            print("Не удалось получить данные изображений")
+            return
+        }
+
+        let dataManager = DataManager(context: managedObjectContext)
+
+        if let originalPhotoInfo = fileManager.savePhoto(originalImageData),
+           let thermalPhotoInfo = fileManager.savePhoto(thermalImageData) {
+            
+            let imageNameAndPath = [originalPhotoInfo, thermalPhotoInfo]
+            
+            dataManager.addImageInfo(
+                imageNameAndPath: imageNameAndPath
             )
         }
     }

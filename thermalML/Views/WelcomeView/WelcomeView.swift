@@ -10,6 +10,7 @@ import SwiftUI
 struct WelcomeView: View {
     @StateObject var viewModel: WelcomeViewModel
     @State private var isSheetPresented = false
+    @State private var showingPhotoGallery = false
 
     init(router: Router<AppRoute>) {
         _viewModel = StateObject(wrappedValue: WelcomeViewModel(router: router))

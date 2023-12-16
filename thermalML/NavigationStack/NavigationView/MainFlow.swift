@@ -12,11 +12,13 @@ protocol MainFlow {
     associatedtype StartConnection: View
     associatedtype Scanning: View
     associatedtype PhotoGallery: View
-    
+    associatedtype ImagePrediction: View
+
     func createWelcomeView() -> Welcome
     func createStartConnectionView() -> StartConnection
     func createScanningView(isEmulatorLoading: Bool) -> Scanning
     func createPhotoGalleryView() -> PhotoGallery
+    func createImagePredictionView(currentImage: UIImage?) -> ImagePrediction
 
 }
 
@@ -31,6 +33,9 @@ extension NavViewBuilder: MainFlow {
         ScanningView(router: router, isEmulatorLoading: isEmulatorLoading, managedObjectContext: managedObjectContext)
     }
     func createPhotoGalleryView() -> some View {
-        PhotoGalleryView(router: router)
+        PhotoGalleryView(router: router, managedObjectContext: managedObjectContext)
+    }
+    func createImagePredictionView(currentImage: UIImage?) -> some View {
+        ImagePredictionView(router: router, currentImage: currentImage)
     }
 }

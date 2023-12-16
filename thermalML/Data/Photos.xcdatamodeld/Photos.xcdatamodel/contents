@@ -4,8 +4,7 @@
         <attribute name="comment" optional="YES" attributeType="String"/>
         <attribute name="decriptionText" optional="YES" attributeType="String"/>
         <attribute name="emission" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="imageName" optional="YES" attributeType="Transformable"/>
-        <attribute name="imagePath" optional="YES" attributeType="String"/>
+        <attribute name="imageNameAndPath" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
         <attribute name="location" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
         <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
         <attribute name="temperatureHigh" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>

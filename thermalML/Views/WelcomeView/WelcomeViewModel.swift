@@ -10,7 +10,7 @@ import SwiftUI
 
 class WelcomeViewModel: ObservableObject {
     unowned let router: Router<AppRoute>
-    
+
     init(router: Router<AppRoute>) {
         self.router = router
     }
@@ -21,6 +21,5 @@ class WelcomeViewModel: ObservableObject {
     
     func goToStartPhotoGalleryView() {
         router.push(.photoGallery)
-
     }
 }

@@ -52,7 +52,7 @@ class PhotoFileManager {
     }
     
     // MARK: - Save Photo
-    func savePhoto(_ photoData: Data) -> (fileName: String, relativePath: String)? {
+    func savePhoto(_ photoData: Data) -> String? {
         let fileName = generateUniqueFileName()
         guard let directoryURL = createDirectory(for: Date()) else {
             return nil
@@ -60,8 +60,8 @@ class PhotoFileManager {
         let fileURL = directoryURL.appendingPathComponent(fileName)
         do {
             try photoData.write(to: fileURL)
-            let relativePath = fileURL.path.replacingOccurrences(of: photosRootDirectory.path + "/", with: "")
-            return (fileName, relativePath)
+            let imageNameAndPath = fileURL.path.replacingOccurrences(of: photosRootDirectory.path + "/", with: "")
+            return imageNameAndPath
         } catch {
             print("Error saving photo: \(error)")
             return nil
@@ -69,8 +69,8 @@ class PhotoFileManager {
     }
     
     // MARK: - Fetch Photo
-    func fetchPhoto(withPath path: String) -> Data? {
-        let fileURL = URL(fileURLWithPath: path)
+    func fetchPhoto(withPath relativePath: String) -> Data? {
+        let fileURL = photosRootDirectory.appendingPathComponent(relativePath)
         do {
             return try Data(contentsOf: fileURL)
         } catch {
