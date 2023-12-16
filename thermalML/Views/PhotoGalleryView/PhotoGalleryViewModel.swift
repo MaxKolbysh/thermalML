@@ -25,10 +25,11 @@ class PhotoGalleryViewModel: ObservableObject {
         self.router = router
         self.managedObjectContext = managedObjectContext
         self.dataManager = DataManager(context: managedObjectContext)
-        loadPhotos()
+        loadPhotosInfoFromDB()
     }
     
-    func loadPhotos() {
+    // MARK: - Get photo info from DB
+    func loadPhotosInfoFromDB() {
         self.photos = dataManager.getAllImages()
         print("Загружено фотографий: \(photos.count)")
         for photo in photos {
@@ -45,7 +46,21 @@ class PhotoGalleryViewModel: ObservableObject {
         }
     }
     
-    func gotoImageView(currentImage: UIImage) {
-        router.push(.imagePrediction(currentImage: currentImage))
+    func loadPhotoFromDisk(from path: String) -> UIImage? {
+        print("Загрузка изображения по пути: \(path)")
+        if let photoData = fileManager.fetchPhoto(withPath: path),
+           let image = UIImage(data: photoData) {
+            return image
+        } else {
+            print("Не удалось загрузить изображение по пути: \(path)")
+            return nil
+        }
+    }
+    
+    func gotoImageView(currentImage: UIImage, photoInfo: PhotoInfo) {
+        router.push(.imagePrediction(
+            currentImage: currentImage,
+            photoInfo: photoInfo
+        ))
     }
 }

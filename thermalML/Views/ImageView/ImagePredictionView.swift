@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ImagePredictionView: View {
     @StateObject private var viewModel: ImagePredictionViewModel
+    @State private var isSheetPresented = false
+
     var currentImage: UIImage?
+    var photoInfo: PhotoInfo?
     
     init(
         router: Router<AppRoute>,
-        currentImage: UIImage?
+        currentImage: UIImage,
+        photoInfo: PhotoInfo
     ) {
         _viewModel = StateObject(
             wrappedValue: ImagePredictionViewModel(
@@ -21,17 +25,26 @@ struct ImagePredictionView: View {
             )
         )
         self.currentImage = currentImage
+        self.photoInfo = photoInfo
     }
     
     var body: some View {
         VStack {
-            if let image = currentImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.bottom, 20)
-            } else {
-                Text("No image selected")
+            ZStack {
+                if let image = currentImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.bottom, 20)
+                    
+                } else {
+                    Text("No image selected")
+                }
+                VStack {
+                    Spacer()
+                    Text(photoInfo?.imageThermalName ?? "")
+                        .foregroundStyle(Color.red)
+                }
             }
             Button(action: {
                 //
@@ -59,7 +72,8 @@ struct ImagePredictionView: View {
                 .frame(width: 28, height: 28)
                 Spacer()
                 Button(action: {
-                        //
+                    isSheetPresented.toggle()
+                    print("isSheetPresented: \(isSheetPresented)")
                 }) {
                     Image(systemName: "info.circle")
                 }
@@ -75,6 +89,10 @@ struct ImagePredictionView: View {
             .padding(.bottom)
             .padding(.horizontal)
         }
-        
+        .sheet(isPresented: $isSheetPresented) {
+            if let currentImage = currentImage, let photoInfo = photoInfo {
+                BottomSheetImageInfoView(isPresented: $isSheetPresented, currentImage: currentImage, photoInfo: photoInfo)
+            }
+        }
     }
 }

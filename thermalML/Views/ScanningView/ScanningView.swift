@@ -61,7 +61,7 @@ struct ScanningView: View {
             
             Button(action: {
                 if let image = viewModel.thermalImage {
-                    viewModel.savePhotos(originalImage: image, thermalImage: image)
+                    viewModel.savePhotos(thermalImage: image, originalImage: image)
                 }
             }, label: {
                 HStack {
@@ -118,8 +118,8 @@ struct ScanningView: View {
             trailing:
                 Button(
                     action: {
-                        print("Gallery Button Tapped")
                         viewModel.disconnectClicked()
+                        viewModel.goToStartPhotoGalleryView()
                     }) {
                     Image(systemName: "photo")
                 }
@@ -141,7 +141,3 @@ struct ScanningView: View {
         }
     }
 }
-
-//#Preview {
-//    ScanningView(router: Router())
-//}

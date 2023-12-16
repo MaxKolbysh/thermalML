@@ -12,6 +12,7 @@ struct PhotoGalleryView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
     @StateObject private var viewModel: PhotoGalleryViewModel
     @State var currentImage: UIImage?
+    @State var photoInfo: PhotoInfo?
     
     init(
         router: Router<AppRoute>,
@@ -36,30 +37,28 @@ struct PhotoGalleryView: View {
                     ForEach(viewModel.photos, id: \.self) { photo in
                         if let imagePathArray = photo.imageNameAndPath as? [String],
                            let firstImagePath = imagePathArray.first,
-                           let image = loadImage(from: firstImagePath) {
+                           let image = viewModel.loadPhotoFromDisk(from: firstImagePath) {
                             Button {
-                                viewModel.gotoImageView(currentImage: image)
+                                viewModel.gotoImageView(currentImage: image, photoInfo: photo)
                             } label: {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .frame(width: (geometry.size.width - 32) / 3, height: (geometry.size.width - 32) / 3)
+                                ZStack {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .frame(width: (geometry.size.width - 32) / 3, height: (geometry.size.width - 32) / 3)
+                                    VStack {
+                                        Spacer()
+                                        Text(photo.imageThermalName ?? "")
+                                            .foregroundStyle(.white)
+                                            .font(.system(size: 10, weight: .light))
+                                            .padding(.bottom, 10)
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
             .navigationTitle(Text("Gallery"))
-        }
-    }
-
-    func loadImage(from path: String) -> UIImage? {
-        print("Загрузка изображения по пути: \(path)")
-        if let photoData = viewModel.fileManager.fetchPhoto(withPath: path),
-           let image = UIImage(data: photoData) {
-            return image
-        } else {
-            print("Не удалось загрузить изображение по пути: \(path)")
-            return nil
         }
     }
 }

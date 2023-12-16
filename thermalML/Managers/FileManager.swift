@@ -90,7 +90,7 @@ class PhotoFileManager {
             }
 
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yy HH-mm"
+            dateFormatter.dateFormat = "dd-MM-yy HH:mm"
             let formattedDate = dateFormatter.string(from: creationDate)
 
             let sizeInMB = Double(truncating: fileSize) / (1024 * 1024)
@@ -117,7 +117,7 @@ class PhotoFileManager {
     // MARK: - Generate name of file
     private func generateUniqueFileName(isOriginal: Bool) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmmssSSS"
+        dateFormatter.dateFormat = "yyyy-MM-dd_HH:mm:ss:SSS"
         return isOriginal 
         ? dateFormatter.string(from: Date()) + "_or" + ".jpg"
         : dateFormatter.string(from: Date()) + "_th" + ".jpg"

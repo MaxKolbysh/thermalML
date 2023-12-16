@@ -16,4 +16,12 @@ class ImagePredictionViewModel: ObservableObject {
         self.router = router
     }
     
+//    func deletePhotoAndInfo(photoInfo: PhotoInfo) {
+//        // Delete file
+//        let filePath = photoInfo.imageNameAndPath
+//        photoFileManager.deletePhoto(withPath: filePath)
+//
+//        // Delete data from DB
+//        dataManager.deleteImageInfo(withPath: filePath)
+//    }
 }

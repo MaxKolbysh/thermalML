@@ -81,7 +81,7 @@ struct StartConnectionView: View {
         }
         .navigationBarItems(trailing:
             Button(action: {
-                print("Gallery Button Tapped")
+                viewModel.goToStartPhotoGalleryView()
             }) {
                 Image(systemName: "photo")
             }

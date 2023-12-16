@@ -115,43 +115,37 @@ class ScanningViewModel: ObservableObject {
         cameraManager.ironPaletteClicked()
     }
     
-    func savePhotos(originalImage: UIImage, thermalImage: UIImage) {
-        guard let originalImageData = originalImage.jpegData(compressionQuality: 1),
-              let thermalImageData = thermalImage.jpegData(compressionQuality: 1) else {
+    func savePhotos(thermalImage: UIImage, originalImage: UIImage) {
+        guard let thermalImageData = thermalImage.jpegData(compressionQuality: 1),
+              let originalImageData = originalImage.jpegData(compressionQuality: 1) else {
             print("Не удалось получить данные изображений")
             return
         }
 
         let dataManager = DataManager(context: managedObjectContext)
 
-        if let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData),
-           let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData) {
-            
-            let imageNameAndPath = [originalPhotoInfo, thermalPhotoInfo]
-            
-            dataManager.addImageInfo(
-                imageNameAndPath: imageNameAndPath
-            )
+        if let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData),
+           let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData) {
+
+            let fileAddtionalInfo = fileManager.fetchPhotoInfo(withPath: thermalPhotoInfo)
+            if !fileAddtionalInfo.isEmpty {
+                let imageNameAndPath = [thermalPhotoInfo, originalPhotoInfo]
+                
+                let imageName = fileAddtionalInfo["name"]
+                let imageSize = fileAddtionalInfo["size"]
+                let imageCreation = fileAddtionalInfo["creationDate"]
+                
+                dataManager.addImageInfo(
+                    imageNameAndPath: imageNameAndPath,
+                    imageThermalName: imageName,
+                    fileSize: imageSize,
+                    fileDateCreation: imageCreation
+                )
+            }
         }
     }
     
-    func saveSimulatorPhotos(originalImage: UIImage, thermalImage: UIImage) {
-        guard let originalImageData = originalImage.jpegData(compressionQuality: 1),
-              let thermalImageData = thermalImage.jpegData(compressionQuality: 1) else {
-            print("Не удалось получить данные изображений")
-            return
-        }
-
-        let dataManager = DataManager(context: managedObjectContext)
-
-        if let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData),
-           let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData) {
-            
-            let imageNameAndPath = [originalPhotoInfo, thermalPhotoInfo]
-            
-            dataManager.addImageInfo(
-                imageNameAndPath: imageNameAndPath
-            )
-        }
+    func goToStartPhotoGalleryView() {
+        router.push(.photoGallery)
     }
 }

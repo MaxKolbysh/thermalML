@@ -13,7 +13,7 @@ enum AppRoute {
     case startConnection
     case scanning(isEmulatorLoading: Bool)
     case photoGallery
-    case imagePrediction(currentImage: UIImage)
+    case imagePrediction(currentImage: UIImage, photoInfo: PhotoInfo)
 }
 
 extension AppRoute: Hashable, Equatable {

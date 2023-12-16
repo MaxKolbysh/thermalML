@@ -27,6 +27,7 @@
 		639DA3A12B2ABEC000C265F2 /* PhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A02B2ABEC000C265F2 /* PhotoGalleryViewModel.swift */; };
 		639DA3A42B2CDDF000C265F2 /* ImagePredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A32B2CDDF000C265F2 /* ImagePredictionView.swift */; };
 		639DA3A62B2CDDFC00C265F2 /* ImagePredictionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A52B2CDDFC00C265F2 /* ImagePredictionViewModel.swift */; };
+		639DA3A92B2DA98100C265F2 /* BottomSheetImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A82B2DA98100C265F2 /* BottomSheetImageInfoView.swift */; };
 		63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */; };
 		63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */; };
 		63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */; };
@@ -104,6 +105,7 @@
 		639DA3A02B2ABEC000C265F2 /* PhotoGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewModel.swift; sourceTree = "<group>"; };
 		639DA3A32B2CDDF000C265F2 /* ImagePredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictionView.swift; sourceTree = "<group>"; };
 		639DA3A52B2CDDFC00C265F2 /* ImagePredictionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictionViewModel.swift; sourceTree = "<group>"; };
+		639DA3A82B2DA98100C265F2 /* BottomSheetImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetImageInfoView.swift; sourceTree = "<group>"; };
 		63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionView.swift; sourceTree = "<group>"; };
 		63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionViewModel.swift; sourceTree = "<group>"; };
 		63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetInfoView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		638719812B126613008C7F54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				639DA3A72B2DA94F00C265F2 /* BottomSheetImageInfoView */,
 				639DA3A22B2CDDD700C265F2 /* ImageView */,
 				639DA39D2B2ABE6400C265F2 /* PhotoGalleryView */,
 				63D7CBD82B13893C00BB54F3 /* BottomSheetInfoView */,
@@ -247,6 +250,14 @@
 				639DA3A52B2CDDFC00C265F2 /* ImagePredictionViewModel.swift */,
 			);
 			path = ImageView;
+			sourceTree = "<group>";
+		};
+		639DA3A72B2DA94F00C265F2 /* BottomSheetImageInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3A82B2DA98100C265F2 /* BottomSheetImageInfoView.swift */,
+			);
+			path = BottomSheetImageInfoView;
 			sourceTree = "<group>";
 		};
 		63D7CBD22B137D0800BB54F3 /* StartConnectionView */ = {
@@ -413,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D7CC042B139F3200BB54F3 /* ScanningCameraView.swift in Sources */,
+				639DA3A92B2DA98100C265F2 /* BottomSheetImageInfoView.swift in Sources */,
 				638719902B12796B008C7F54 /* Router.swift in Sources */,
 				639DA39F2B2ABEAB00C265F2 /* PhotoGalleryView.swift in Sources */,
 				639DA39C2B2ABB7A00C265F2 /* LocationManager.swift in Sources */,
