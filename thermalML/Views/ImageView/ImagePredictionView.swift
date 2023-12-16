@@ -51,7 +51,6 @@ struct ImagePredictionView: View {
             })
             .padding(.bottom, 20)
             HStack {
-                Spacer()
                 Button(action: {
                         //
                 }) {
@@ -72,9 +71,9 @@ struct ImagePredictionView: View {
                     Image(systemName: "trash")
                 }
                 .frame(width: 28, height: 28)
-                Spacer()
             }
             .padding(.bottom)
+            .padding(.horizontal)
         }
         
     }

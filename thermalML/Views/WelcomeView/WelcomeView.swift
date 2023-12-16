@@ -24,7 +24,10 @@ struct WelcomeView: View {
             Text("Welcome to thermal app")
                 .font(.system(size: 17, weight: .black))
             Spacer()
-            Text("You should switch on you Flir cammera for connection")
+            Text("You should switch on you Flir camera for connection")
+                .padding(.horizontal)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 12)
             Button(action: {
                 viewModel.goToStartConnectionView()
             }, label: {

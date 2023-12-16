@@ -29,10 +29,10 @@ struct PhotoGalleryView: View {
         GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(columns: [
-                    GridItem(.fixed(geometry.size.width / 3)),
-                    GridItem(.fixed(geometry.size.width / 3)),
-                    GridItem(.fixed(geometry.size.width / 3))
-                ]) {
+                    GridItem(.fixed((geometry.size.width - 32) / 3)),
+                    GridItem(.fixed((geometry.size.width - 32) / 3)),
+                    GridItem(.fixed((geometry.size.width - 32) / 3))
+                ], spacing: 8) {
                     ForEach(viewModel.photos, id: \.self) { photo in
                         if let imagePathArray = photo.imageNameAndPath as? [String],
                            let firstImagePath = imagePathArray.first,
@@ -42,19 +42,16 @@ struct PhotoGalleryView: View {
                             } label: {
                                 Image(uiImage: image)
                                     .resizable()
-                                    .frame(width: geometry.size.width / 3, height: geometry.size.width / 3)
+                                    .frame(width: (geometry.size.width - 32) / 3, height: (geometry.size.width - 32) / 3)
                             }
-                            
                         }
                     }
                 }
             }
             .navigationTitle(Text("Gallery"))
-            .padding(.horizontal, 9)
         }
     }
 
-    
     func loadImage(from path: String) -> UIImage? {
         print("Загрузка изображения по пути: \(path)")
         if let photoData = viewModel.fileManager.fetchPhoto(withPath: path),

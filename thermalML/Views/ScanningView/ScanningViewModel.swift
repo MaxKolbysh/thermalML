@@ -124,8 +124,8 @@ class ScanningViewModel: ObservableObject {
 
         let dataManager = DataManager(context: managedObjectContext)
 
-        if let originalPhotoInfo = fileManager.savePhoto(originalImageData),
-           let thermalPhotoInfo = fileManager.savePhoto(thermalImageData) {
+        if let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData),
+           let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData) {
             
             let imageNameAndPath = [originalPhotoInfo, thermalPhotoInfo]
             
@@ -144,8 +144,8 @@ class ScanningViewModel: ObservableObject {
 
         let dataManager = DataManager(context: managedObjectContext)
 
-        if let originalPhotoInfo = fileManager.savePhoto(originalImageData),
-           let thermalPhotoInfo = fileManager.savePhoto(thermalImageData) {
+        if let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData),
+           let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData) {
             
             let imageNameAndPath = [originalPhotoInfo, thermalPhotoInfo]
             

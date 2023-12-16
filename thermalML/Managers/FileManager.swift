@@ -52,8 +52,8 @@ class PhotoFileManager {
     }
     
     // MARK: - Save Photo
-    func savePhoto(_ photoData: Data) -> String? {
-        let fileName = generateUniqueFileName()
+    func savePhoto(isOriginal: Bool, _ photoData: Data) -> String? {
+        let fileName = generateUniqueFileName(isOriginal: isOriginal)
         guard let directoryURL = createDirectory(for: Date()) else {
             return nil
         }
@@ -79,6 +79,31 @@ class PhotoFileManager {
         }
     }
     
+    // MARK: - Get Photo Info
+    func fetchPhotoInfo(withPath relativePath: String) -> [String: String] {
+        let fileURL = photosRootDirectory.appendingPathComponent(relativePath)
+        do {
+            let attributes = try FileManager.default.attributesOfItem(atPath: fileURL.path)
+            guard let fileSize = attributes[.size] as? NSNumber,
+                  let creationDate = attributes[.creationDate] as? Date else {
+                return [:]
+            }
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yy HH-mm"
+            let formattedDate = dateFormatter.string(from: creationDate)
+
+            let sizeInMB = Double(truncating: fileSize) / (1024 * 1024)
+            
+            return ["name": fileURL.lastPathComponent,
+                    "size": String(format: "%.2f MB", sizeInMB),
+                    "creationDate": formattedDate]
+        } catch {
+            print("Error fetching photo info: \(error)")
+            return [:]
+        }
+    }
+    
     // MARK: - Delete Photo
     func deletePhoto(withPath path: String) {
         let fileURL = URL(fileURLWithPath: path)
@@ -90,9 +115,11 @@ class PhotoFileManager {
     }
     
     // MARK: - Generate name of file
-    private func generateUniqueFileName() -> String {
+    private func generateUniqueFileName(isOriginal: Bool) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmssSSS"
-        return dateFormatter.string(from: Date()) + ".jpg"
+        return isOriginal 
+        ? dateFormatter.string(from: Date()) + "_or" + ".jpg"
+        : dateFormatter.string(from: Date()) + "_th" + ".jpg"
     }
 }
