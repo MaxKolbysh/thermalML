@@ -28,9 +28,13 @@ struct MainAppView: View {
         case .photoGallery: navViewBuilder.createPhotoGalleryView()
         case .imagePrediction(
             let currentImage,
-            let photoInfo): navViewBuilder.createImagePredictionView(
+            let photoInfo,
+            let photoFileManager,
+            let dataManager): navViewBuilder.createImagePredictionView(
                 currentImage: currentImage,
-                photoInfo: photoInfo
+                photoInfo: photoInfo,
+                photoFileManager: photoFileManager,
+                dataManager: dataManager
             )
         }
     }

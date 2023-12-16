@@ -59,6 +59,10 @@ struct PhotoGalleryView: View {
                 }
             }
             .navigationTitle(Text("Gallery"))
+            .onAppear {
+                viewModel.loadPhotosInfoFromDB()
+            }
         }
+        
     }
 }

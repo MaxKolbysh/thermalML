@@ -25,7 +25,7 @@ struct BottomSheetImageInfoView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Info")
+                Text("Photo Info")
                     .font(.system(size: 19, weight: .bold))
                 Spacer()
                 Button(action: {
@@ -39,32 +39,34 @@ struct BottomSheetImageInfoView: View {
             }
             .padding(.top, 30)
             .padding(.bottom, 30)
-            VStack {
-                HStack {
-                    Image(uiImage: currentImage)
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                    VStack(alignment: .leading) {
-                        Text(photoInfo.imageThermalName ?? "")
-                            .foregroundStyle(.black)
-                            .font(.system(size: 18, weight: .regular))
-                        HStack {
-                            Text(photoInfo.fileSize ?? "")
-                                .foregroundStyle(.gray)
-                            Text(" ")
-                            Text(photoInfo.fileDateCreation ?? "")
-                                .foregroundStyle(.gray)
-                            Spacer()
+            List {
+                VStack {
+                    HStack {
+                        Image(uiImage: currentImage)
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        VStack(alignment: .leading) {
+                            Text(photoInfo.imageThermalName ?? "")
+                                .font(.system(size: 18, weight: .regular))
+                            HStack {
+                                Text(photoInfo.fileSize ?? "")
+                                    .foregroundStyle(.gray)
+                                Text(" ")
+                                Text(photoInfo.fileDateCreation ?? "")
+                                    .foregroundStyle(.gray)
+                                Spacer()
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
                 }
             }
+            .listStyle(.insetGrouped)
+            .listSectionSeparator(.automatic)
             Spacer()
         }
         .padding(.horizontal, 30)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
         .cornerRadius(15)
     }
 }

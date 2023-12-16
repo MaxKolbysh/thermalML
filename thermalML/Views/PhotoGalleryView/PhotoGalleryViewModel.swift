@@ -60,7 +60,9 @@ class PhotoGalleryViewModel: ObservableObject {
     func gotoImageView(currentImage: UIImage, photoInfo: PhotoInfo) {
         router.push(.imagePrediction(
             currentImage: currentImage,
-            photoInfo: photoInfo
+            photoInfo: photoInfo,
+            photoFileManager: fileManager,
+            dataManager: dataManager
         ))
     }
 }

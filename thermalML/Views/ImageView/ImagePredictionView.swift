@@ -10,18 +10,30 @@ import SwiftUI
 struct ImagePredictionView: View {
     @StateObject private var viewModel: ImagePredictionViewModel
     @State private var isSheetPresented = false
-
+    @State private var isShareSheetShowing = false
+    @State private var isDeleteAllow = false
+    @State private var isPredictionShow = false
+    
+    var detail: String?
+    var recommendation: String?
+    
     var currentImage: UIImage?
     var photoInfo: PhotoInfo?
     
     init(
         router: Router<AppRoute>,
         currentImage: UIImage,
-        photoInfo: PhotoInfo
+        photoInfo: PhotoInfo,
+        photoFileManager: PhotoFileManager,
+        dataManager: DataManager
     ) {
         _viewModel = StateObject(
             wrappedValue: ImagePredictionViewModel(
-                router: router
+                router: router,
+                photoFileManager: photoFileManager,
+                dataManager: dataManager,
+                photoInfo: photoInfo,
+                currentImage: currentImage
             )
         )
         self.currentImage = currentImage
@@ -47,7 +59,9 @@ struct ImagePredictionView: View {
                 }
             }
             Button(action: {
-                //
+                viewModel.classifyImage()
+                viewModel.processClassificationResults()
+                isPredictionShow.toggle()
             }, label: {
                 HStack {
                     Image(systemName: "rectangle.and.text.magnifyingglass")
@@ -65,7 +79,7 @@ struct ImagePredictionView: View {
             .padding(.bottom, 20)
             HStack {
                 Button(action: {
-                        //
+                    isShareSheetShowing.toggle()
                 }) {
                     Image(systemName: "square.and.arrow.up")
                 }
@@ -80,7 +94,7 @@ struct ImagePredictionView: View {
                 .frame(width: 28, height: 28)
                 Spacer()
                 Button(action: {
-                        //
+                    isDeleteAllow.toggle()
                 }) {
                     Image(systemName: "trash")
                 }
@@ -91,8 +105,41 @@ struct ImagePredictionView: View {
         }
         .sheet(isPresented: $isSheetPresented) {
             if let currentImage = currentImage, let photoInfo = photoInfo {
-                BottomSheetImageInfoView(isPresented: $isSheetPresented, currentImage: currentImage, photoInfo: photoInfo)
+                BottomSheetImageInfoView(
+                    isPresented: $isSheetPresented,
+                    currentImage: currentImage,
+                    photoInfo: photoInfo
+                )
             }
+        }
+        .sheet(isPresented: $isShareSheetShowing, onDismiss: {
+            print("Dismiss")
+        }, content: {
+            ActivityView(
+                activityItems: [self.currentImage] as [Any],
+                applicationActivities: nil)
+        })
+        .sheet(isPresented: $isPredictionShow) {
+            BottomSheetPredictionInfoView(
+                isPredictionShow: $isPredictionShow,
+                detail: $viewModel.detail,
+                recommendation: $viewModel.recommendation
+            )
+            .presentationDetents([.medium, .medium])
+        }
+        .alert(isPresented: $isDeleteAllow) {
+            Alert(
+                title: Text("Warning"),
+                message: Text("Do you want to delete the photo?"),
+                primaryButton: .default(Text("Cancel")) {
+                    isDeleteAllow = false
+                },
+                secondaryButton: .destructive(Text("Yes")) {
+                    isDeleteAllow = false
+                    viewModel.deletePhotoAndInfo()
+                    viewModel.router.pop(to: .photoGallery)
+                }
+            )
         }
     }
 }

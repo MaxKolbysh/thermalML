@@ -105,8 +105,8 @@ class PhotoFileManager {
     }
     
     // MARK: - Delete Photo
-    func deletePhoto(withPath path: String) {
-        let fileURL = URL(fileURLWithPath: path)
+    func deletePhoto(withPath relativePath: String) {
+        let fileURL = photosRootDirectory.appendingPathComponent(relativePath)
         do {
             try FileManager.default.removeItem(at: fileURL)
         } catch {
@@ -117,8 +117,8 @@ class PhotoFileManager {
     // MARK: - Generate name of file
     private func generateUniqueFileName(isOriginal: Bool) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd_HH:mm:ss:SSS"
-        return isOriginal 
+        dateFormatter.dateFormat = "yyyy-MM-dd_HH-mm-ss-SSS"
+        return isOriginal
         ? dateFormatter.string(from: Date()) + "_or" + ".jpg"
         : dateFormatter.string(from: Date()) + "_th" + ".jpg"
     }

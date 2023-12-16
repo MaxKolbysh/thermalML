@@ -18,7 +18,10 @@ protocol MainFlow {
     func createStartConnectionView() -> StartConnection
     func createScanningView(isEmulatorLoading: Bool) -> Scanning
     func createPhotoGalleryView() -> PhotoGallery
-    func createImagePredictionView(currentImage: UIImage, photoInfo: PhotoInfo) -> ImagePrediction
+    func createImagePredictionView(currentImage: UIImage,
+                                   photoInfo: PhotoInfo,
+                                   photoFileManager: PhotoFileManager,
+                                   dataManager: DataManager) -> ImagePrediction
 
 }
 
@@ -35,7 +38,13 @@ extension NavViewBuilder: MainFlow {
     func createPhotoGalleryView() -> some View {
         PhotoGalleryView(router: router, managedObjectContext: managedObjectContext)
     }
-    func createImagePredictionView(currentImage: UIImage, photoInfo: PhotoInfo) -> some View {
-        ImagePredictionView(router: router, currentImage: currentImage, photoInfo: photoInfo)
+    func createImagePredictionView(currentImage: UIImage,
+                                   photoInfo: PhotoInfo,
+                                   photoFileManager: PhotoFileManager,
+                                   dataManager: DataManager) -> some View { ImagePredictionView(router: router,
+                                                                                                currentImage: currentImage,
+                                                                                                photoInfo: photoInfo,
+                                                                                                photoFileManager: photoFileManager,
+                                                                                                dataManager: dataManager)
     }
 }
