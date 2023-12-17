@@ -26,7 +26,13 @@ class FLIRCameraManager: NSObject {
     var thermalStreamer: FLIRThermalStreamer?
     var stream: FLIRStream?
     
+    var visualStreamer: FLIRVisualStreamer?
+//    var visualStream:
+    var fusionController: FLIRFusionController?
+    var channel: FLIRChannelType?
+    
     let renderQueue = DispatchQueue(label: "render")
+    
     var connectionTimeoutTimer: Timer?
     
     override init() {
@@ -149,15 +155,26 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                         handleError(error)
                         return
                     }
-                    
+                    // MARK: - experiment
+                    let fusionController = self.fusionController
+                    print("##fusionController")
+                    let activeChannel = fusionController?.getActiveChannel()
+                    print("##activeChannel: \(activeChannel)")
+                    let validMode = fusionController?.getValidModes()
+                    print("##activeChannel: \(validMode)")
+                    let displayMode = fusionController?.getDisplayMode()
+                    print("##displayMode: \(displayMode)")
                     let streams = self.camera?.getStreams()
+                    
                     guard let stream = streams?.first else {
                         NSLog("No streams found on camera!")
+                        print("stream: \(streams)")
                         if let error = error {
                             handleError(error)
                         }
                         return
                     }
+                    
                     self.stream = stream
                     let thermalStreamer = FLIRThermalStreamer(stream: stream)
                     self.thermalStreamer = thermalStreamer
@@ -290,12 +307,12 @@ extension FLIRCameraManager: FLIRStreamDelegate {
 //                }
 //
 //                do {
-//                    // Переключение на тепловизионный режим и захват изображения
+//                    // Захват тепловизионного изображения
 //                    try self.thermalStreamer?.update()
-//                    self.thermalStreamer?.getImage().getFusion().setFusionMode
+//                    self.thermalStreamer?.getImage()
 //                    let thermalImage = self.thermalStreamer?.getImage()
 //
-//                    // Переключение на визуальный режим и захват изображения
+//                    // Захват обычного визуального изображения
 //                    try self.thermalStreamer?.update()
 //                    self.thermalStreamer?.getImage().getFusion().setFusionMode(.VISUAL_MODE)
 //                    let visualImage = self.thermalStreamer?.getImage()
@@ -307,7 +324,6 @@ extension FLIRCameraManager: FLIRStreamDelegate {
 //            }
 //        }
 //    }
-
     
 }
 

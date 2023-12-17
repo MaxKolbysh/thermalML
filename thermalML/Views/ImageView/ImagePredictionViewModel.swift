@@ -20,7 +20,8 @@ class ImagePredictionViewModel: ObservableObject {
 
     @Published var detail: String = ""
     @Published var recommendation: String = ""
-    
+    @Published var resizedImageForUI: UIImage?
+
     private let mlModel: thermalclassification_1
     
     let renderQueue = DispatchQueue.init(label: "render")
@@ -38,6 +39,7 @@ class ImagePredictionViewModel: ObservableObject {
         self.dataManager = dataManager
         self.photoInfo = photoInfo
         self.currentImage = currentImage
+        
         do {
             let configuration = MLModelConfiguration()
             configuration.computeUnits = .cpuOnly
@@ -48,6 +50,7 @@ class ImagePredictionViewModel: ObservableObject {
             fatalError("Unable to load the thermalclassification_1 model.")
         }
     }
+    
     // MARK: - Delete photo info from DB
     func deletePhotoAndInfo() {
         if let photoInfo = photoInfo {
@@ -61,6 +64,7 @@ class ImagePredictionViewModel: ObservableObject {
             dataManager.deleteImageInfo(withThermalName: photoInfo.imageThermalName ?? "")
         }
     }
+    
     // MARK: - Classify image
     func classifyImage() {
         guard let image = currentImage,
@@ -69,8 +73,9 @@ class ImagePredictionViewModel: ObservableObject {
             print("Failed to create pixel buffer from UIImage")
             return
         }
-        print("Buffer: \(buffer)")
-        
+        if let image = image.resizeImageTo(size: CGSize(width: 299, height: 299)) {
+            self.resizedImageForUI = image
+        }
         do {
             let input = thermalclassification_1Input(image: buffer)
             let output = try mlModel.prediction(input: input)
@@ -95,7 +100,7 @@ class ImagePredictionViewModel: ObservableObject {
             return
         }
         
-            // Form a recommendation based on the most probable result
+        // Form a recommendation based on the most probable result
         switch highestResult.key {
             case "hot object":
                 recommendation = "Hot object detected. Insulation check recommended."

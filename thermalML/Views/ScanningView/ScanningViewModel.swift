@@ -27,9 +27,11 @@ class ScanningViewModel: ObservableObject {
     @Published var showAlert = false
     
     @Published var isActivityIndicatorShowed: Bool = false
-
+    private var dataManager: DataManager
+    private var lastImage: UIImage?
+    private var lastImageName: String?
+    
     private var cancellables = Set<AnyCancellable>()
-
     var error: Error? {
         didSet {
             if let error = error {
@@ -42,6 +44,7 @@ class ScanningViewModel: ObservableObject {
     init(router: Router<AppRoute>, managedObjectContext: NSManagedObjectContext) {
         self.router = router
         self.managedObjectContext = managedObjectContext
+        self.dataManager = DataManager(context: managedObjectContext)
 
         cameraManager.$centerSpotText
             .compactMap { $0 }
@@ -122,8 +125,9 @@ class ScanningViewModel: ObservableObject {
             return
         }
 
-        let dataManager = DataManager(context: managedObjectContext)
-
+//        let dataManager = DataManager(context: managedObjectContext)
+        lastImage = thermalImage
+        
         if let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData),
            let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData) {
 
@@ -134,8 +138,8 @@ class ScanningViewModel: ObservableObject {
                 let imageName = fileAddtionalInfo["name"]
                 let imageSize = fileAddtionalInfo["size"]
                 let imageCreation = fileAddtionalInfo["creationDate"]
-                
-                dataManager.addImageInfo(
+                self.lastImageName = imageName
+                self.dataManager.addImageInfo(
                     imageNameAndPath: imageNameAndPath,
                     imageThermalName: imageName,
                     fileSize: imageSize,
@@ -147,5 +151,21 @@ class ScanningViewModel: ObservableObject {
     
     func goToStartPhotoGalleryView() {
         router.push(.photoGallery)
+    }
+    
+    func gotoImageView() {
+        if let currentImage = lastImage,
+            let photoInfo = fetchLastImagePhotoInfo(lastImageName: lastImageName ?? "") {
+            router.push(.imagePrediction(
+                currentImage: currentImage,
+                photoInfo: photoInfo,
+                photoFileManager: fileManager,
+                dataManager: dataManager
+            ))
+        }
+    }
+    
+    func fetchLastImagePhotoInfo(lastImageName: String) -> PhotoInfo? {
+        dataManager.getImageInfoByThermalName(thermalName: lastImageName)
     }
 }

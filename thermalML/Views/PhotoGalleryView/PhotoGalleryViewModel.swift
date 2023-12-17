@@ -11,6 +11,7 @@ import CoreData
 
 class PhotoGalleryViewModel: ObservableObject {
     @Published var photos: [PhotoInfo] = []
+    
     unowned let router: Router<AppRoute>
 
     let fileManager = PhotoFileManager.shared

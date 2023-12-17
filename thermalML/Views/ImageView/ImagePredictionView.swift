@@ -122,7 +122,8 @@ struct ImagePredictionView: View {
             BottomSheetPredictionInfoView(
                 isPredictionShow: $isPredictionShow,
                 detail: $viewModel.detail,
-                recommendation: $viewModel.recommendation
+                recommendation: $viewModel.recommendation,
+                resizedImageForUI: $viewModel.resizedImageForUI
             )
             .presentationDetents([.medium, .medium])
         }

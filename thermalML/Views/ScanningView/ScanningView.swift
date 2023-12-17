@@ -24,9 +24,10 @@ struct ScanningView: View {
     @State private var selectedImageData: Data? = nil
     
     @State private var isCameraConnected: Bool? = false
+    @State var isClassifyButtonDisable = true
     
     private var isEmulatorLoading: Bool
-    @State var isClassifyButtonDisable = true
+    
     
     init(
         router: Router<AppRoute>,
@@ -69,6 +70,7 @@ struct ScanningView: View {
             }, label: {
                 HStack {
                     Image(systemName: "camera")
+                        .foregroundColor(.white)
                 }
                 .frame(maxWidth: 50, maxHeight: 50)
                 .background(Color(red: 0, green: 122/255, blue: 255/255, opacity: 1.0))
@@ -79,13 +81,17 @@ struct ScanningView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    
+                    print("Classify tapped")
+                    viewModel.disconnectClicked()
+                    viewModel.gotoImageView()
                 }, label: {
                     HStack {
                         Image(systemName: "rectangle.and.text.magnifyingglass")
                             .padding(.leading)
+                            .foregroundStyle(.black)
                         Text("Classify")
                             .padding(.trailing)
+                            .foregroundStyle(.black)
                     }
                     .frame(maxWidth: 125, maxHeight: 50)
                     .background(Color.gray)
@@ -93,7 +99,6 @@ struct ScanningView: View {
                     .foregroundColor(.black)
                 })
                 .disabled(isClassifyButtonDisable)
-                .opacity(0.6)
             }
             .padding(.horizontal)
             .padding(.bottom, 100)
