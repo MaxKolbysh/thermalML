@@ -52,12 +52,12 @@ class ImagePredictionViewModel: ObservableObject {
     }
     
     // MARK: - Delete photo info from DB
-    func deletePhotoAndInfo() {
+    func deletePhotoAndInfo() async {
         if let photoInfo = photoInfo {
             if let imagePathArray = photoInfo.imageNameAndPath as? [String] {
                 for imagePath in imagePathArray {
                     // Delete file
-                    photoFileManager.deletePhoto(withPath: imagePath)
+                    await photoFileManager.deletePhoto(withPath: imagePath)
                 }
             }
             // Delete data from DB

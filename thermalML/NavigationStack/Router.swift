@@ -6,13 +6,49 @@
 //
 
 import SwiftUI
+//
+//final class Router<T: Hashable>: ObservableObject {
+//    @Published var paths: [T] = []
+//
+//    func push(_ path: T) {
+//        Task { @MainActor in
+//            guard paths.last != path else { return }
+//            paths.append(path)
+//        }
+//    }
+//
+//    func pop() {
+//        Task { @MainActor in
+//            paths.removeLast(1)
+//        }
+//    }
+//
+//    func pop(to: T) {
+//        Task { @MainActor in
+//            guard let found = paths.firstIndex(where: { $0 == to }) else { return }
+//            let numToPop = (found ..< paths.endIndex).count - 1
+//            paths.removeLast(numToPop)
+//        }
+//    }
+//
+//    func popToRoot() {
+//        Task { @MainActor in
+//            paths.removeAll()
+//        }
+//    }
+//}
+
 
 final class Router<T: Hashable>: ObservableObject {
     @Published var paths: [T] = []
-
+    private var history: [T] = []
+    
     func push(_ path: T) {
         Task { @MainActor in
             guard paths.last != path else { return }
+            if let lastPath = paths.last {
+                history.append(lastPath)
+            }
             paths.append(path)
         }
     }
@@ -20,6 +56,7 @@ final class Router<T: Hashable>: ObservableObject {
     func pop() {
         Task { @MainActor in
             paths.removeLast(1)
+            history.removeLast()
         }
     }
 
@@ -28,12 +65,27 @@ final class Router<T: Hashable>: ObservableObject {
             guard let found = paths.firstIndex(where: { $0 == to }) else { return }
             let numToPop = (found ..< paths.endIndex).count - 1
             paths.removeLast(numToPop)
+            if found > 0 {
+                history.removeSubrange((found - 1) ..< history.endIndex)
+            }
         }
     }
 
     func popToRoot() {
         Task { @MainActor in
             paths.removeAll()
+            history.removeAll()
         }
+    }
+    
+    func popToPrevious() {
+        Task { @MainActor in
+            guard let previousPath = history.popLast() else { return }
+            pop(to: previousPath)
+        }
+    }
+    
+    func previousPath() -> T? {
+        return history.last
     }
 }

@@ -118,7 +118,7 @@ class ScanningViewModel: ObservableObject {
         cameraManager.ironPaletteClicked()
     }
     
-    func savePhotos(thermalImage: UIImage, originalImage: UIImage) {
+    func savePhotos(thermalImage: UIImage, originalImage: UIImage) async {
         guard let thermalImageData = thermalImage.jpegData(compressionQuality: 1),
               let originalImageData = originalImage.jpegData(compressionQuality: 1) else {
             print("Не удалось получить данные изображений")
@@ -128,10 +128,10 @@ class ScanningViewModel: ObservableObject {
 //        let dataManager = DataManager(context: managedObjectContext)
         lastImage = thermalImage
         
-        if let thermalPhotoInfo = fileManager.savePhoto(isOriginal: false, thermalImageData),
-           let originalPhotoInfo = fileManager.savePhoto(isOriginal: true, originalImageData) {
+        if let thermalPhotoInfo = await fileManager.savePhoto(isOriginal: false, thermalImageData),
+           let originalPhotoInfo = await fileManager.savePhoto(isOriginal: true, originalImageData) {
 
-            let fileAddtionalInfo = fileManager.fetchPhotoInfo(withPath: thermalPhotoInfo)
+            let fileAddtionalInfo = await fileManager.fetchPhotoInfo(withPath: thermalPhotoInfo)
             if !fileAddtionalInfo.isEmpty {
                 let imageNameAndPath = [thermalPhotoInfo, originalPhotoInfo]
                 

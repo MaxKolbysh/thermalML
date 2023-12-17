@@ -62,7 +62,9 @@ struct ScanningView: View {
             
             Button(action: {
                 if let image = viewModel.thermalImage {
-                    viewModel.savePhotos(thermalImage: image, originalImage: image)
+                    Task {
+                        await viewModel.savePhotos(thermalImage: image, originalImage: image)
+                    }
                 }
                 if isClassifyButtonDisable {
                     isClassifyButtonDisable = false

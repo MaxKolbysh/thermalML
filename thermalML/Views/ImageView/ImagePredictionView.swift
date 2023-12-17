@@ -136,8 +136,10 @@ struct ImagePredictionView: View {
                 },
                 secondaryButton: .destructive(Text("Yes")) {
                     isDeleteAllow = false
-                    viewModel.deletePhotoAndInfo()
-                    viewModel.router.pop(to: .photoGallery)
+                    Task {
+                        await viewModel.deletePhotoAndInfo()
+                    }
+                    viewModel.router.popToPrevious()
                 }
             )
         }

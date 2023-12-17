@@ -26,18 +26,25 @@ class PhotoGalleryViewModel: ObservableObject {
         self.router = router
         self.managedObjectContext = managedObjectContext
         self.dataManager = DataManager(context: managedObjectContext)
-        loadPhotosInfoFromDB()
+        Task {
+            await loadPhotosInfoFromDB()
+        }
     }
     
     // MARK: - Get photo info from DB
-    func loadPhotosInfoFromDB() {
-        self.photos = dataManager.getAllImages()
+    func loadPhotosInfoFromDB() async {
+        let loadedPhotos = dataManager.getAllImages()
         print("Загружено фотографий: \(photos.count)")
+        
+        DispatchQueue.main.async {
+            self.photos = loadedPhotos
+        }
+        
         for photo in photos {
             if let imagePathArray = photo.imageNameAndPath as? [String] {
                 for imagePath in imagePathArray {
                     print("Путь к изображению: \(imagePath)")
-                    if let photoData = fileManager.fetchPhoto(withPath: imagePath),
+                    if let photoData = await fileManager.fetchPhoto(withPath: imagePath),
                        let image = UIImage(data: photoData) {
                     } else {
                         print("Ошибка загрузки фотографии по пути: \(imagePath)")
@@ -47,9 +54,9 @@ class PhotoGalleryViewModel: ObservableObject {
         }
     }
     
-    func loadPhotoFromDisk(from path: String) -> UIImage? {
+    func loadPhotoFromDisk(from path: String) async -> UIImage? {
         print("Загрузка изображения по пути: \(path)")
-        if let photoData = fileManager.fetchPhoto(withPath: path),
+        if let photoData = await fileManager.fetchPhoto(withPath: path),
            let image = UIImage(data: photoData) {
             return image
         } else {
@@ -57,13 +64,16 @@ class PhotoGalleryViewModel: ObservableObject {
             return nil
         }
     }
-    
-    func gotoImageView(currentImage: UIImage, photoInfo: PhotoInfo) {
-        router.push(.imagePrediction(
-            currentImage: currentImage,
-            photoInfo: photoInfo,
-            photoFileManager: fileManager,
-            dataManager: dataManager
-        ))
+    func gotoImageView(imagePath: String, photoInfo: PhotoInfo) async {
+        if let image = await loadPhotoFromDisk(from: imagePath) {
+            router.push(.imagePrediction(
+                currentImage: image,
+                photoInfo: photoInfo,
+                photoFileManager: fileManager,
+                dataManager: dataManager
+            ))
+        } else {
+            print("Не удалось загрузить изображение по пути: \(imagePath)")
+        }
     }
 }
