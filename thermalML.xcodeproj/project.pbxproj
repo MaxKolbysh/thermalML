@@ -35,6 +35,7 @@
 		63D7CC002B139D1200BB54F3 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */; };
 		63D7CC022B139D5200BB54F3 /* ScanningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */; };
 		63D7CC042B139F3200BB54F3 /* ScanningCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */; };
+		993B1E5F2B3051E80090F94F /* log.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 993B1E5E2B3051E80090F94F /* log.rtf */; };
 		997F174B2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; };
 		997F174C2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		997F174D2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; };
@@ -125,6 +126,7 @@
 		63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
 		63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewModel.swift; sourceTree = "<group>"; };
 		63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningCameraView.swift; sourceTree = "<group>"; };
+		993B1E5E2B3051E80090F94F /* log.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = log.rtf; sourceTree = "<group>"; };
 		997F174A2B1F70C4009A3D28 /* thermal ML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "thermal ML"; path = ..; sourceTree = "<group>"; };
 		99B5F0162B1F69AE00FF8377 /* thermalML.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = thermalML.entitlements; sourceTree = "<group>"; };
 		D7DFC8BD2B0B889500601989 /* thermalML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thermalML.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +329,7 @@
 		D7DFC8B42B0B889500601989 = {
 			isa = PBXGroup;
 			children = (
+				993B1E5E2B3051E80090F94F /* log.rtf */,
 				D7DFC8BF2B0B889500601989 /* thermalML */,
 				D7DFC8BE2B0B889500601989 /* Products */,
 				63D7CBDC2B13956600BB54F3 /* Frameworks */,
@@ -427,6 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				993B1E5F2B3051E80090F94F /* log.rtf in Resources */,
 				D7DFC8C82B0B889900601989 /* Preview Assets.xcassets in Resources */,
 				D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */,
 			);
@@ -603,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
-				DEVELOPMENT_TEAM = RW8DRR2459;
+				DEVELOPMENT_TEAM = FXJ4W3YC8P;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -643,7 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
-				DEVELOPMENT_TEAM = RW8DRR2459;
+				DEVELOPMENT_TEAM = FXJ4W3YC8P;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

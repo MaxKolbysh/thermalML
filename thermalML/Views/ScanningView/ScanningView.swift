@@ -25,6 +25,7 @@ struct ScanningView: View {
     
     @State private var isCameraConnected: Bool? = false
     @State var isClassifyButtonDisable = true
+    @State private var flashOpacity: Double = 0.0
     
     private var isEmulatorLoading: Bool
     
@@ -45,12 +46,15 @@ struct ScanningView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
+            
             Rectangle()
                 .background(Color.clear)
             ScanningCameraView(thermalImage: $viewModel.thermalImage)
                 .frame(
                     width: UIScreen.main.bounds.width,
                     height: UIScreen.main.bounds.height
+                ).overlay(
+                    Color.black.opacity(flashOpacity)
                 )
             
             if viewModel.isActivityIndicatorShowed {
@@ -69,6 +73,16 @@ struct ScanningView: View {
                 if isClassifyButtonDisable {
                     isClassifyButtonDisable = false
                 }
+                withAnimation(.linear(duration: 0.05)) {
+                    flashOpacity = 1.0
+                    print("Flash flash")
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    withAnimation(.linear(duration: 0.3)) {
+                        flashOpacity = 0.0
+                        print("Flash should now fade out")
+                    }
+                }
             }, label: {
                 HStack {
                     Image(systemName: "camera")
@@ -84,7 +98,7 @@ struct ScanningView: View {
                 Spacer()
                 Button(action: {
                     print("Classify tapped")
-                    viewModel.disconnectClicked()
+//                    viewModel.disconnectClicked()
                     viewModel.gotoImageView()
                 }, label: {
                     HStack {
@@ -116,8 +130,20 @@ struct ScanningView: View {
                 print("isCameraConnected: \($isCameraConnected)")
             } else {
                 print("Camera clicked")
-                viewModel.isActivityIndicatorShowed = true
+                
+                viewModel.isConnected()
                 viewModel.connectDeviceClicked()
+//                if let isConnected = viewModel.isCameraConnected {
+//                            if !isConnected {
+//                                viewModel.connectDeviceClicked()
+//                                viewModel.isActivityIndicatorShowed = true
+//                                
+//                            }
+//                        } else {
+//                            viewModel.connectDeviceClicked()
+//                            
+//                        }
+                
             }
         }
         .navigationBarItems(
