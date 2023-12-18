@@ -23,12 +23,10 @@ struct ScanningView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     
-    @State private var isCameraConnected: Bool? = false
     @State var isClassifyButtonDisable = true
     @State private var flashOpacity: Double = 0.0
     
     private var isEmulatorLoading: Bool
-    
     
     init(
         router: Router<AppRoute>,
@@ -123,34 +121,26 @@ struct ScanningView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear {
             if isEmulatorLoading {
-                print("Emulator clicked")
-                print("isConnecting... \(viewModel.isActivityIndicatorShowed)")
-                viewModel.connectEmulatorClicked()
-                viewModel.isConnected()
-                print("isCameraConnected: \($isCameraConnected)")
+                print("isCameraConnected: \(viewModel.isCameraConnected)")
+                if !viewModel.isCameraConnected {
+                    viewModel.connectEmulatorClicked()
+                    print("isCameraConnected: \(viewModel.isCameraConnected)")
+                }
             } else {
-                print("Camera clicked")
-                
-                viewModel.isConnected()
-                viewModel.connectDeviceClicked()
-//                if let isConnected = viewModel.isCameraConnected {
-//                            if !isConnected {
-//                                viewModel.connectDeviceClicked()
-//                                viewModel.isActivityIndicatorShowed = true
-//                                
-//                            }
-//                        } else {
-//                            viewModel.connectDeviceClicked()
-//                            
-//                        }
-                
+                print("isCameraConnected: \(viewModel.isCameraConnected)")
+                if !viewModel.isCameraConnected {
+                    
+                    viewModel.isActivityIndicatorShowed = true
+                    viewModel.connectDeviceClicked()
+                    print("isCameraConnected: \(viewModel.isCameraConnected)")
+                }
             }
         }
         .navigationBarItems(
             trailing:
                 Button(
                     action: {
-                        viewModel.disconnectClicked()
+//                        viewModel.disconnectClicked()
                         viewModel.goToStartPhotoGalleryView()
                     }) {
                     Image(systemName: "photo")

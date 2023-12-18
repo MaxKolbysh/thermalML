@@ -13,14 +13,16 @@ class ScanningViewModel: ObservableObject {
     private var managedObjectContext: NSManagedObjectContext
 
     unowned let router: Router<AppRoute>
-    var cameraManager = FLIRCameraManager()
+    var cameraManager = FLIRCameraManager.shared
     let fileManager = PhotoFileManager.shared
 
     @Published var centerSpotText: String = ""
     @Published var distanceText: String = ""
     @Published var distanceValue: Float = 0.0
     @Published var thermalImage: UIImage?
-    @Published var isCameraConnected: Bool?
+    var isCameraConnected: Bool {
+        UserDefaults.standard.bool(forKey: "isCameraConnected")
+    }
     @Published var isEmulatorLoading: Bool?
 
     @Published var errorMessage: String?
@@ -49,21 +51,27 @@ class ScanningViewModel: ObservableObject {
         cameraManager.$centerSpotText
             .compactMap { $0 }
             .sink { [weak self] value in
-                self?.centerSpotText = value
+                DispatchQueue.main.async {
+                    self?.centerSpotText = value
+                }
             }
             .store(in: &cancellables)
 
         cameraManager.$distanceText
             .compactMap { $0 }
             .sink { [weak self] value in
-                self?.distanceText = value
+                DispatchQueue.main.async {
+                    self?.distanceText = value
+                }
             }
             .store(in: &cancellables)
         
         cameraManager.$distanceValue
             .compactMap { $0 }
             .sink { [weak self] value in
-                self?.distanceValue = value
+                DispatchQueue.main.async {
+                    self?.distanceValue = value
+                }
             }
             .store(in: &cancellables)
         
@@ -73,25 +81,17 @@ class ScanningViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        cameraManager.$isCameraConnected
+        cameraManager.$error
             .compactMap { $0 }
-            .sink { [weak self] isConnected in
-                self?.isActivityIndicatorShowed = !isConnected
-                print("isActivityIndicatorShowed ===== \(self?.isActivityIndicatorShowed)")
+            .sink { [weak self] error in
+                self?.errorMessage = error.localizedDescription
+                self?.showAlert = true
             }
             .store(in: &cancellables)
-        
-        cameraManager.$error
-                .compactMap { $0 }
-                .sink { [weak self] error in
-                    self?.errorMessage = error.localizedDescription
-                    self?.showAlert = true
-                }
-                .store(in: &cancellables)
     }
     
     deinit {
-        cameraManager.disconnectClicked()
+//        cameraManager.disconnectClicked()
         cancellables.forEach { $0.cancel() }
     }
     
@@ -110,9 +110,9 @@ class ScanningViewModel: ObservableObject {
         cameraManager.connectEmulatorClicked()
     }
     
-    func isConnected() {
-        cameraManager.isConnected()
-    }
+//    func isConnected() {
+//        cameraManager.isConnected()
+//    }
     
     func ironPaletteClicked() {
         cameraManager.ironPaletteClicked()
