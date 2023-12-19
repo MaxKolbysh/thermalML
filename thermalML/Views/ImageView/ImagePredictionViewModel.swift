@@ -44,7 +44,6 @@ class ImagePredictionViewModel: ObservableObject {
             let configuration = MLModelConfiguration()
             configuration.computeUnits = .cpuOnly
             mlModel = try thermalclassification_1(configuration: configuration)
-            print("Model loaded successfully")
         } catch {
             print("Error loading model: \(error)")
             fatalError("Unable to load the thermalclassification_1 model.")
@@ -79,8 +78,6 @@ class ImagePredictionViewModel: ObservableObject {
         do {
             let input = thermalclassification_1Input(image: buffer)
             let output = try mlModel.prediction(input: input)
-            print("Classified image as: \(output.target)")
-            print("Prediction probabilities: \(output.targetProbability)")
             classificationResults = output.targetProbability
             let results = output.targetProbability.sorted { $0.1 > $1.1 }
             detail = results.map { (key, value) in

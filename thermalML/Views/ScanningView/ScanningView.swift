@@ -96,7 +96,6 @@ struct ScanningView: View {
                 Spacer()
                 Button(action: {
                     print("Classify tapped")
-//                    viewModel.disconnectClicked()
                     viewModel.gotoImageView()
                 }, label: {
                     HStack {
@@ -121,18 +120,13 @@ struct ScanningView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear {
             if isEmulatorLoading {
-                print("isCameraConnected: \(viewModel.isCameraConnected)")
                 if !viewModel.isCameraConnected {
                     viewModel.connectEmulatorClicked()
-                    print("isCameraConnected: \(viewModel.isCameraConnected)")
                 }
             } else {
-                print("isCameraConnected: \(viewModel.isCameraConnected)")
                 if !viewModel.isCameraConnected {
-                    
                     viewModel.isActivityIndicatorShowed = true
                     viewModel.connectDeviceClicked()
-                    print("isCameraConnected: \(viewModel.isCameraConnected)")
                 }
             }
         }
@@ -140,7 +134,6 @@ struct ScanningView: View {
             trailing:
                 Button(
                     action: {
-//                        viewModel.disconnectClicked()
                         viewModel.goToStartPhotoGalleryView()
                     }) {
                     Image(systemName: "photo")

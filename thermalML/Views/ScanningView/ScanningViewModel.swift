@@ -10,25 +10,26 @@ import Combine
 import CoreData
 
 class ScanningViewModel: ObservableObject {
-    private var managedObjectContext: NSManagedObjectContext
-
     unowned let router: Router<AppRoute>
-    var cameraManager = FLIRCameraManager.shared
-    let fileManager = PhotoFileManager.shared
 
     @Published var centerSpotText: String = ""
     @Published var distanceText: String = ""
     @Published var distanceValue: Float = 0.0
     @Published var thermalImage: UIImage?
-    var isCameraConnected: Bool {
-        UserDefaults.standard.bool(forKey: "isCameraConnected")
-    }
     @Published var isEmulatorLoading: Bool?
 
     @Published var errorMessage: String?
     @Published var showAlert = false
-    
     @Published var isActivityIndicatorShowed: Bool = false
+
+    let fileManager = PhotoFileManager.shared
+
+    var cameraManager = FLIRCameraManager.shared
+    var isCameraConnected: Bool {
+        UserDefaults.standard.bool(forKey: "isCameraConnected")
+    }
+
+    private var managedObjectContext: NSManagedObjectContext
     private var dataManager: DataManager
     private var lastImage: UIImage?
     private var lastImageName: String?
@@ -91,7 +92,6 @@ class ScanningViewModel: ObservableObject {
     }
     
     deinit {
-//        cameraManager.disconnectClicked()
         cancellables.forEach { $0.cancel() }
     }
     
@@ -106,13 +106,8 @@ class ScanningViewModel: ObservableObject {
     }
     
     func connectEmulatorClicked() {
-        print("connectEmulatorClicked")
         cameraManager.connectEmulatorClicked()
     }
-    
-//    func isConnected() {
-//        cameraManager.isConnected()
-//    }
     
     func ironPaletteClicked() {
         cameraManager.ironPaletteClicked()
@@ -125,7 +120,6 @@ class ScanningViewModel: ObservableObject {
             return
         }
 
-//        let dataManager = DataManager(context: managedObjectContext)
         lastImage = thermalImage
         
         if let thermalPhotoInfo = await fileManager.savePhoto(isOriginal: false, thermalImageData),

@@ -51,7 +51,6 @@ class DataManager {
         }
         do {
             try context.save()
-            print("Информация об изображении сохранена")
         } catch {
             print("Ошибка при сохранении: \(error)")
         }
@@ -100,7 +99,6 @@ class DataManager {
         do {
             let results = try context.fetch(request)
             if let firstResult = results.first {
-                print("Найдено изображение с тепловым именем: \(thermalName)")
                 return firstResult
             } else {
                 print("Изображение с тепловым именем \(thermalName) не найдено")

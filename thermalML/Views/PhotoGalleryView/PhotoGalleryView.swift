@@ -33,7 +33,7 @@ struct PhotoGalleryView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Text("Gallery is empty")
+                        Text("The gallery is empty")
                             .font(.title)
                             .foregroundColor(.gray)
                         Spacer()
@@ -88,62 +88,3 @@ struct PhotoGalleryView: View {
         }
     }
 }
-
-//var body: some View {
-//    GeometryReader { geometry in
-//        ScrollView {
-//            if viewModel.photos.isEmpty {
-//                VStack {
-//                    Spacer()
-//                    HStack {
-//                        Spacer()
-//                        Text("Gallery is empty")
-//                            .font(.title)
-//                            .foregroundColor(.gray)
-//                        Spacer()
-//                    }
-//                    Spacer()
-//                }
-//            } else {
-//                
-//                LazyVGrid(columns: [
-//                    GridItem(.fixed((geometry.size.width - 32) / 3)),
-//                    GridItem(.fixed((geometry.size.width - 32) / 3)),
-//                    GridItem(.fixed((geometry.size.width - 32) / 3))
-//                ], spacing: 8) {
-//                    ForEach(viewModel.photos, id: \.self) { photo in
-//                        if let imagePathArray = photo.imageNameAndPath as? [String],
-//                           let firstImagePath = imagePathArray.first
-//                        {
-//                        Button {
-//                            Task {
-//                                await viewModel.gotoImageView(imagePath: firstImagePath, photoInfo: photo)
-//                            }
-//                        } label: {
-//                            ZStack {
-//                                AsyncLocalImage(imagePath: firstImagePath, loadImage: viewModel.loadPhotoFromDisk)
-//                                    .frame(width: (geometry.size.width - 32) / 3, height: (geometry.size.width - 32) / 3)
-//                                VStack {
-//                                    Spacer()
-//                                    Text(photo.imageThermalName ?? "")
-//                                        .foregroundStyle(.white)
-//                                        .font(.system(size: 10, weight: .light))
-//                                        .padding(.bottom, 10)
-//                                }
-//                            }
-//                        }
-//                        }
-//                    }
-//                }
-//                
-//            }
-//        }
-//        .navigationTitle(Text("Gallery"))
-//        .onAppear {
-//            Task {
-//                await viewModel.loadPhotosInfoFromDB()
-//            }
-//        }
-//    }
-//    
-//}

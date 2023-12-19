@@ -29,8 +29,6 @@ struct StartConnectionView: View {
                 .font(.system(size: 17, weight: .black))
             VStack(alignment: .leading) {
                 Text("1. Switch on the flir camera")
-                     // Add padding below this text
-
                 Text("2. Then click start connecting")
             }.padding(.bottom, 30)
             Spacer()

@@ -34,7 +34,6 @@ class PhotoGalleryViewModel: ObservableObject {
     // MARK: - Get photo info from DB
     func loadPhotosInfoFromDB() async {
         let loadedPhotos = dataManager.getAllImages()
-        print("Загружено фотографий: \(photos.count)")
         
         DispatchQueue.main.async {
             self.photos = loadedPhotos
@@ -43,7 +42,6 @@ class PhotoGalleryViewModel: ObservableObject {
         for photo in photos {
             if let imagePathArray = photo.imageNameAndPath as? [String] {
                 for imagePath in imagePathArray {
-                    print("Путь к изображению: \(imagePath)")
                     if let photoData = await fileManager.fetchPhoto(withPath: imagePath),
                        let image = UIImage(data: photoData) {
                     } else {
@@ -55,7 +53,6 @@ class PhotoGalleryViewModel: ObservableObject {
     }
     
     func loadPhotoFromDisk(from path: String) async -> UIImage? {
-        print("Загрузка изображения по пути: \(path)")
         if let photoData = await fileManager.fetchPhoto(withPath: path),
            let image = UIImage(data: photoData) {
             return image
