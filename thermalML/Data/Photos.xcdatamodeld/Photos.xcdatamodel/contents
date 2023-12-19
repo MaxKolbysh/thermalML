@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G5048d" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="PhotoInfo" representedClassName="PhotoInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="decriptionText" optional="YES" attributeType="String"/>
+        <attribute name="emission" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fileDateCreation" optional="YES" attributeType="String"/>
+        <attribute name="fileSize" optional="YES" attributeType="String"/>
+        <attribute name="imageNameAndPath" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="imageThermalName" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="temperatureHigh" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureLow" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureOutside" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureUnit" optional="YES" attributeType="String"/>
+        <relationship name="colorResults" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PredictionColorResult" inverseName="photoInfo" inverseEntity="PredictionColorResult"/>
+        <relationship name="predictionResults" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PredictionObjectResult" inverseName="photoInfo" inverseEntity="PredictionObjectResult"/>
+    </entity>
+    <entity name="PredictionColorResult" representedClassName="PredictionColorResult" syncable="YES" codeGenerationType="class">
+        <attribute name="confidenceScore" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="objectType" optional="YES" attributeType="String"/>
+        <relationship name="photoInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoInfo" inverseName="colorResults" inverseEntity="PhotoInfo"/>
+    </entity>
+    <entity name="PredictionObjectResult" representedClassName="PredictionObjectResult" syncable="YES" codeGenerationType="class">
+        <attribute name="confidenceScroe" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="objectType" optional="YES" attributeType="String"/>
+        <relationship name="photoInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoInfo" inverseName="predictionResults" inverseEntity="PhotoInfo"/>
+    </entity>
+</model>

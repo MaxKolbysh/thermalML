@@ -7,21 +7,132 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* thermalMLApp.swift */; };
-		D7DFC8C32B0B889500601989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C22B0B889500601989 /* ContentView.swift */; };
+		6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 638719892B127238008C7F54 /* thermalclassification 1.mlpackage */; };
+		6387198E2B127909008C7F54 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387198D2B127909008C7F54 /* AppRoute.swift */; };
+		638719902B12796B008C7F54 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387198F2B12796B008C7F54 /* Router.swift */; };
+		638719922B1279B6008C7F54 /* NavViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719912B1279B6008C7F54 /* NavViewBuilder.swift */; };
+		638719942B1279F9008C7F54 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719932B1279F9008C7F54 /* MainFlow.swift */; };
+		638719962B127A8A008C7F54 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719952B127A8A008C7F54 /* MainAppView.swift */; };
+		638719982B127B91008C7F54 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638719972B127B91008C7F54 /* WelcomeView.swift */; };
+		6387199D2B128610008C7F54 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387199C2B128610008C7F54 /* WelcomeViewModel.swift */; };
+		639DA3872B2A2B5600C265F2 /* Photos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3852B2A2B5600C265F2 /* Photos.xcdatamodeld */; };
+		639DA38A2B2A2B7B00C265F2 /* PhotoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3892B2A2B7B00C265F2 /* PhotoFileManager.swift */; };
+		639DA38C2B2A2BC400C265F2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA38B2B2A2BC400C265F2 /* DataManager.swift */; };
+		639DA38E2B2A4F4D00C265F2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA38D2B2A4F4D00C265F2 /* PersistenceController.swift */; };
+		639DA39C2B2ABB7A00C265F2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA39B2B2ABB7A00C265F2 /* LocationManager.swift */; };
+		639DA39F2B2ABEAB00C265F2 /* PhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA39E2B2ABEAB00C265F2 /* PhotoGalleryView.swift */; };
+		639DA3A12B2ABEC000C265F2 /* PhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A02B2ABEC000C265F2 /* PhotoGalleryViewModel.swift */; };
+		639DA3A42B2CDDF000C265F2 /* ImagePredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A32B2CDDF000C265F2 /* ImagePredictionView.swift */; };
+		639DA3A62B2CDDFC00C265F2 /* ImagePredictionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A52B2CDDFC00C265F2 /* ImagePredictionViewModel.swift */; };
+		639DA3A92B2DA98100C265F2 /* BottomSheetImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3A82B2DA98100C265F2 /* BottomSheetImageInfoView.swift */; };
+		639DA3AC2B2DD54F00C265F2 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3AB2B2DD54F00C265F2 /* ActivityView.swift */; };
+		639DA3AF2B2DF6D200C265F2 /* BottomSheetPredictionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3AE2B2DF6D200C265F2 /* BottomSheetPredictionInfoView.swift */; };
+		639DA3B12B2F0F6A00C265F2 /* AsyncLocalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DA3B02B2F0F6A00C265F2 /* AsyncLocalImage.swift */; };
+		63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */; };
+		63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */; };
+		63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */; };
+		63D7CBFE2B13992B00BB54F3 /* FLIRCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBFD2B13992B00BB54F3 /* FLIRCameraManager.swift */; };
+		63D7CC002B139D1200BB54F3 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */; };
+		63D7CC022B139D5200BB54F3 /* ScanningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */; };
+		63D7CC042B139F3200BB54F3 /* ScanningCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */; };
+		993B1E5F2B3051E80090F94F /* log.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 993B1E5E2B3051E80090F94F /* log.rtf */; };
+		997F174B2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; };
+		997F174C2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F174D2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; };
+		997F174E2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F174F2B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */; };
+		997F17502B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17512B1F70D1009A3D28 /* libavformat.58.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */; };
+		997F17522B1F70D1009A3D28 /* libavformat.58.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17532B1F70D1009A3D28 /* libavutil.56.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */; };
+		997F17542B1F70D1009A3D28 /* libavutil.56.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17552B1F70D1009A3D28 /* liblive666.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */; };
+		997F17562B1F70D1009A3D28 /* liblive666.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17572B1F70D1009A3D28 /* libswresample.3.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */; };
+		997F17582B1F70D1009A3D28 /* libswresample.3.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F17592B1F70D1009A3D28 /* libswscale.5.dylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */; };
+		997F175A2B1F70D1009A3D28 /* libswscale.5.dylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F175B2B1F70D1009A3D28 /* MeterLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDE2B13956600BB54F3 /* MeterLink.framework */; };
+		997F175C2B1F70D1009A3D28 /* MeterLink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBDE2B13956600BB54F3 /* MeterLink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997F175D2B1F70D1009A3D28 /* ThermalSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */; };
+		997F175E2B1F70D1009A3D28 /* ThermalSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7DFC8C12B0B889500601989 /* ThermalMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */; };
 		D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C42B0B889900601989 /* Assets.xcassets */; };
 		D7DFC8C82B0B889900601989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */; };
-		D7DFC8CF2B0BB9F900601989 /* thermalclassification 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */; };
 		D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		997F175F2B1F70D1009A3D28 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				997F174C2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Embed Frameworks */,
+				997F174E2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Embed Frameworks */,
+				997F17522B1F70D1009A3D28 /* libavformat.58.dylib.framework in Embed Frameworks */,
+				997F17502B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Embed Frameworks */,
+				997F17542B1F70D1009A3D28 /* libavutil.56.dylib.framework in Embed Frameworks */,
+				997F17562B1F70D1009A3D28 /* liblive666.dylib.framework in Embed Frameworks */,
+				997F175A2B1F70D1009A3D28 /* libswscale.5.dylib.framework in Embed Frameworks */,
+				997F175E2B1F70D1009A3D28 /* ThermalSDK.framework in Embed Frameworks */,
+				997F175C2B1F70D1009A3D28 /* MeterLink.framework in Embed Frameworks */,
+				997F17582B1F70D1009A3D28 /* libswresample.3.dylib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		638719892B127238008C7F54 /* thermalclassification 1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "thermalclassification 1.mlpackage"; sourceTree = "<group>"; };
+		6387198D2B127909008C7F54 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		6387198F2B12796B008C7F54 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		638719912B1279B6008C7F54 /* NavViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewBuilder.swift; sourceTree = "<group>"; };
+		638719932B1279F9008C7F54 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
+		638719952B127A8A008C7F54 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		638719972B127B91008C7F54 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		6387199C2B128610008C7F54 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		639DA3862B2A2B5600C265F2 /* Photos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photos.xcdatamodel; sourceTree = "<group>"; };
+		639DA3892B2A2B7B00C265F2 /* PhotoFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFileManager.swift; sourceTree = "<group>"; };
+		639DA38B2B2A2BC400C265F2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		639DA38D2B2A4F4D00C265F2 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		639DA39B2B2ABB7A00C265F2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		639DA39E2B2ABEAB00C265F2 /* PhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryView.swift; sourceTree = "<group>"; };
+		639DA3A02B2ABEC000C265F2 /* PhotoGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewModel.swift; sourceTree = "<group>"; };
+		639DA3A32B2CDDF000C265F2 /* ImagePredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictionView.swift; sourceTree = "<group>"; };
+		639DA3A52B2CDDFC00C265F2 /* ImagePredictionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictionViewModel.swift; sourceTree = "<group>"; };
+		639DA3A82B2DA98100C265F2 /* BottomSheetImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetImageInfoView.swift; sourceTree = "<group>"; };
+		639DA3AB2B2DD54F00C265F2 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		639DA3AE2B2DF6D200C265F2 /* BottomSheetPredictionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPredictionInfoView.swift; sourceTree = "<group>"; };
+		639DA3B02B2F0F6A00C265F2 /* AsyncLocalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncLocalImage.swift; sourceTree = "<group>"; };
+		63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionView.swift; sourceTree = "<group>"; };
+		63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConnectionViewModel.swift; sourceTree = "<group>"; };
+		63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetInfoView.swift; sourceTree = "<group>"; };
+		63D7CBDB2B13939400BB54F3 /* FLIROneCameraSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = FLIROneCameraSwift.entitlements; path = ../../../FLIROneCameraSwift/FLIROneCameraSwift/FLIROneCameraSwift.entitlements; sourceTree = "<group>"; };
+		63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = liblive666.dylib.framework; sourceTree = "<group>"; };
+		63D7CBDE2B13956600BB54F3 /* MeterLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MeterLink.framework; sourceTree = "<group>"; };
+		63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libavdevice.58.dylib.framework; sourceTree = "<group>"; };
+		63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ThermalSDK.framework; sourceTree = "<group>"; };
+		63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libswscale.5.dylib.framework; sourceTree = "<group>"; };
+		63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libavutil.56.dylib.framework; sourceTree = "<group>"; };
+		63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libavformat.58.dylib.framework; sourceTree = "<group>"; };
+		63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libavfilter.7.dylib.framework; sourceTree = "<group>"; };
+		63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libavcodec.58.dylib.framework; sourceTree = "<group>"; };
+		63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libswresample.3.dylib.framework; sourceTree = "<group>"; };
+		63D7CBFC2B13987600BB54F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63D7CBFD2B13992B00BB54F3 /* FLIRCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLIRCameraManager.swift; sourceTree = "<group>"; };
+		63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
+		63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewModel.swift; sourceTree = "<group>"; };
+		63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningCameraView.swift; sourceTree = "<group>"; };
+		993B1E5E2B3051E80090F94F /* log.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = log.rtf; sourceTree = "<group>"; };
+		997F174A2B1F70C4009A3D28 /* thermal ML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "thermal ML"; path = ..; sourceTree = "<group>"; };
+		99B5F0162B1F69AE00FF8377 /* thermalML.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = thermalML.entitlements; sourceTree = "<group>"; };
 		D7DFC8BD2B0B889500601989 /* thermalML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thermalML.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7DFC8C02B0B889500601989 /* thermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thermalMLApp.swift; sourceTree = "<group>"; };
-		D7DFC8C22B0B889500601989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalMLApp.swift; sourceTree = "<group>"; };
 		D7DFC8C42B0B889900601989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7DFC8C72B0B889900601989 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "thermalclassification 1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,17 +141,198 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997F174B2B1F70D1009A3D28 /* libavcodec.58.dylib.framework in Frameworks */,
+				997F174D2B1F70D1009A3D28 /* libavdevice.58.dylib.framework in Frameworks */,
+				997F17512B1F70D1009A3D28 /* libavformat.58.dylib.framework in Frameworks */,
+				997F174F2B1F70D1009A3D28 /* libavfilter.7.dylib.framework in Frameworks */,
+				997F17532B1F70D1009A3D28 /* libavutil.56.dylib.framework in Frameworks */,
+				997F17552B1F70D1009A3D28 /* liblive666.dylib.framework in Frameworks */,
+				997F17592B1F70D1009A3D28 /* libswscale.5.dylib.framework in Frameworks */,
+				997F175D2B1F70D1009A3D28 /* ThermalSDK.framework in Frameworks */,
+				997F175B2B1F70D1009A3D28 /* MeterLink.framework in Frameworks */,
+				997F17572B1F70D1009A3D28 /* libswresample.3.dylib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6387197F2B1265D9008C7F54 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				638719892B127238008C7F54 /* thermalclassification 1.mlpackage */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
+		638719802B1265F6008C7F54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		638719812B126613008C7F54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3AD2B2DF69800C265F2 /* BottomSheetPredictionInfoView */,
+				639DA3AA2B2DD53400C265F2 /* ActivityView */,
+				639DA3A72B2DA94F00C265F2 /* BottomSheetImageInfoView */,
+				639DA3A22B2CDDD700C265F2 /* ImageView */,
+				639DA39D2B2ABE6400C265F2 /* PhotoGalleryView */,
+				63D7CBD82B13893C00BB54F3 /* BottomSheetInfoView */,
+				63D7CBD22B137D0800BB54F3 /* StartConnectionView */,
+				6387199B2B1285DE008C7F54 /* WelcomeView */,
+				638719822B12661F008C7F54 /* ScanningView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		638719822B12661F008C7F54 /* ScanningView */ = {
+			isa = PBXGroup;
+			children = (
+				63D7CBFF2B139D1200BB54F3 /* ScanningView.swift */,
+				63D7CC012B139D5200BB54F3 /* ScanningViewModel.swift */,
+				63D7CC032B139F3200BB54F3 /* ScanningCameraView.swift */,
+			);
+			path = ScanningView;
+			sourceTree = "<group>";
+		};
+		6387198B2B12789F008C7F54 /* NavigationStack */ = {
+			isa = PBXGroup;
+			children = (
+				6387198F2B12796B008C7F54 /* Router.swift */,
+				6387198D2B127909008C7F54 /* AppRoute.swift */,
+				6387198C2B1278CA008C7F54 /* NavigationView */,
+			);
+			path = NavigationStack;
+			sourceTree = "<group>";
+		};
+		6387198C2B1278CA008C7F54 /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				638719912B1279B6008C7F54 /* NavViewBuilder.swift */,
+				638719932B1279F9008C7F54 /* MainFlow.swift */,
+			);
+			path = NavigationView;
+			sourceTree = "<group>";
+		};
+		6387199B2B1285DE008C7F54 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				638719972B127B91008C7F54 /* WelcomeView.swift */,
+				6387199C2B128610008C7F54 /* WelcomeViewModel.swift */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
+		639DA3882B2A2B5E00C265F2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3852B2A2B5600C265F2 /* Photos.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		639DA39D2B2ABE6400C265F2 /* PhotoGalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				639DA39E2B2ABEAB00C265F2 /* PhotoGalleryView.swift */,
+				639DA3A02B2ABEC000C265F2 /* PhotoGalleryViewModel.swift */,
+				639DA3B02B2F0F6A00C265F2 /* AsyncLocalImage.swift */,
+			);
+			path = PhotoGalleryView;
+			sourceTree = "<group>";
+		};
+		639DA3A22B2CDDD700C265F2 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3A32B2CDDF000C265F2 /* ImagePredictionView.swift */,
+				639DA3A52B2CDDFC00C265F2 /* ImagePredictionViewModel.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		639DA3A72B2DA94F00C265F2 /* BottomSheetImageInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3A82B2DA98100C265F2 /* BottomSheetImageInfoView.swift */,
+			);
+			path = BottomSheetImageInfoView;
+			sourceTree = "<group>";
+		};
+		639DA3AA2B2DD53400C265F2 /* ActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3AB2B2DD54F00C265F2 /* ActivityView.swift */,
+			);
+			path = ActivityView;
+			sourceTree = "<group>";
+		};
+		639DA3AD2B2DF69800C265F2 /* BottomSheetPredictionInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				639DA3AE2B2DF6D200C265F2 /* BottomSheetPredictionInfoView.swift */,
+			);
+			path = BottomSheetPredictionInfoView;
+			sourceTree = "<group>";
+		};
+		63D7CBD22B137D0800BB54F3 /* StartConnectionView */ = {
+			isa = PBXGroup;
+			children = (
+				63D7CBD32B137D2500BB54F3 /* StartConnectionView.swift */,
+				63D7CBD52B137D4000BB54F3 /* StartConnectionViewModel.swift */,
+			);
+			path = StartConnectionView;
+			sourceTree = "<group>";
+		};
+		63D7CBD72B1388B700BB54F3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				63D7CBDB2B13939400BB54F3 /* FLIROneCameraSwift.entitlements */,
+				63D7CBFD2B13992B00BB54F3 /* FLIRCameraManager.swift */,
+				639DA3892B2A2B7B00C265F2 /* PhotoFileManager.swift */,
+				639DA38B2B2A2BC400C265F2 /* DataManager.swift */,
+				639DA38D2B2A4F4D00C265F2 /* PersistenceController.swift */,
+				639DA39B2B2ABB7A00C265F2 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		63D7CBD82B13893C00BB54F3 /* BottomSheetInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				63D7CBD92B13899900BB54F3 /* BottomSheetInfoView.swift */,
+			);
+			path = BottomSheetInfoView;
+			sourceTree = "<group>";
+		};
+		63D7CBDC2B13956600BB54F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				997F174A2B1F70C4009A3D28 /* thermal ML */,
+				63D7CBE52B13956600BB54F3 /* libavcodec.58.dylib.framework */,
+				63D7CBDF2B13956600BB54F3 /* libavdevice.58.dylib.framework */,
+				63D7CBE42B13956600BB54F3 /* libavfilter.7.dylib.framework */,
+				63D7CBE32B13956600BB54F3 /* libavformat.58.dylib.framework */,
+				63D7CBE22B13956600BB54F3 /* libavutil.56.dylib.framework */,
+				63D7CBDD2B13956600BB54F3 /* liblive666.dylib.framework */,
+				63D7CBE62B13956600BB54F3 /* libswresample.3.dylib.framework */,
+				63D7CBE12B13956600BB54F3 /* libswscale.5.dylib.framework */,
+				63D7CBDE2B13956600BB54F3 /* MeterLink.framework */,
+				63D7CBE02B13956600BB54F3 /* ThermalSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D7DFC8B42B0B889500601989 = {
 			isa = PBXGroup;
 			children = (
+				993B1E5E2B3051E80090F94F /* log.rtf */,
 				D7DFC8BF2B0B889500601989 /* thermalML */,
 				D7DFC8BE2B0B889500601989 /* Products */,
+				63D7CBDC2B13956600BB54F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,10 +347,16 @@
 		D7DFC8BF2B0B889500601989 /* thermalML */ = {
 			isa = PBXGroup;
 			children = (
-				D7DFC8C02B0B889500601989 /* thermalMLApp.swift */,
-				D7DFC8C22B0B889500601989 /* ContentView.swift */,
-				D7DFC8D02B0BBC5000601989 /* UIImage+Extention.swift */,
-				D7DFC8CE2B0BB9F900601989 /* thermalclassification 1.mlmodel */,
+				639DA3882B2A2B5E00C265F2 /* Data */,
+				99B5F0162B1F69AE00FF8377 /* thermalML.entitlements */,
+				63D7CBFC2B13987600BB54F3 /* Info.plist */,
+				63D7CBD72B1388B700BB54F3 /* Managers */,
+				6387198B2B12789F008C7F54 /* NavigationStack */,
+				638719812B126613008C7F54 /* Views */,
+				638719802B1265F6008C7F54 /* Extensions */,
+				6387197F2B1265D9008C7F54 /* MLModels */,
+				D7DFC8C02B0B889500601989 /* ThermalMLApp.swift */,
+				638719952B127A8A008C7F54 /* MainAppView.swift */,
 				D7DFC8C42B0B889900601989 /* Assets.xcassets */,
 				D7DFC8C62B0B889900601989 /* Preview Content */,
 			);
@@ -83,6 +381,7 @@
 				D7DFC8B92B0B889500601989 /* Sources */,
 				D7DFC8BA2B0B889500601989 /* Frameworks */,
 				D7DFC8BB2B0B889500601989 /* Resources */,
+				997F175F2B1F70D1009A3D28 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				993B1E5F2B3051E80090F94F /* log.rtf in Resources */,
 				D7DFC8C82B0B889900601989 /* Preview Assets.xcassets in Resources */,
 				D7DFC8C52B0B889900601989 /* Assets.xcassets in Resources */,
 			);
@@ -143,10 +443,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D7CC042B139F3200BB54F3 /* ScanningCameraView.swift in Sources */,
+				639DA3A92B2DA98100C265F2 /* BottomSheetImageInfoView.swift in Sources */,
+				638719902B12796B008C7F54 /* Router.swift in Sources */,
+				639DA39F2B2ABEAB00C265F2 /* PhotoGalleryView.swift in Sources */,
+				639DA3AF2B2DF6D200C265F2 /* BottomSheetPredictionInfoView.swift in Sources */,
+				639DA39C2B2ABB7A00C265F2 /* LocationManager.swift in Sources */,
+				639DA3A12B2ABEC000C265F2 /* PhotoGalleryViewModel.swift in Sources */,
+				6387199D2B128610008C7F54 /* WelcomeViewModel.swift in Sources */,
+				638719942B1279F9008C7F54 /* MainFlow.swift in Sources */,
+				639DA38C2B2A2BC400C265F2 /* DataManager.swift in Sources */,
 				D7DFC8D12B0BBC5000601989 /* UIImage+Extention.swift in Sources */,
-				D7DFC8C32B0B889500601989 /* ContentView.swift in Sources */,
-				D7DFC8CF2B0BB9F900601989 /* thermalclassification 1.mlmodel in Sources */,
-				D7DFC8C12B0B889500601989 /* thermalMLApp.swift in Sources */,
+				63D7CBD42B137D2500BB54F3 /* StartConnectionView.swift in Sources */,
+				639DA3B12B2F0F6A00C265F2 /* AsyncLocalImage.swift in Sources */,
+				639DA38A2B2A2B7B00C265F2 /* PhotoFileManager.swift in Sources */,
+				639DA3A42B2CDDF000C265F2 /* ImagePredictionView.swift in Sources */,
+				63D7CBD62B137D4000BB54F3 /* StartConnectionViewModel.swift in Sources */,
+				63D7CC022B139D5200BB54F3 /* ScanningViewModel.swift in Sources */,
+				638719922B1279B6008C7F54 /* NavViewBuilder.swift in Sources */,
+				638719962B127A8A008C7F54 /* MainAppView.swift in Sources */,
+				63D7CC002B139D1200BB54F3 /* ScanningView.swift in Sources */,
+				639DA3872B2A2B5600C265F2 /* Photos.xcdatamodeld in Sources */,
+				639DA38E2B2A4F4D00C265F2 /* PersistenceController.swift in Sources */,
+				63D7CBDA2B13899900BB54F3 /* BottomSheetInfoView.swift in Sources */,
+				63D7CBFE2B13992B00BB54F3 /* FLIRCameraManager.swift in Sources */,
+				6387198A2B127238008C7F54 /* thermalclassification 1.mlpackage in Sources */,
+				639DA3A62B2CDDFC00C265F2 /* ImagePredictionViewModel.swift in Sources */,
+				639DA3AC2B2DD54F00C265F2 /* ActivityView.swift in Sources */,
+				638719982B127B91008C7F54 /* WelcomeView.swift in Sources */,
+				6387198E2B127909008C7F54 /* AppRoute.swift in Sources */,
+				D7DFC8C12B0B889500601989 /* ThermalMLApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,23 +603,34 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = thermalML/thermalML.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
 				DEVELOPMENT_TEAM = FXJ4W3YC8P;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = thermalML/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Habanero BLE";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Habanero BLE";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.thermalML;
+				PRODUCT_BUNDLE_IDENTIFIER = wt.thermalML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -306,23 +643,34 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = thermalML/thermalML.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"thermalML/Preview Content\"";
 				DEVELOPMENT_TEAM = FXJ4W3YC8P;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = thermalML/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Habanero BLE";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Habanero BLE";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.thermalML;
+				PRODUCT_BUNDLE_IDENTIFIER = wt.thermalML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -352,6 +700,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		639DA3852B2A2B5600C265F2 /* Photos.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				639DA3862B2A2B5600C265F2 /* Photos.xcdatamodel */,
+			);
+			currentVersion = 639DA3862B2A2B5600C265F2 /* Photos.xcdatamodel */;
+			path = Photos.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D7DFC8B52B0B889500601989 /* Project object */;
 }

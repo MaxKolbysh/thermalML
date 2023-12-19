@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "8864E848-6F35-46DF-A1FA-ACB2D5397266": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "thermalclassification 1.mlmodel",
+            "path": "com.apple.CoreML/thermalclassification 1.mlmodel"
+        },
+        "A9D1B933-5BA4-4D59-862A-B0EE8CFBD70C": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "F1F07A2B-F790-4E1E-AE9C-5562E33E9629": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        }
+    },
+    "rootModelIdentifier": "8864E848-6F35-46DF-A1FA-ACB2D5397266"
+}

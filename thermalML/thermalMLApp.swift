@@ -8,10 +8,16 @@
 import SwiftUI
 
 @main
-struct thermalMLApp: App {
+struct ThermalMLApp: App {
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
+        let router: Router<AppRoute> = .init()
+        let builder = NavViewBuilder(router: router, managedObjectContext: persistenceController.container.viewContext)
+
         WindowGroup {
-            ContentView()
+            MainAppView(router: router, navViewBuilder: builder)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
