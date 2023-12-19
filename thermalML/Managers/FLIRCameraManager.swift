@@ -33,6 +33,9 @@ class FLIRCameraManager: NSObject {
     let renderQueue = DispatchQueue(label: "render")
     
     var connectionTimeoutTimer: Timer?
+    
+    
+    
 
     private override init() {
         super.init()
@@ -155,6 +158,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     }
                     return
                 }
+                
 
                 guard !camera.isConnected() else {
                     NSLog("Camera is not connected")
@@ -169,6 +173,8 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     
                     do {
                         try camera.connect(cameraIdentity)
+                        let isConnected = camera.isConnected()
+                        print ("isConnected: \(isConnected) ")
                     } catch {
                         print("Error connecting to camera: \(error)")
                         handleError(error)
@@ -196,6 +202,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.isCameraConnected = true
+                        print("camera is connected")
                     }
                     do {
                         try stream.start()
@@ -237,6 +244,7 @@ extension FLIRCameraManager: FLIRDataReceivedDelegate {
         NSLog("\(#function) \(String(describing: error))")
         DispatchQueue.main.async { [weak self] in
             self?.isCameraConnected = false
+            print("camera is disconnected")
             guard let self = self else { return }
             self.thermalStreamer = nil
             self.stream = nil
