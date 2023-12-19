@@ -45,7 +45,7 @@ class PhotoGalleryViewModel: ObservableObject {
                     if let photoData = await fileManager.fetchPhoto(withPath: imagePath),
                        let image = UIImage(data: photoData) {
                     } else {
-                        print("Ошибка загрузки фотографии по пути: \(imagePath)")
+                        print("Error loading photo from path: \(imagePath)")
                     }
                 }
             }
@@ -57,7 +57,7 @@ class PhotoGalleryViewModel: ObservableObject {
            let image = UIImage(data: photoData) {
             return image
         } else {
-            print("Не удалось загрузить изображение по пути: \(path)")
+            print("Failed to load image from path: \(path)")
             return nil
         }
     }
@@ -70,7 +70,7 @@ class PhotoGalleryViewModel: ObservableObject {
                 dataManager: dataManager
             ))
         } else {
-            print("Не удалось загрузить изображение по пути: \(imagePath)")
+            print("Unable to load image from path: \(imagePath)")
         }
     }
 }

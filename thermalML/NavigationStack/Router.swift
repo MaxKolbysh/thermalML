@@ -23,8 +23,12 @@ final class Router<T: Hashable>: ObservableObject {
 
     func pop() {
         Task { @MainActor in
-            paths.removeLast(1)
-            history.removeLast()
+            if !paths.isEmpty {
+                paths.removeLast(1)
+            }
+            if !history.isEmpty {
+                history.removeLast()
+            }
         }
     }
 

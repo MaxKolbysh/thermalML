@@ -36,15 +36,12 @@ class FLIRCameraManager: NSObject {
 
     private override init() {
         super.init()
-        print("Initializing FLIRCameraManager")
         configureDiscovery()
     }
     
     deinit {
         camera?.disconnect()
         discovery?.stop()
-        print("FLIRCameraManager is being deinitialized from deinit")
-        
         stream?.stop()
         self.thermalStreamer = nil
         self.stream = nil
@@ -53,23 +50,19 @@ class FLIRCameraManager: NSObject {
     func cleanup() {
         camera?.disconnect()
         discovery?.stop()
-        print("FLIRCameraManager is being deinitialized from cleanUp")
-        
         stream?.stop()
         self.thermalStreamer = nil
         self.stream = nil
     }
     
     func configureDiscovery() {
-        print("Configuring discovery")
         discovery = FLIRDiscovery()
         discovery?.delegate = self
-        print("Discovery configured")
     }
     
     func requireCamera() {
         guard camera == nil else {
-            print("camera not found")
+            print("Camera not found")
             if let error = error {
                 handleError(error)
             }
@@ -91,12 +84,9 @@ class FLIRCameraManager: NSObject {
         
         self.thermalStreamer = nil
         self.stream = nil
-        
-        print("Camera disconnected: \(camera.debugDescription)")
     }
     
     func connectEmulatorClicked() {
-        print("connectEmulatorClicked in Manager - Starting discovery for emulator")
         discovery?.start(.emulator, cameraType: .flirOne)
     }
     
@@ -135,7 +125,6 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                 }
                 
                 guard !camera.isConnected() else {
-                    NSLog("Camera is not connected: \(camera.isConnected())")
                     if let error = error {
                         handleError(error)
                     }
@@ -149,7 +138,6 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     do {
                         try camera.connect(cameraIdentity)
                         isCameraConnected = camera.isConnected()
-                        print ("isConnected: \(isCameraConnected) ")
                     } catch {
                         print("Error connecting to camera: \(error)")
                         handleError(error)
@@ -177,7 +165,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.isCameraConnected = true
-                        print("camera is connected")
+                        print("Camera is connected")
                     }
                     do {
                         try stream.start()

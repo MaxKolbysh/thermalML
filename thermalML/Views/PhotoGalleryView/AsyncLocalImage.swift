@@ -18,6 +18,7 @@ struct AsyncLocalImage: View {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             } else if isLoading {
                 ProgressView()
             } else {

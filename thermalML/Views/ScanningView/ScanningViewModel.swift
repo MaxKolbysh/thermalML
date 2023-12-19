@@ -140,7 +140,6 @@ class ScanningViewModel: ObservableObject {
     func savePhotos(thermalImage: UIImage, originalImage: UIImage) async {
         guard let thermalImageData = thermalImage.jpegData(compressionQuality: 1),
               let originalImageData = originalImage.jpegData(compressionQuality: 1) else {
-            print("Не удалось получить данные изображений")
             return
         }
 

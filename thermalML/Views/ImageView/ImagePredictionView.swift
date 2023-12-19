@@ -86,7 +86,6 @@ struct ImagePredictionView: View {
                 Spacer()
                 Button(action: {
                     isSheetPresented.toggle()
-                    print("isSheetPresented: \(isSheetPresented)")
                 }) {
                     Image(systemName: "info.circle")
                 }

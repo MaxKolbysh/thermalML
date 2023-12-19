@@ -74,12 +74,10 @@ struct ScanningView: View {
                 }
                 withAnimation(.linear(duration: 0.05)) {
                     flashOpacity = 1.0
-                    print("Flash flash")
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     withAnimation(.linear(duration: 0.3)) {
                         flashOpacity = 0.0
-                        print("Flash should now fade out")
                     }
                 }
             }, label: {
@@ -96,7 +94,6 @@ struct ScanningView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    print("Classify tapped")
                     viewModel.gotoImageView()
                 }, label: {
                     HStack {
@@ -122,14 +119,14 @@ struct ScanningView: View {
         .onAppear {
             if isEmulatorLoading {
                 if viewModel.isCameraConnected == nil || viewModel.isCameraConnected == false {
-                    print("1.isEmulatorLoading")
                     viewModel.connectEmulatorClicked()
+                    viewModel.isCameraConnected = true
                 }
                 viewModel.isActivityIndicatorShowed = false
             } else {
                 if viewModel.isCameraConnected == nil || viewModel.isCameraConnected == false {
-                    print("2.isCameraConnected")
                     viewModel.connectDeviceClicked()
+                    viewModel.isCameraConnected = true
                 }
                 viewModel.isActivityIndicatorShowed = false
             }
@@ -160,7 +157,7 @@ struct ScanningView: View {
                 message: Text(viewModel.errorMessage ?? ""),
                 dismissButton: .default(Text("OK")) {
                     isAlertPresented = false
-                    viewModel.router.pop()
+                    viewModel.router.popToPrevious()
                 }
             )
         }

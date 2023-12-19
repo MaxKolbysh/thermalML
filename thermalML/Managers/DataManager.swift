@@ -52,7 +52,7 @@ class DataManager {
         do {
             try context.save()
         } catch {
-            print("Ошибка при сохранении: \(error)")
+            print("Error saving to the database: \(error)")
         }
     }
     
@@ -62,7 +62,7 @@ class DataManager {
         do {
             return try context.fetch(request)
         } catch {
-            print("Ошибка при выполнении запроса: \(error)")
+            print("Error executing database query: \(error)")
             return []
         }
     }
@@ -71,10 +71,9 @@ class DataManager {
         let request: NSFetchRequest<PhotoInfo> = PhotoInfo.fetchRequest()
         do {
             let results = try context.fetch(request)
-            print("Получено изображений из Core Data: \(results.count)")
             return results
         } catch {
-            print("Ошибка при выполнении запроса: \(error)")
+            print("Error executing the database query: \(error)")
             return []
         }
     }
@@ -89,7 +88,7 @@ class DataManager {
             }
             try context.save()
         } catch {
-            print("Ошибка при удалении информации об изображении: \(error)")
+            print("Error deleting image information from the database: \(error)")
         }
     }
 
@@ -101,20 +100,12 @@ class DataManager {
             if let firstResult = results.first {
                 return firstResult
             } else {
-                print("Изображение с тепловым именем \(thermalName) не найдено")
+                print("Image with the thermal name \(thermalName) not found in the database")
                 return nil
             }
         } catch {
-            print("Ошибка при выполнении запроса: \(error)")
+            print("Error executing query in the database: \(error)")
             return nil
         }
     }
-
-//    func filterByTags(tags: [String]) -> [PhotoInfo] {
-//        //
-//    }
-//    
-//    func filterByLocation(location: CLLocation, radius: Double) -> [PhotoInfo] {
-//        //
-//    }
 }
