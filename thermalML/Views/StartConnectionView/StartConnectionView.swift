@@ -49,7 +49,7 @@ struct StartConnectionView: View {
                         .foregroundColor(.white)
                         .padding(.trailing)
                 }
-                .frame(maxWidth: 190, maxHeight: 50)
+                .frame(maxWidth: 190, minHeight: 50, maxHeight: 50)
                 .background(Color(red: 0, green: 122/255, blue: 255/255, opacity: 1.0))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .foregroundColor(.white)
