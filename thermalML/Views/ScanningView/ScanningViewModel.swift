@@ -112,6 +112,7 @@ class ScanningViewModel: ObservableObject {
     }
 
     func connectEmulatorClicked() {
+        isActivityIndicatorShowed = true
         cameraManager.connectEmulatorClicked()
     }
     
