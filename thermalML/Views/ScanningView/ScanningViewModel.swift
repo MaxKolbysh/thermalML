@@ -57,6 +57,12 @@ class ScanningViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+        
+        cameraManager.$isCameraConnected
+                .sink { [weak self] isConnected in
+                    self?.isActivityIndicatorShowed = !isConnected
+                }
+                .store(in: &cancellables)
 
         cameraManager.$distanceText
             .compactMap { $0 }
@@ -104,7 +110,7 @@ class ScanningViewModel: ObservableObject {
         cameraManager.disconnectClicked()
         isActivityIndicatorShowed = false
     }
-    
+
     func connectEmulatorClicked() {
         cameraManager.connectEmulatorClicked()
     }

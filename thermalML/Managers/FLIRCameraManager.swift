@@ -15,6 +15,7 @@ class FLIRCameraManager: NSObject {
     @Published var distanceText: String = ""
     @Published var distanceValue: Float = 0.0
     @Published var thermalImage: UIImage?
+    @Published var isCameraConnected: Bool = false
     
     @Published var error: Error?
     
@@ -63,6 +64,12 @@ class FLIRCameraManager: NSObject {
         camera?.disconnect()
         discovery?.stop()
         print("FLIRCameraManager is being deinitialized from cleanUp")
+        
+        stream?.stop()
+        
+        
+        self.thermalStreamer = nil
+        self.stream = nil
     }
     
     func configureDiscovery() {
@@ -87,10 +94,10 @@ class FLIRCameraManager: NSObject {
     
     func connectDeviceClicked() {
         discovery?.start([.lightning, .flirOneWireless])
-        connectionTimeoutTimer?.invalidate()
-        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { [weak self] _ in
-            self?.handleConnectionTimeout()
-        }
+//        connectionTimeoutTimer?.invalidate()
+//        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { [weak self] _ in
+//            self?.handleConnectionTimeout()
+//        }
         UserDefaults.standard.set(true, forKey: "isCameraConnected")
     }
     
@@ -188,6 +195,7 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
+                        self.isCameraConnected = true
                     }
                     do {
                         try stream.start()
@@ -228,6 +236,7 @@ extension FLIRCameraManager: FLIRDataReceivedDelegate {
     func onDisconnected(_ camera: FLIRCamera, withError error: Error?) {
         NSLog("\(#function) \(String(describing: error))")
         DispatchQueue.main.async { [weak self] in
+            self?.isCameraConnected = false
             guard let self = self else { return }
             self.thermalStreamer = nil
             self.stream = nil
@@ -258,7 +267,7 @@ extension FLIRCameraManager: FLIRStreamDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.thermalImage = image
-                print("thermalImage: \(self.thermalImage)")
+//                print("thermalImage: \(self.thermalImage)")
                 self.ironPalette = true
                 
                 self.thermalStreamer?.withThermalImage { [weak self] image in
