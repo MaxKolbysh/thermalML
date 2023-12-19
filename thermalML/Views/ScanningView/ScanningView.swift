@@ -25,9 +25,10 @@ struct ScanningView: View {
     
     @State var isClassifyButtonDisable = true
     @State private var flashOpacity: Double = 0.0
+    @State private var isBackAlertPresented = false
     
     private var isEmulatorLoading: Bool
-    
+
     init(
         router: Router<AppRoute>,
         isEmulatorLoading: Bool,
@@ -120,18 +121,20 @@ struct ScanningView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear {
             if isEmulatorLoading {
-                if !viewModel.isCameraConnected {
-                    viewModel.connectEmulatorClicked()
-                }
+                viewModel.connectEmulatorClicked()
             } else {
-                if !viewModel.isCameraConnected {
-                    viewModel.isActivityIndicatorShowed = true
-                    viewModel.connectDeviceClicked()
-                }
+                viewModel.isActivityIndicatorShowed = true
+                viewModel.connectDeviceClicked()
             }
         }
-        .navigationBarItems(
-            trailing:
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            viewModel.streamStop()
+            self.isBackAlertPresented = true
+        }) {
+            Image(systemName: "arrow.left")
+                .foregroundColor(.blue)
+        }, trailing:
                 Button(
                     action: {
                         viewModel.goToStartPhotoGalleryView()
@@ -151,6 +154,19 @@ struct ScanningView: View {
                 dismissButton: .default(Text("OK")) {
                     isAlertPresented = false
                     viewModel.router.pop()
+                }
+            )
+        }
+        .alert(isPresented: $isBackAlertPresented) {
+            Alert(
+                title: Text("Confirm"),
+                message: Text("Do you want to turn off the camera?"),
+                primaryButton: .destructive(Text("Yes")) {
+                    viewModel.disconnectClicked()
+                    viewModel.router.pop()
+                },
+                secondaryButton: .cancel() {
+                    viewModel.streamStart()
                 }
             )
         }

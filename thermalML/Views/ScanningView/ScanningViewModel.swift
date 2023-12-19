@@ -25,9 +25,7 @@ class ScanningViewModel: ObservableObject {
     let fileManager = PhotoFileManager.shared
 
     var cameraManager = FLIRCameraManager.shared
-    var isCameraConnected: Bool {
-        UserDefaults.standard.bool(forKey: "isCameraConnected")
-    }
+    @Published var isCameraConnected: Bool?
 
     private var managedObjectContext: NSManagedObjectContext
     private var dataManager: DataManager
@@ -59,10 +57,12 @@ class ScanningViewModel: ObservableObject {
             .store(in: &cancellables)
         
         cameraManager.$isCameraConnected
-                .sink { [weak self] isConnected in
-                    self?.isActivityIndicatorShowed = !isConnected
+            .sink { [weak self] isCameraConnected in
+                DispatchQueue.main.async {
+                    self?.isActivityIndicatorShowed = !(isCameraConnected ?? false)
                 }
-                .store(in: &cancellables)
+            }
+            .store(in: &cancellables)
 
         cameraManager.$distanceText
             .compactMap { $0 }
@@ -107,8 +107,8 @@ class ScanningViewModel: ObservableObject {
     }
     
     func disconnectClicked() {
-        cameraManager.disconnectClicked()
         isActivityIndicatorShowed = false
+        cameraManager.disconnectClicked()
     }
 
     func connectEmulatorClicked() {
@@ -117,6 +117,23 @@ class ScanningViewModel: ObservableObject {
     
     func ironPaletteClicked() {
         cameraManager.ironPaletteClicked()
+    }
+    
+    func streamStart() {
+        do {
+            try cameraManager.stream?.start()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func streamStop() {
+        do {
+            try cameraManager.stream?.stop()
+        } catch {
+            print(error.localizedDescription)
+        }
+
     }
     
     func savePhotos(thermalImage: UIImage, originalImage: UIImage) async {

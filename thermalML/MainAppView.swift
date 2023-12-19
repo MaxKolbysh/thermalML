@@ -17,6 +17,9 @@ struct MainAppView: View {
             navViewBuilder.createWelcomeView()
                 .navigationDestination(for: AppRoute.self, destination: buildViews)
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+            handleAppDidEnterBackground()
+        }
     }
 
     @ViewBuilder
@@ -37,5 +40,14 @@ struct MainAppView: View {
                 dataManager: dataManager
             )
         }
+    }
+    
+    private func handleAppDidEnterBackground() {
+        if let isCameraConnected = FLIRCameraManager.shared.isCameraConnected {
+            if isCameraConnected {
+                FLIRCameraManager.shared.cleanup()
+            }
+        }
+        router.popToRoot()
     }
 }

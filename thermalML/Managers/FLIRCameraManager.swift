@@ -15,7 +15,7 @@ class FLIRCameraManager: NSObject {
     @Published var distanceText: String = ""
     @Published var distanceValue: Float = 0.0
     @Published var thermalImage: UIImage?
-    @Published var isCameraConnected: Bool = false
+    @Published var isCameraConnected: Bool?
     
     @Published var error: Error?
     
@@ -33,44 +33,29 @@ class FLIRCameraManager: NSObject {
     let renderQueue = DispatchQueue(label: "render")
     
     var connectionTimeoutTimer: Timer?
-    
-    
-    
 
     private override init() {
         super.init()
         print("Initializing FLIRCameraManager")
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(appWillResignActive),
-            name: UIApplication.willResignActiveNotification,
-            object: nil
-        )
         configureDiscovery()
     }
     
-    @objc private func appWillResignActive() {
-        cleanup()
-    }
-    
     deinit {
-        NotificationCenter.default.removeObserver(self)
-        UserDefaults.standard.set(false, forKey: "isCameraConnected")
         camera?.disconnect()
         discovery?.stop()
         print("FLIRCameraManager is being deinitialized from deinit")
+        
+        stream?.stop()
+        self.thermalStreamer = nil
+        self.stream = nil
     }
     
     func cleanup() {
-        NotificationCenter.default.removeObserver(self)
-        UserDefaults.standard.set(false, forKey: "isCameraConnected")
         camera?.disconnect()
         discovery?.stop()
         print("FLIRCameraManager is being deinitialized from cleanUp")
         
         stream?.stop()
-        
-        
         self.thermalStreamer = nil
         self.stream = nil
     }
@@ -97,11 +82,6 @@ class FLIRCameraManager: NSObject {
     
     func connectDeviceClicked() {
         discovery?.start([.lightning, .flirOneWireless])
-//        connectionTimeoutTimer?.invalidate()
-//        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { [weak self] _ in
-//            self?.handleConnectionTimeout()
-//        }
-        UserDefaults.standard.set(true, forKey: "isCameraConnected")
     }
     
     func disconnectClicked() {
@@ -109,20 +89,17 @@ class FLIRCameraManager: NSObject {
         discovery?.stop()
         stream?.stop()
         
-        
         self.thermalStreamer = nil
         self.stream = nil
         
-        connectionTimeoutTimer?.invalidate()
-        connectionTimeoutTimer = nil
+//        connectionTimeoutTimer?.invalidate()
+//        connectionTimeoutTimer = nil
         print("Camera disconnected: \(camera.debugDescription)")
-        UserDefaults.standard.set(false, forKey: "isCameraConnected")
     }
     
     func connectEmulatorClicked() {
         print("connectEmulatorClicked in Manager - Starting discovery for emulator")
         discovery?.start(.emulator, cameraType: .flirOne)
-        UserDefaults.standard.set(true, forKey: "isCameraConnected")
     }
     
     func ironPaletteClicked() {
@@ -173,8 +150,8 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     
                     do {
                         try camera.connect(cameraIdentity)
-                        let isConnected = camera.isConnected()
-                        print ("isConnected: \(isConnected) ")
+                        isCameraConnected = camera.isConnected()
+                        print ("isConnected: \(isCameraConnected) ")
                     } catch {
                         print("Error connecting to camera: \(error)")
                         handleError(error)
