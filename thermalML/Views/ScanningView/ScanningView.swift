@@ -121,10 +121,16 @@ struct ScanningView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear {
             if isEmulatorLoading {
-                viewModel.connectEmulatorClicked()
+                if viewModel.isCameraConnected == nil || viewModel.isCameraConnected == false {
+                    print("1.isEmulatorLoading")
+                    viewModel.connectEmulatorClicked()
+                }
             } else {
-                viewModel.isActivityIndicatorShowed = true
-                viewModel.connectDeviceClicked()
+                if viewModel.isCameraConnected == nil || viewModel.isCameraConnected == false {
+                    print("2.isCameraConnected")
+
+                    viewModel.connectDeviceClicked()
+                }
             }
         }
         .navigationBarBackButtonHidden(true)

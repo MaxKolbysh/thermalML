@@ -92,8 +92,6 @@ class FLIRCameraManager: NSObject {
         self.thermalStreamer = nil
         self.stream = nil
         
-//        connectionTimeoutTimer?.invalidate()
-//        connectionTimeoutTimer = nil
         print("Camera disconnected: \(camera.debugDescription)")
     }
     
@@ -136,14 +134,14 @@ extension FLIRCameraManager: FLIRDiscoveryEventDelegate {
                     return
                 }
                 
-
                 guard !camera.isConnected() else {
-                    NSLog("Camera is not connected")
+                    NSLog("Camera is not connected: \(camera.isConnected())")
                     if let error = error {
                         handleError(error)
                     }
                     return
                 }
+                
                 DispatchQueue.global().async { [weak self] in
                     
                     guard let self = self else { return }
